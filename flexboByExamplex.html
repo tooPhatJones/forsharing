@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<hshrink lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        html body {
+            background-color: #181a1b;
+            color: white;
+        }
+
+        .margin-10 {
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+            margin: 10px;
+        }
+
+
+        .flexContainer {
+            margin: 10px;
+            border: 1px solid red;
+            display: flex;
+        }
+
+        .flexContainerProperties {
+            border: purple solid
+        }
+
+        .flexChildElements {
+            border: yellow solid;
+            margin: 30px 0 500px 0
+        }
+        .align-items{
+            border: green solid;
+        }
+    </style>
+    <div class="flexContainerProperties">
+        <h1>Flex Container properties</h1>
+        <p>Here the flex container elements (the red border wrapping the blue boxes) have the display: flex;.</p>
+        <p>They also have one of the following to give them extra styles</p>
+        <h3>The flex-direction</h3>
+        This property defines in which direction the container wants to stack the flex items. Default value is
+        flex-direction: row; <br>
+        So if you leave that out, it will still look like this. <br>      
+
+        <body>
+            <h3>Its worth noting there is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">"flex-direction: collumn"</a>  property that can be used to rotate all the flexbox operations 90 degrees. However its much easier to learn everything horizontally and then flip with flex-direction if you need to. Rather than trying to learn the way everything works on two axis.</h3>
+            <h3>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a> property (items in row horizontally)</h3>
+            is used to Horizontally align the flex items. In flexbox, the word "justify" signals horizotal adjustments, and the word "align" signals vertical adjustments. <br>
+            Here we use justify-content: flex-end; <br>
+            Values: center, flex-start, flex-end, space-around, space-between, space-evenly;
+            <h5>justify-content: center</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: center;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            <h5>justify-content: flex-start</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: flex-start;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            <h5>justify-content: flex-end</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: flex-end;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            <h5>justify-content: space-around</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: space-around;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            <h5>justify-content: space-between</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: space-between;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            <h5>justify-content: space-evenly</h5>
+            <div class="flexContainer JustifyCOntent" style="justify-content: space-evenly;">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+          
+            <h3>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-content">align-content</a> property (vertical spacing of whole row)</h3>
+            is used to align the flex row Vertically. <br>
+            values: space between, space around, stretch, center, flex-start, flex-end <br>
+            TIP: shrink the page to see how this line acts on smaller views. <br>
+            This is align-content: space-around;
+            <style>
+                .alingn_content1 {
+                    align-content: space-around;
+                    flex-wrap: wrap;
+                }
+
+                .moreHeight {
+                    height: 30vh;
+                }
+            </style>
+            <div class="flexContainer alingn_content1 moreHeight">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            here is align-content: space-between;
+            <style>
+                .alingn_content2 {
+                    align-content: space-between;
+                    flex-wrap: wrap;
+                }
+
+                .moreHeight {
+                    height: 30vh;
+                }
+            </style>
+            <div class="flexContainer alingn_content2 moreHeight">
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+                <div class='margin-10'>1</div>
+                <div class='margin-10'>2</div>
+                <div class='margin-10'>3</div>
+                <div class='margin-10'>4</div>
+                <div class='margin-10'>5</div>
+                <div class='margin-10'>6</div>
+            </div>
+            This is align-content: stretch; <br>
+            NOTE: in order for this value to work you cant define a height for the blue elements here. <br>
+            Difference between align-content: stretch; and align-items: stretch; <br>
+            As far as I can tell these two have overlapping functionality but align-items will never wrap the row, where align-content will. So if they are both applied, there may be no visible difference unless the row is wrapped.
+            <style>
+.alingn_contentStretch {
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+
+                .moreHeight {
+                    height: 30vh;
+                }
+
+                .margin-alingn_contentStretch {
+                    margin: 10px;
+                    width: 50px;
+                    background-color: blue;
+                }
+            </style>
+            <div class="flexContainer alingn_contentStretch moreHeight" style="align-content:stretch">
+                <div class='margin-alingn_contentStretch'>1</div>
+                <div class='margin-alingn_contentStretch'>2</div>
+                <div class='margin-alingn_contentStretch'>3</div>
+                <div class='margin-alingn_contentStretch'>4</div>
+                <div class='margin-alingn_contentStretch'>5</div>
+                <div class='margin-alingn_contentStretch'>6</div>
+                <div class='margin-alingn_contentStretch'>1</div>
+                <div class='margin-alingn_contentStretch'>2</div>
+                <div class='margin-alingn_contentStretch'>3</div>
+                <div class='margin-alingn_contentStretch'>4</div>
+                <div class='margin-alingn_contentStretch'>5</div>
+                <div class='margin-alingn_contentStretch'>6</div>
+                <div class='margin-alingn_contentStretch'>1</div>
+                <div class='margin-alingn_contentStretch'>2</div>
+                <div class='margin-alingn_contentStretch'>3</div>
+                <div class='margin-alingn_contentStretch'>4</div>
+                <div class='margin-alingn_contentStretch'>5</div>
+                <div class='margin-alingn_contentStretch'>6</div>
+                <div class='margin-alingn_contentStretch'>1</div>
+                <div class='margin-alingn_contentStretch'>2</div>
+                <div class='margin-alingn_contentStretch'>3</div>
+                <div class='margin-alingn_contentStretch'>4</div>
+                <div class='margin-alingn_contentStretch'>5</div>
+                <div class='margin-alingn_contentStretch'>6</div>
+            </div>
+<div class="align-items">
+            <h3>The align-items (manipulate all items vertically in row)  property is used to align all items in the flex row vertically</h3>
+            Values: center, flex-start, flex-end, stretch, baseline. <br>
+            TIP: the difference between align-items: center; and align-content: center; 
+            <ol>
+                <li>
+                    align-items does not wrap by default, the items will just shrink.
+                </li>
+                <li>
+                    align-content does wrap if the viewport becomes too small.
+                </li>
+            </ol>
+            <br>
+            TIP: Because align-items is vertical. Setting a height for the stretch property wont do anything.  
+            <p>The "align-items: baseline;" aligns the flex items by their baseline. Here using h1 h3 h3 and small
+                elements to illustrate different baselines by element.</p>
+            <style>
+                .alingn_itemsCenter {
+                    align-items: center;
+                }
+
+                .alingn_itemsStretch {
+                    align-items: stretch;
+                }
+
+                .alingn_itemsFlexEnd {
+                    align-items: flex-end;
+                }
+
+                .alingn_itemsBaseline {
+                    align-items: baseline;
+                }
+
+                .moreHeight {
+                    height: 30vh;
+                }
+
+                .margin-stretch {
+                    width: 50px;
+                    background-color: blue;
+                    margin: 10px
+                }
+
+                .flexContainer-Inline {
+                    display: flex;
+                    
+                    flex-wrap: wrap;
+                }
+
+                .alignItemsBaseline {
+                    height: 200px;
+                    align-items: baseline;
+                }
+
+                .alignItemsBaseline>div {
+                    background-color: blue;
+                    width: 100px;
+                    margin: 10px;
+                    text-align: center;
+                    line-height: 75px;
+                    font-size: 30px;
+                }
+            </style>
+            <div class="flexContainer-Inline">
+                center
+                <div class="flexContainer alingn_itemsCenter moreHeight">
+                    <div class='margin-10'>1</div>
+                    <div class='margin-10'>2</div>
+                    <div class='margin-10'>3</div>
+                </div>
+                stretch
+                <div class="flexContainer alingn_itemsStretch moreHeight">
+                    <div class='margin-stretch'>1</div>
+                    <div class='margin-stretch'>2</div>
+                    <div class='margin-stretch'>3</div>
+                </div>
+                flex-end
+                <div class="flexContainer alingn_itemsFlexEnd moreHeight">
+                    <div class='margin-10'>1</div>
+                    <div class='margin-10'>2</div>
+                    <div class='margin-10'>3</div>
+                </div>
+                baseline
+                <div class="alignItemsBaseline flexContainer">
+                    <div>
+                        <h1>1</h1>
+                    </div>
+                    <div>
+                        <h2>2</h2>
+                    </div>
+                    <div>
+                        <h3>3</h3>
+                    </div>
+                    <div>
+                        <h4>4</h4>
+                    </div>
+                    <div>
+                        <h5>5</h5>
+                    </div>
+                    <div>
+                        <h6>6</h6>
+                    </div>
+                    <div>
+                        <small>4</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <h3>There is no justify-items in flexbox. Only in css grid :(</h3>
+            <a href="https://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties#:~:text=The%20justify%2Dcontent%20property%20aligns,but%20only%20affects%20flex%20items.">This</a> has a great explanation of why. 
+            The only other tool that will align things horizontally is auto margins, which this post has an awesome little snippet showing how to use with auto margins to get "justify-items" behavior. <br>
+            he also has a cool section on 'Center a flex item, and center a second flex item between the first and the edge' lots of cool little examples.
+    </div>
+
+
+
+    <div class="flexChildElements">
+        <h1>Child Elements (Items)</h1>
+        The direct child elements of a flex container (the blue boxes inside the red borders) automatically becomes
+        flexible (flex) items.<br />
+        <p>You can specify display: flex; on the blue boxes, but that just makes them into their own flex containers.
+            For these three properties to work they must be wrapped by something with the display: flex; property.</p>
+
+        The flex item properties are:<br />
+        <ol>
+            <li>order</li>
+            <li>flex-grow</li>
+            <li>flex-shrink</li>
+            <li>flex-basis</li>
+            <li>flex</li>
+            <li>self-align</li>
+        </ol>
+        <h4> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items">flexbox order property</a> </h4>
+        The order property specifies the order of the flex items. Here the display order is backwards from the order
+        these elements are written in the html.
+        <div class="flexContainer  ">
+            <div class='margin-10' style="order: 6">1</div>
+            <div class='margin-10' style="order: 5">2</div>
+            <div class='margin-10' style="order: 4">3</div>
+            <div class='margin-10' style="order: 3">4</div>
+            <div class='margin-10' style="order: 2">5</div>
+            <div class='margin-10' style="order: 1">6</div>
+        </div>
+
+        <h4> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow">flex-grow</a></h4>
+        The value must be a number.<br>
+        Default value is 0.<br>
+        basically, if you are stretching the page, everything will expand, but the elements with this value will expand
+        faster or slower proportionally (based on the space available to expand into) to each other. the Default value is 0. <br>
+        If you add more items to the row the growth will be less pronounced<br>
+        NOTE: You might have to shrink the page to see the effect!
+        <div class="flexContainer  ">
+            <div class='margin-10' style="flex-grow: 0">0</div>
+            <div class='margin-10' style="flex-grow: 1">1</div>
+            <div class='margin-10' style="flex-grow: 2">2</div>
+            <div class='margin-10' style="flex-grow: 3">3</div>
+            <div class='margin-10' style="flex-grow: 4">4</div>
+            <div class='margin-10' style="flex-grow: 5">5</div>
+        </div>
+
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink">flex-shrink</a></h4>
+        The flex-shrink property specifies how much a flex item will shrink relative to the rest of the flex items.<br>
+        The value must be a number,default value is 1.<br>
+        basically, if you are shrinking the page, everything will shrink, but the elements with this value will shrink
+        faster or slower proportionally to each other. <br>
+        The Default value is 0.<br>
+        The following will shrink faster from the right than the left.<br />
+        NOTE: You might have to shrink the page to see the effect!
+
+        <style>
+        </style>
+        <div class="flexContainer ">
+            <div class='margin-10' style="flex-shrink: 0">0</div>
+            <div class='margin-10' style="flex-shrink: 1">1</div>
+            <div class='margin-10' style="flex-shrink: 2">2</div>
+            <div class='margin-10' style="flex-shrink: 3">3</div>
+            <div class='margin-10' style="flex-shrink: 4">4</div>
+            <div class='margin-10' style="flex-shrink: 5">5</div>
+            <div class='margin-10' style="flex-shrink: 6">6</div>
+            <div class='margin-10' style="flex-shrink: 7">7</div>
+            <div class='margin-10' style="flex-shrink: 8">8</div>
+            <div class='margin-10' style="flex-shrink: 9">9</div>
+            <div class='margin-10' style="flex-shrink: 10">10</div>
+            <div class='margin-10' style="flex-shrink: 11">11</div>
+            <div class='margin-10' style="flex-shrink: 12">12</div>
+            <div class='margin-10' style="flex-shrink: 13">13</div>
+            <div class='margin-10' style="flex-shrink: 14">14</div>
+            <div class='margin-10' style="flex-shrink: 15">15</div>
+            <div class='margin-10' style="flex-shrink: 16">16</div>
+            <div class='margin-10' style="flex-shrink: 17">17</div>
+            <div class='margin-10' style="flex-shrink: 18">18</div>
+            <div class='margin-10' style="flex-shrink: 19">19</div>
+            <div class='margin-10' style="flex-shrink: 20">20</div>
+            <div class='margin-10' style="flex-shrink: 21">21</div>
+            <div class='margin-10' style="flex-shrink: 22">22</div>
+            <div class='margin-10' style="flex-shrink: 23">23</div>
+        </div>
+
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis">flex-basis</a></h4>
+        The flex-basis property specifies the initial length horizontally of a flex item.<br>
+        I belie this means, initial size of an item that will be changed by the flex-shrink or flex-grow properties in the screen size is changed<br>
+        This is complex, please refer to the documentation for This
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis">https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis</a>
+        as near as I can tell, this just sets the default width of the item. But not reliably. <br>
+        Its very very hard to find any examples that actually show what you would ever want to use this for. <br>
+
+        <div class="flexContainer  ">
+            <div class='margin-10 flex-basis-100px' style="flex-basis: 100px;">flex-basis:100px;</div>
+            <div class='margin-10 flex-basis-300px' style=" flex-basis: 300px;">flex-basis:300px;</div>
+            <div class='margin-10 flex-basis-600px' style="flex-basis: 600px;">flex-basis: 600px;</div>
+            <div class='margin-10 flex-basis-auto' style="flex-basis: auto;">flex-basis: auto;</div>
+        </div>
+
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex">flex property shorthand</a></h4>
+        The flex property is a shorthand property for the flex-grow,flex-shrink, and flex-basis properties. <br>
+        flex-grow default is 0. 0 means no growth. a 1 will fill all space left by other 0's. a 2 will simply fill twice
+        as much space as a 1 and so on. <br>
+        flex-shrink default is 1. 0 will not shrink at all. 1 shrinks normally. Higher numbers shrink faster <br>
+        Here each of these has a different set of values. But i am leaving the flex basis at auto for each.<br>
+        Highly recommend playing with the screen width to see how this works in real time. You might have to shrink very
+        small to see the shrink in action.
+        <div class="flexContainer">
+            <div class='margin-10' style="flex: 2 0 auto">flex: 2 0 auto</div>
+            <div class='margin-10' style="flex: 1 0 auto">flex: 1 0 auto</div>
+            <div class='margin-10' style="flex: 0 0 auto">flex: 0 0 auto</div>
+            <div class='margin-10' style="flex: 0 1 auto; width: 100px;">flex: 0 1 auto; width: 100px;</div>
+            <div class='margin-10' style="flex: 0 2 auto; width: 100px;">flex: 0 2 auto; width: 100px;</div>
+            <div class='margin-10' style="flex: 0 3 auto; width: 100px;">flex: 0 3 auto; width: 100px;</div>
+        </div>
+        <p>You can leave out up to two values for the flex property</p>
+        It will intelligently assume what you mean, defaulting to flex-grow with one number. Or to flex-basis with a
+        word or a size. <br>
+        Here we have flex-grow, and flex-shrink, but no flex basis.
+        <div class="flexContainer">
+            <div class='margin-10' style="flex: 2 0;">flex: 2 0</div>
+            <div class='margin-10' style="flex: 1 0;">flex: 1 0</div>
+            <div class='margin-10' style="flex: 0 0;">flex: 0 0</div>
+            <div class='margin-10' style="flex: 0 1; width: 100px;">flex: 0; width: 100px;</div>
+            <div class='margin-10' style="flex: 0 2; width: 100px;">flex: 0 2; width: 100px;</div>
+            <div class='margin-10' style="flex: 0 3; width: 100px;">flex: 0; width: 100px;</div>
+        </div>
+        all flex-grow
+        <div class="flexContainer">
+            <div class='margin-10' style="flex: 0">flex: 0 </div>
+            <div class='margin-10' style="flex: 1">flex: 1 </div>
+            <div class='margin-10' style="flex: 2">flex: 2 </div>
+            <div class='margin-10' style="flex: 3">flex: 3 </div>
+            <div class='margin-10' style="flex: 4">flex: 4 </div>
+            <div class='margin-10' style="flex: 5">flex: 5 </div>
+        </div>
+        these are all flex basis
+        <div class="flexContainer">
+            <div class='margin-10' style="flex: auto; ">flex: auto </div>
+            <div class='margin-10' style="flex: 50px; flex-shrink: 2;">flex: 50px </div>
+            <div class='margin-10' style="flex: 50rm; ">flex: 5px </div>
+        </div>
+        <h3>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self">align-self</a> Property</h3>
+        The align-self property overrides the default vertical alignment set by the container's align-items property. 
+        <ol>
+            <li>center</li>
+            <li>start</li>
+            <li>end</li>
+            <li>stretch</li>
+            <li>and more on the website</li>
+        </ol>
+        <div class="flexContainer" style="align-items: center; height: 200px;">
+            <div class='margin-10' style="align-self:baseline">baseline</div>
+            <div class='margin-10' style="align-self:flex-end">flex-end</div>
+            <div class='margin-10' style="align-self:center">center</div>
+            <div class='margin-10' style="align-self:flex-start">flex-start</div>
+            <div class='margin-10' >5</div>
+            <div class='margin-10' >6</div>
+            <div class='margin-10' >7</div>
+
+        </div>
+    </div>
+        </body>
