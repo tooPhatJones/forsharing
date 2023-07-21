@@ -52,7 +52,7 @@ print('x')
 # and 
 print 'x' 
 # work in pypy, where no paren breaks python3
-# }}}
+# #}}}
 
 # primitive as well as non-primitive data structures# {{{
 # Primitive Data Structures
@@ -69,7 +69,7 @@ print 'x'
 # Sets
 # Files# 
 
-}}}
+#}}}
 # Python Variables# {{{
 # https://www.w3schools.com/python/python_variables.asp
 x = 5
@@ -124,7 +124,7 @@ print(A)
 # Sally
 
 
-# }}}
+# #}}}
 # Variable Names# {{{
 # A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:
 # A variable name must start with a letter or the underscore character
@@ -193,7 +193,7 @@ MyVariableName = "John"
 # Each word is separated by an underscore character:
 my_variable_name = "John"
 
-# }}}
+# #}}}
 # assign Many Values to Multiple Variables# {{{
 # Python allows you to assign values to multiple variables in one line:
 x, y, z = "Orange", "Banana", "Cherry"
@@ -223,7 +223,7 @@ print(y)
 print(z)
 # apple
 # banana
-# cherry# }}}
+# cherry# #}}}
 # Global Variables# {{{
 # https://www.w3schools.com/python/python_variables_global.asp
 # Variables that are created outside of a function (as in all of the examples above) are known as global variables.
@@ -263,7 +263,7 @@ def myfunc():
   x = "fantastic"
 myfunc()
 print("Python is " + x)
-# Python is fantastic# }}}
+# Python is fantastic# #}}}
 # Data Types# {{{
 # https://www.w3schools.com/python/python_datatypes.asp
 # Built-in Data Types
@@ -321,7 +321,7 @@ x = frozenset(("apple", "banana", "cherry"))	#frozenset
 x = bool(5)	#bool	
 x = bytes(5)	#bytes	
 x = bytearray(5)#	bytearray	
-x = memoryview(bytes(5))	#memoryview# }}}
+x = memoryview(bytes(5))	#memoryview# #}}}
 # none data type in python# {{{
 # None is a data type in Python used to represent the absence of a value.
 
@@ -356,7 +356,7 @@ b = None # Clear the string
 # Default a function return value
 # Empty containers like lists, dictionaries, etc.
 # None evaluates to False in booleans and has a type of NoneType.
-# }}}
+# #}}}
 # Python Numbers int float complex# {{{
 # There are three numeric types in Python:
 
@@ -449,7 +449,7 @@ import random
 print(random.randrange(1, 10))
 # 6
 
-# }}}
+# #}}}
 # Python Casting# {{{
 # https://www.w3schools.com/python/python_casting.asp
 # Specify a Variable Type
@@ -499,7 +499,7 @@ print(z)
 # 2
 # 3.0
 
-# }}}
+# #}}}
 
 # python strings # {{{
 # Ordered
@@ -600,7 +600,7 @@ print("expensive" not in txt)
 txt = "The best things in life are free!"
 if "expensive" not in txt:
   print("No, 'expensive' is NOT present.")
-# No, 'expensive' is NOT present.# }}}
+# No, 'expensive' is NOT present.# #}}}
 # Modify Strings# {{{
 # https://www.w3schools.com/python/python_strings_modify.asp
 a = "Hello, World!"
@@ -623,11 +623,15 @@ a = "Hello, World!"
 print(a.replace("H", "J"))
 # Jello, World!
 
+a = "Hello, World!"
+print(a.replace("Hello", "asdf"))
+# asdf, World!
+
 # The split() method returns a list where the text between the specified separator becomes the list items.
 a = "Hello, World!"
 b = a.split(",")
 print(b)
-# ['Hello', ' World!']# }}}
+# ['Hello', ' World!']# #}}}
 # String Concatenation# {{{
 # https://www.w3schools.com/python/python_strings_concatenate.asp
 # To concatenate, or combine, two strings you can use the + operator.
@@ -641,41 +645,173 @@ a = "Hello"
 b = "World"
 c = a + " " + b
 print(c)
-# Hello World# }}}
-# Format - Strings{{{
-# https://www.w3schools.com/python/python_strings_format.asp
-# String Format
-# As we learned in the Python Variables chapter, we cannot combine strings and numbers like this:
-age = 36
-txt = "My name is John, I am " + age
-print(txt) 
-# Traceback (most recent call last):
-  # File "demo_string_format_error.py", line 2, in <module>
-    # txt = "My name is John, I am " + age
-# TypeError: must be str, not int
+# Hello World# #}}}
 
-# But we can combine strings and numbers by using the format() method!
-# The format() method takes the passed arguments, formats them, and places them in the string where the placeholders {} are:
-age = 36
-txt = "My name is John, and I am {}"
-print(txt.format(age))
-# My name is John, and I am 36
+# String Formatting# {{{
+# https://www.w3schools.com/python/python_string_formatting.asp
+# To make sure a string will display as expected, we can format the result with the format() method.
 
-# The format() method takes unlimited number of arguments, and are placed into the respective placeholders:
+# String format()
+# The format() method allows you to format selected parts of a string.
+
+# Sometimes there are parts of a text that you do not control, maybe they come from a database, or user input?
+
+# To control such values, add placeholders (curly brackets {}) in the text, and run the values through the format() method:
+price = 49
+txt = "The price is {} dollars"
+print(txt.format(price))
+# The price is 49 dollars
+# You can add parameters inside the curly brackets to specify how to convert the value:
+price = 49
+txt = "The price is {:.2f} dollars"
+print(txt.format(price))
+# The price is 49.00 dollars
+
+# Multiple Values
+# If you want to use more values, just add more values to the format() method:
+print(txt.format(price, itemno, count))
+# And add more placeholders:
 quantity = 3
 itemno = 567
-price = 49.95
-myorder = "I want {} pieces of item {} for {} dollars."
-print(myorder.format(quantity, itemno, price)) 
-# I want 3 pieces of item 567 for 49.95 dollars.
+price = 49
+myorder = "I want {} pieces of item number {} for {:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+# I want 3 pieces of item number 567 for 49.00 dollars.
 
-# You can use index numbers {0} to be sure the arguments are placed in the correct placeholders:
+# Index Numbers
+# You can use index numbers (a number inside the curly brackets {0}) to be sure the values are placed in the correct placeholders:
 quantity = 3
 itemno = 567
-price = 49.95
-myorder = "I want to pay {2} dollars for {0} pieces of item {1}."
-print(myorder.format(quantity, itemno, price)) 
-# I want to pay 49.95 dollars for 3 pieces of item 567# }}}
+price = 49
+myorder = "I want {0} pieces of item number {1} for {2:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+# I want 3 pieces of item number 567 for 49.00 dollars.
+
+# Also, if you want to refer to the same value more than once, use the index number:
+age = 36
+name = "John"
+txt = "His name is {1}. {1} is {0} years old."
+print(txt.format(age, name))
+# His name is John. John is 36 years old.
+
+# Named Indexes
+# You can also use named indexes by entering a name inside the curly brackets {carname}, but then you must use names when you pass the parameter values txt.format(carname = "Ford"):
+myorder = "I have a {carname}, it is a {model}."
+print(myorder.format(carname = "Ford", model = "Mustang"))
+# I have a Ford, it is a Mustang.
+
+
+
+# #}}}
+# "% Operator“ Old Style String Formatting # {{{
+# https://realpython.com/python-string-formatting/
+# Strings in Python have a unique built-in operation that can be accessed with the % operator. This lets you do simple positional formatting very easily. If you’ve ever worked with a printf-style function in C, you’ll recognize how this works instantly. Here’s a simple example:
+'Hello, %s' % name
+"Hello, Bob"
+# Here, you can use the %x format specifier to convert an int value to a string and to represent it as a hexadecimal number:
+'%x' % errno
+# 'badc0ffee'
+
+# The “old style” string formatting syntax changes slightly if you want to make multiple substitutions in a single string. Because the % operator takes only one argument, you need to wrap the right-hand side in a tuple, like so:
+'Hey %s, there is a 0x%x error!' % (name, errno)
+# 'Hey Bob, there is a 0xbadc0ffee error!'
+
+# It’s also possible to refer to variable substitutions by name in your format string, if you pass a mapping to the % operator:
+'Hey %(name)s, there is a 0x%(errno)x error!' % {
+...     "name": name, "errno": errno }
+# 'Hey Bob, there is a 0xbadc0ffee error!'
+# #}}}
+# String Interpolation / f-Strings (Python 3.6+)# {{{
+# https://realpython.com/python-string-formatting/
+# String interpolation is the process of evaluating an expression and embedding its value into a string. The format function and the % operator are also forms of string interpolations
+# Python 3.6 added a new string formatting approach called formatted string literals or “f-strings”. This new way of formatting strings lets you use embedded Python expressions inside string constants. Here’s a simple example to give you a feel for the feature:
+f'Hello, {name}!'
+# 'Hello, Bob!'
+
+# As you can see, this prefixes the string constant with the letter “f“—hence the name “f-strings.” This new formatting syntax is powerful. Because you can embed arbitrary Python expressions, you can even do inline arithmetic with it. Check out this example:
+a = 5
+b = 10
+f'Five plus ten is {a + b} and not {2 * (a + b)}.'
+# 'Five plus ten is 15 and not 30.'
+
+# Formatted string literals are a Python parser feature that converts f-strings into a series of string constants and expressions. They then get joined up to build the final string.
+
+# Imagine you had the following greet() function that contains an f-string:
+def greet(name, question):
+...     return f"Hello, {name}! How's it {question}?"
+...
+greet('Bob', 'going')
+# "Hello, Bob! How's it going?"
+
+# When you disassemble the function and inspect what’s going on behind the scenes, you’ll see that the f-string in the function gets transformed into something similar to the following:
+def greet(name, question):
+    return "Hello, " + name + "! How's it " + question + "?"
+# The real implementation is slightly faster than that because it uses the BUILD_STRING opcode as an optimization. But functionally they’re the same:
+import dis
+dis.dis(greet)
+ # 2           0 LOAD_CONST               1 ('Hello, ')
+              # 2 LOAD_FAST                0 (name)
+              # 4 FORMAT_VALUE             0
+              # 6 LOAD_CONST               2 ("! How's it ")
+              # 8 LOAD_FAST                1 (question)
+             # 10 FORMAT_VALUE             0
+             # 12 LOAD_CONST               3 ('?')
+             # 14 BUILD_STRING             5
+             # 16 RETURN_VALUE
+
+# String literals also support the existing format string syntax of the str.format() method. That allows you to solve the same formatting problems we’ve discussed in the previous two sections:
+f"Hey {name}, there's a {errno:#x} error!"
+"Hey Bob, there's a 0xbadc0ffee error!"
+# Python’s new formatted string literals are similar to JavaScript’s Template Literals added in ES2015. I think they’re quite a nice addition to Python, and I’ve already started using them in my day to day (Python 3) work. You can learn more about formatted string literals in our in-depth Python f-strings tutorial.# #}}}
+# template strings# {{{
+# Template strings in Python are string literals that allow variable substitution. They use the .format() method to interpolate variables into the string.
+# Template strings are declared using double curly brackets:
+
+name = "John"
+age = 30
+s = f"Hello, my name is {{name}} and I'm {{age}} years old."
+# String before formatting:
+print(s)  
+# Hello, my name is {{name}} and I'm {{age}} years old.
+# String after formatting:
+print(s.format(name=name, age=age))   
+# Hello, my name is John and I'm 30 years old.
+
+# Here we declare a string s with curly bracket placeholders {{name}} and {{age}}.
+
+# We then call .format() and pass the variable values as keyword arguments. This substitutes the variable values into the placeholders in the string.
+
+# We can have multiple placeholders:
+color = "blue"
+food = "pizza"
+s = "I love to eat {{food}} and my favorite color is {{color}}."
+print(s.format(food=food, color=color))
+# I love to eat pizza and my favorite color is blue.   
+# The .format() method also supports positional arguments:
+
+name = "John"
+age = 30
+s = "Hello, my name is {!s} and I'm {!d} years old."
+print(s.format(name, age))  
+# Hello, my name is John and I'm 30 years old.
+# Here we use {!s} and {!d} to specify that the first argument is a string and second is an int.# 
+# One key difference between template strings and f-strings is that template strings provide a way to escape special characters, such as dollar signs, whereas f-strings do not. Template strings also allow for more complex substitutions, such as using functions or expressions to compute values.
+
+# Overall, the choice between template strings and f-strings often depends on the specific use case and personal preference. F-strings are generally preferred for simple string interpolation, while template strings are more flexible and can handle more complex substitutions.
+
+# there is also the Template function from the string library
+# from string import Template
+name = "Alice"
+age = 25
+message_template = Template("Hello, my name is $name and I am $age years old.")
+message = message_template.substitute(name=name, age=age)
+print(message_template)
+print(message)
+# <string.Template object at 0x7f4dc5ace5c0>
+# Hello, my name is Alice and I am 25 years old.
+
+
+#}}}
 # Escape Characters# {{{
 # https://www.w3schools.com/python/python_strings_escape.asp
 # Escape Character
@@ -712,7 +848,7 @@ print(txt)
 # \ooo	Octal value	
 # \xhh	Hex value
 
-# }}}
+# #}}}
 # String Methods# {{{
 # https://www.w3schools.com/python/python_strings_methods.asp
 # String Methods
@@ -763,9 +899,21 @@ print(txt)
 # title()	Converts the first character of each word to upper case
 # translate()	Returns a translated string
 # upper()	Converts a string into upper case
-# zfill()	Fills the string with a specified number of 0 values at the beginning# }}}
+# zfill()	Fills the string with a specified number of 0 values at the beginning# #}}}
 
-# }}}
+
+
+
+
+
+
+
+
+
+
+
+
+# #}}}
 # python lists {{{
 # lists are 
 # Ordered
@@ -848,7 +996,7 @@ print(thislist)
 # **As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
 # When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.
 
-# }}}
+# #}}}
 # Access List Items# {{{
 # https://www.w3schools.com/python/python_lists_access.asp
 # List items are indexed and you can access them by referring to the index number:
@@ -908,7 +1056,77 @@ thislist = ["apple", "banana", "cherry"]
 if "apple" in thislist:
   print("Yes, 'apple' is in the fruits list")
 # Yes, 'apple' is in the fruits list
-# }}}
+# #}}}
+#slicing notation# {{{
+# In Python, list slicing notation is a way to extract a portion of a list based on its indices. The general syntax for list slicing is:
+# list[start:stop:step]
+# where:
+
+# list is the list you want to slice
+# start is the index of the first element you want to include in the slice (default is 0)
+# stop is the index of the first element you want to exclude from the slice (default is the length of the list)
+# step is the size of the step between elements in the slice (default is 1)
+# Here are some examples of how to use list slicing notation:
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+first_three = my_list[0:3]  # [1, 2, 3]
+last_three = my_list[-3:]  # [8, 9, 10]
+every_other = my_list[::2]  # [1, 3, 5, 7, 9]
+# Reverse the list
+reversed_list = my_list[::-1]  # [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+# you can use a start index that is greater than the end index when slicing a list with a negative step. In this case, the resulting list will contain elements in reverse order, starting from the start index and ending at the end index. Here's an example:
+
+# Get elements of the list in reverse order, starting from index 8 and ending at index 2
+reverse_slice = my_list[8:1:-1]
+print(reverse_slice)  # Output: [9, 8, 7, 6, 5, 4, 3]
+
+# Note that if you use a positive step with a start and end index, you need to make sure that the start index is less than the end index, otherwise you'll get an empty list. For example:
+
+# This will result in an empty list
+empty_slice = my_list[2:5:1]
+print(empty_slice)  # Output: []
+
+# This will work as expected, slicing from index 5 to index 2
+reverse_slice = my_list[5:2:-1]
+print(reverse_slice)  # Output: [6, 5, 4]
+
+# Get elements of the list in reverse order, skipping every other element
+slice9 = my_list[::-2]
+print(slice9)  # Output: [10, 8, 6, 4, 2]
+
+# Note that if you use a negative step with a start and end index, you need to make sure that the start index is greater than the end index, otherwise you'll get an empty list. For example:
+
+# This will result in an empty list
+empty_slice = my_list[5:2:-1]
+print(empty_slice)  # Output: []
+
+# This will work as expected, slicing in reverse order from index 5 to index 2
+reverse_slice = my_list[5:2:-2]
+print(reverse_slice)  # Output: [6, 4]
+slice1 = my_list[1:5]
+print(slice1)  # Output: [2, 3, 4, 5]
+# Get the last two elements of the list
+slice2 = my_list[-2:]
+print(slice2)  # Output: [9, 10]
+# Get the first seven elements, skipping every third element
+slice3 = my_list[:7:3]
+print(slice3)  # Output: [1, 4, 7]
+# Get the even-indexed elements of the list
+slice4 = my_list[::2]
+print(slice4)  # Output: [1, 3, 5, 7, 9]
+# Get the odd-indexed elements of the list
+slice5 = my_list[1::2]
+print(slice5)  # Output: [2, 4, 6, 8, 10]
+# Reverse the order of the list
+slice6 = my_list[::-1]
+print(slice6)  # Output: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+# Get the last three elements of the list, in reverse order
+slice7 = my_list[-1:-4:-1]
+print(slice7)  # Output: [10, 9, 8]
+# Get the elements of the list in groups of three
+slice8 = [my_list[i:i+3] for i in range(0, len(my_list), 3)]
+print(slice8)  # Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]}}}
 # Change List Items# {{{
 # https://www.w3schools.com/python/python_lists_change.asp
 # Change Item Value
@@ -950,7 +1168,7 @@ thislist = ["apple", "banana", "cherry"]
 thislist.insert(2, "watermelon")
 print(thislist) 
 # ['apple', 'banana', 'watermelon', 'cherry']
-# Note: As a result of the example above, the list will now contain 4 items.# }}}
+# Note: As a result of the example above, the list will now contain 4 items.# #}}}
 # Add List Items# {{{
 # https://www.w3schools.com/python/python_lists_add.asp
 
@@ -985,7 +1203,7 @@ thislist = ["apple", "banana", "cherry"]
 thistuple = ("kiwi", "orange")
 thislist.extend(thistuple)
 print(thislist) 
-# ['apple', 'banana', 'cherry', 'kiwi', 'orange']# }}}
+# ['apple', 'banana', 'cherry', 'kiwi', 'orange']# #}}}
 # Remove List Items# {{{
 # https://www.w3schools.com/python/python_lists_remove.asp
 # Remove Specified Item
@@ -1029,7 +1247,7 @@ print(thislist) #this will cause an error because you have succsesfully deleted 
 thislist = ["apple", "banana", "cherry"]
 thislist.clear()
 print(thislist)
-# []# }}}
+# []# #}}}
 # Loop Lists# {{{
 # https://www.w3schools.com/python/python_lists_loop.asp
 # Loop Through a List
@@ -1077,7 +1295,7 @@ thislist = ["apple", "banana", "cherry"]
 [print(x) for x in thislist]
  # apple
  # banana
- # cherry# }}}
+ # cherry# #}}}
 # List Comprehension# {{{
 # https://www.w3schools.com/python/python_lists_comprehension.asp
 # List Comprehension
@@ -1144,7 +1362,7 @@ print(newlist)
 # ['apple', 'orange', 'cherry', 'kiwi', 'mango']
 # The expression in the example above says:
 # "Return the item if it is not banana, if it is banana return orange".
-# }}}
+# #}}}
 # Sort Lists# {{{
 # https://www.w3schools.com/python/python_lists_sort.asp
 
@@ -1201,7 +1419,7 @@ print(thislist)
 thislist = ["banana", "Orange", "Kiwi", "cherry"]
 thislist.reverse()
 print(thislist) 
-# ['cherry', 'Kiwi', 'Orange', 'banana']# }}}
+# ['cherry', 'Kiwi', 'Orange', 'banana']# #}}}
  # Copy Lists# {{{
 # https://www.w3schools.com/python/python_lists_copy.asp
 # Copy a List
@@ -1216,7 +1434,7 @@ print(mylist)
 thislist = ["apple", "banana", "cherry"]
 mylist = list(thislist)
 print(mylist)
-# ['apple', 'banana', 'cherry']# }}}
+# ['apple', 'banana', 'cherry']# #}}}
 # Join Lists# {{{
 # https://www.w3schools.com/python/python_lists_join.asp
 
@@ -1240,7 +1458,7 @@ list1 = ["a", "b" , "c"]
 list2 = [1, 2, 3]
 list1.extend(list2)
 print(list1)
-# ['a', 'b', 'c', 1, 2, 3]# }}}
+# ['a', 'b', 'c', 1, 2, 3]# #}}}
 # List Methods# {{{
 # https://www.w3schools.com/python/python_lists_methods.asp
 # List Methods
@@ -1257,9 +1475,9 @@ print(list1)
 # pop()	Removes the element at the specified position
 # remove()	Removes the item with the specified value
 # reverse()	Reverses the order of the list
-# sort()	Sorts the list# }}}
-# }}}
-# Python Tuples<!----># {{{
+# sort()	Sorts the list# #}}}
+# #}}}
+# Python Tuples (immutable list, declare with ())<!----># {{{
 # Ordered
 # Immutable (elements cannot be added or removed)
 # Allow duplicate elements
@@ -1326,7 +1544,7 @@ print(tuple1)
 ('abc', 34, True, 40, 'male')
 type()
 # From Python's perspective, tuples are defined as objects with the data type 'tuple':
-# <class 'tuple'># }}}
+# <class 'tuple'># #}}}
 # Access Tuple Items# {{{
 # https://www.w3schools.com/python/python_tuples_access.asp
 # Access Tuple Items
@@ -1381,7 +1599,7 @@ print(thistuple[-4:-1])
 thistuple = ("apple", "banana", "cherry")
 if "apple" in thistuple:
   print("Yes, 'apple' is in the fruits tuple")
-# Yes, 'apple' is in the fruits tuple# }}}
+# Yes, 'apple' is in the fruits tuple# #}}}
 # Update Tuples# {{{
 # Tuples are unchangeable, meaning that you cannot change, add, or remove items once the tuple is created.
 
@@ -1433,7 +1651,7 @@ print(thistuple) #this will raise an error because the tuple no longer exists
   # File "demo_tuple_del.py", line 3, in <module>
     # print(thistuple) #this will raise an error because the tuple no longer exists
 # NameError: name 'thistuple' is not defined
-# }}}
+# #}}}
 # Unpack Tuples<!----># {{{
 # https://www.w3schools.com/python/python_tuples_unpack.asp
 # Unpacking a Tuple
@@ -1470,7 +1688,7 @@ print(tropic)
 print(red)
 # apple
 # ['mango', 'papaya', 'pineapple']
-# cherry<!----># }}}
+# cherry<!----># #}}}
 # Loop Tuples{{{
 # https://www.w3schools.com/python/python_tuples_loop.asp
 # Loop Through a Tuple
@@ -1518,7 +1736,7 @@ print(tuple3)
 fruits = ("apple", "banana", "cherry")
 mytuple = fruits * 2
 print(mytuple)
-# ('apple', 'banana', 'cherry', 'apple', 'banana', 'cherry')}}}
+# ('apple', 'banana', 'cherry', 'apple', 'banana', 'cherry')#}}}
 # Tuple Methods# {{{
 # https://www.w3schools.com/python/python_tuples_methods.asp
 # Tuple Methods
@@ -1526,9 +1744,9 @@ print(mytuple)
 
 # Method	Description
 # count()	Returns the number of times a specified value occurs in a tuple
-# index()	Searches the tuple for a specified value and returns the position of where it was found# }}}
-# }}}
-# python sets{{{
+# index()	Searches the tuple for a specified value and returns the position of where it was found# #}}}
+# #}}}
+# python sets(list no duplicates, uses {}, access with in and not in){{{
 # Unordered
 # Don't allow duplicate elements
 # Allow heterogeneous elements
@@ -1542,6 +1760,10 @@ print(mytuple)
 # Set is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Tuple, and Dictionary, all with different qualities and usage.
 # A set is a collection which is unordered, unchangeable*, and unindexed.
 # * Note: Set items are unchangeable, but you can remove items and add new items.
+
+
+# Sets in Python can only contain immutable data types, which means that you cannot include mutable objects such as lists, dictionaries, or other sets as elements of a set. This is because mutable objects can be changed, and if a mutable object is used as an element of a set, it could potentially change and break the set.
+
 # Sets are written with curly brackets.
 thisset = {"apple", "banana", "cherry"}
 print(thisset)
@@ -1619,7 +1841,7 @@ print(thisset)
 
 # **As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
 
-# When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.# }}}
+# When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.# #}}}
 # Access Set Items# {{{
 # https://www.w3schools.com/python/python_sets_access.asp
 # Access Items
@@ -1637,7 +1859,7 @@ thisset = {"apple", "banana", "cherry"}
 print("banana" in thisset)
 # True
 # Change Items
-# Once a set is created, you cannot change its items, but you can add new items.# }}}
+# Once a set is created, you cannot change its items, but you can add new items.# #}}}
 # Add Set Items# {{{
 # https://www.w3schools.com/python/python_sets_add.asp
 # Once a set is created, you cannot change its items, but you can add new items.
@@ -1661,7 +1883,7 @@ thisset = {"apple", "banana", "cherry"}
 mylist = ["kiwi", "orange"]
 thisset.update(mylist)
 print(thisset)
-# {'banana', 'cherry', 'apple', 'orange', 'kiwi'}# }}}
+# {'banana', 'cherry', 'apple', 'orange', 'kiwi'}# #}}}
 # Remove Set Items# {{{
 # https://www.w3schools.com/python/python_sets_remove.asp
 # To remove an item in a set, use the remove(), or the discard() method.
@@ -1695,7 +1917,22 @@ print(thisset) #this will raise an error because the set no longer exists
 # Traceback (most recent call last):
   # File "demo_set_del.py", line 5, in <module>
     # print(thisset) #this will raise an error because the set no longer exists
-# NameError: name 'thisset' is not defined# }}}
+# NameError: name 'thisset' is not defined# 
+
+# You can add a tuple to a set in Python using the add() method or the update() method. Here's an example:
+my_set = {(1, 2), (3, 4)}
+new_tuple = (5, 6)
+# Using the add() method to add a tuple to the set
+my_set.add(new_tuple)
+print(my_set)  # Output: {(1, 2), (3, 4), (5, 6)}
+# Using the update() method to add a tuple to the set
+my_set.update({(7, 8)})
+print(my_set)  # Output: {(1, 2), (3, 4), (5, 6), (7, 8)}
+
+# Note that since tuples are immutable, you can include them in a set even if they contain mutable objects such as lists or dictionaries. However, if a tuple contains mutable objects, the contents of the mutable objects can still be changed even if the tuple itself is in a set.
+
+
+#}}}
 # Loop Sets# {{{
 # https://www.w3schools.com/python/python_sets_loop.asp
 # Loop Items
@@ -1706,7 +1943,7 @@ for x in thisset:
   print(x)
 # banana
 # apple
-# cherry# }}}
+# cherry# #}}}
 # Set Methods# {{{
 # https://www.w3schools.com/python/python_sets_methods.asp
 # Python has a set of built-in methods that you can use on sets.
@@ -1728,9 +1965,92 @@ for x in thisset:
 # symmetric_difference()	Returns a set with the symmetric differences of two sets
 # symmetric_difference_update()	inserts the symmetric differences from this set and another
 # union()	Return a set containing the union of sets
-# update()	Update the set with the union of this set and others# }}}
+# update()	Update the set with the union of this set and others# #}}}
+# two identical complex data types in a set# {{{
+# In Python, whether two identical complex data types can be put in a set depends on whether the data type is hashable or not. If the data type is hashable, then duplicates will be automatically removed from the set, just like with simple data types. If the data type is not hashable, then duplicates cannot be removed, and attempting to add a duplicate will result in an error.
+
+# Hashable data types are used in many parts of Python, such as dictionary keys, set elements, and as items in a frozenset. The requirement for hashable data types is that they must be immutable and have a consistent hash value.
+
+# Here are the requirements for a data type to be hashable in Python:
+
+# Immutability: The hash value of an object must not change during its lifetime. This means that the object must be immutable, or its contents must be immutable.
+
+# Consistency: The hash value of an object must be consistent across all Python processes and sessions. This means that the hash value must be reproducible and deterministic.
+
+# Equality: The object must also be comparable to other objects for equality, using the __eq__ method. If two objects are equal, they must have the same hash value.
+
+# Examples of hashable data types in Python include integers, floats, strings, tuples, and frozensets. These data types are immutable and have a consistent hash value, which makes them suitable for use as dictionary keys and set elements.
+
+# On the other hand, data types that are not hashable include lists, sets, and dictionaries, because they are mutable and their contents can change during their lifetime.
+
+# Here are some examples to demonstrate this behavior:
+
+# Set of tuples (hashable)
+tuple1 = (1, 2, 3)
+tuple2 = (1, 2, 3)
+my_set = {tuple1, tuple2}
+print(my_set)  # Output: {(1, 2, 3)}
+
+# Set of lists (not hashable)
+list1 = [1, 2, 3]
+list2 = [1, 2, 3]
+my_set = {list1, list2}
+# Throws TypeError: unhashable type: 'list'
+
+# Set of dictionaries (not hashable)
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'a': 1, 'b': 2, 'c': 3}
+my_set = {dict1, dict2}
+# Throws TypeError: unhashable type: 'dict'
+
+# Set of sets (not hashable)
+set1 = {1, 2, 3}
+set2 = {1, 2, 3}
+my_set = {set1, set2}
+# Throws TypeError: unhashable type: 'set'
+
+# Set of frozensets (hashable)
+fset1 = frozenset({1, 2, 3})
+fset2 = frozenset({1, 2, 3})
+my_set = {fset1, fset2}
+print(my_set)  # Output: {frozenset({1, 2, 3})}
+
+
+# Once a tuple is created, you cannot change its contents. If the tuple contains a mutable object such as a list or a dictionary, you can modify the contents of the mutable object, but you cannot replace the mutable object itself.
+
+# Here's an example to illustrate this:
+my_tuple = ([1, 2, 3], "Hello")
+my_tuple[0].append(4)  # This works, we're modifying the list inside the tuple
+print(my_tuple)  # Output: ([1, 2, 3, 4], "Hello")
+my_tuple[1] = "World"  # This will raise a TypeError, tuples are immutable
+# If you change a mutable object that is inside a tuple that is inside a set, the change will be reflected in the original mutable object, but the set itself will not be affected. This is because the set only stores references to the objects that it contains, and the references to the mutable objects inside the tuples will not change when the objects are modified.
+
+
+
 # }}}
-# dictionaries {{{
+# #}}}
+# frozenset# {{{
+# In Python, a frozenset is an immutable variant of the built-in set data type. Like a set, a frozenset is an unordered collection of unique elements, but once it is created, it cannot be modified. This means that you cannot add, remove, or modify elements in a frozenset.
+
+# frozensets are useful when you want to use a set as a key in a dictionary or as an element in another set, because they are immutable and hashable. Since frozensets are immutable, they can be safely used as keys in dictionaries or as elements in other sets without the risk of their contents being unintentionally modified.
+
+# Here is an example that demonstrates the use of frozenset:
+
+# Create a set of sets
+set_of_sets = { {1, 2, 3}, {2, 3, 4}, {3, 4, 5} }
+
+# Create a frozenset of sets
+frozen_set_of_sets = frozenset(set_of_sets)
+
+# Try to modify the frozenset (will raise an AttributeError)
+frozen_set_of_sets.add({4, 5, 6})
+
+# Use the frozenset as a key in a dictionary
+my_dict = {frozen_set_of_sets: 'value'}
+
+# Print the dictionary (output: {frozenset({1, 2, 3}, {2, 3, 4}, {3, 4, 5}): 'value'})
+print(my_dict)# }}}
+# dictionaries  {{{
 # Unordered
 # Store data as key-value pairs
 # Require unique keys (no duplicate keys)
@@ -1830,7 +2150,7 @@ print(thisdict)
 # Dictionary is a collection which is ordered** and changeable. No duplicate members.
 # *Set items are unchangeable, but you can remove and/or add items whenever you like.
 # **As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
-# When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.# }}}
+# When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.# #}}}
 # Access Dictionary Items# {{{
 # https://www.w3schools.com/python/python_dictionaries_access.asp
 # Accessing Items
@@ -1963,7 +2283,26 @@ thisdict = {
 }
 if "model" in thisdict:
   print("Yes, 'model' is one of the keys in the thisdict dictionary")
-# Yes, 'model' is one of the keys in the thisdict dictionary# }}}
+# Yes, 'model' is one of the keys in the thisdict dictionary# 
+
+# Check if a value exists in the dictionary
+my_dict = {"apple": 2, "banana": 4, "orange": 6}
+if 4 in my_dict.values():
+    print("4 exists in the dictionary")
+else:
+    print("4 does not exist in the dictionary")
+# 4 does exists in the dictionary
+# You can also use the not in keyword to check if a value does not exist in a dictionary. Here's an example:
+if 8 not in my_dict.values():
+    print("8 does not exist in the dictionary")
+else:
+    print("8 exists in the dictionary")
+#8 does not exist in the dictionary
+
+
+
+
+#}}}
 # Change Dictionary Items# {{{
 # https://www.w3schools.com/python/python_dictionaries_change.asp
 # Change Values
@@ -1996,7 +2335,7 @@ thisdict = {
 thisdict.update({"year": 2020})
 
 print(thisdict)
-# {'brand': 'Ford', 'model': 'Mustang', 'year': 2020}# }}}
+# {'brand': 'Ford', 'model': 'Mustang', 'year': 2020}# #}}}
 # Add Dictionary Items# {{{
 # https://www.w3schools.com/python/python_dictionaries_add.asp
 # Adding Items
@@ -2019,7 +2358,7 @@ thisdict = {
 }
 thisdict.update({"color": "red"})
 print(thisdict)
-# {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'red'}# }}}
+# {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'red'}# #}}}
 # Remove Dictionary Items# {{{
 # https://www.w3schools.com/python/python_dictionaries_remove.asp
 # Removing Items
@@ -2078,7 +2417,7 @@ thisdict.clear()
 print(thisdict)
 # {}
 
-# }}}
+# #}}}
 # Loop Dictionaries# {{{
 # https://www.w3schools.com/python/python_dictionaries_loop.asp
 # Loop Through a Dictionary
@@ -2144,7 +2483,7 @@ for x, y in thisdict.items():
   print(x, y)
 # brand Ford
 # model Mustang
-# year 1964# }}}
+# year 1964# #}}}
 # Copy Dictionaries# {{{
 # https://www.w3schools.com/python/python_dictionaries_copy.asp
 # Copy a Dictionary
@@ -2167,7 +2506,7 @@ thisdict = {
 }
 mydict = dict(thisdict)
 print(mydict)
-# {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}# }}}
+# {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}# #}}}
 # Nested Dictionaries# {{{
 # https://www.w3schools.com/python/python_dictionaries_nested.asp
 # Nested Dictionaries
@@ -2227,7 +2566,7 @@ myfamily = {
   }
 }
 print(myfamily["child2"]["name"])
-# Tobias# }}}
+# Tobias# #}}}
 # Dictionary Methods# {{{
 # https://www.w3schools.com/python/python_dictionaries_methods.asp
 # Dictionary Methods
@@ -2245,10 +2584,160 @@ print(myfamily["child2"]["name"])
 # setdefault()	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
 # update()	Updates the dictionary with the specified key-value pairs
 # values()	Returns a list of all the values in the dictionary
-# # }}}
+# # #}}}
+# #}}}
+
+# complex data structures inside complex datastructures# {{{
+# Yes, in Python, you can put any complex data structure inside any complex data structure, as long as the data types are compatible and the data structure allows for nested elements.
+
+# For example, you can put a list inside a dictionary, or a tuple inside a set, or a dictionary inside a list, and so on. Here are some examples:
+
+# In each of these examples, a complex data structure is contained within another complex data structure. This can be useful for organizing data, creating nested structures, or representing relationships between different types of data.
+
+# However, it's important to note that not all data types are compatible with each other and certain operations may not be allowed or may result in unexpected behavior. It's important to understand the properties and limitations of each data structure and use them appropriately to avoid errors or bugs in your code.
+# List inside a dictionary
+my_dict_with_list = {'name': 'Alice', 'scores': [90, 85, 95]}
+print(my_dict_with_list) # Output: {'name': 'Alice', 'scores': [90, 85, 95]}
+
+my_dict_with_tuple = {'name': 'Bob', 'scores': (80, 75, 90)}
+print(my_dict_with_tuple) # Output: {'name': 'Bob', 'scores': (80, 75, 90)}
+
+my_dict_with_set = {'name': 'Charlie', 'scores': {85, 90, 95}}
+print(my_dict_with_set) # Output: {'name': 'Charlie', 'scores': {85, 90, 95}}
+
+# Tuple inside a list
+my_list_with_tuple = [(1, 2), (3, 4), (5, 6)]
+print(my_list_with_tuple) # Output: [(1, 2), (3, 4), (5, 6)]
+
+my_list_with_dict = [{'name': 'Alice', 'age': 25}, {'name': 'Bob', 'age': 30}]
+print(my_list_with_dict) # Output: [{'name': 'Alice', 'age': 25}, {'name': 'Bob', 'age': 30}]
+
+my_list_with_set = [{1, 2, 3}, {4, 5, 6}, {7, 8, 9}]
+print(my_list_with_set) # Output: [{1, 2, 3}, {4, 5, 6}, {7, 8, 9}]
+
+# Dictionary inside a list
+my_list_of_dicts = [{'name': 'Alice', 'scores': [90, 85, 95]}, {'name': 'Bob', 'scores': [80, 75, 90]}]
+print(my_list_of_dicts) # Output: [{'name': 'Alice', 'scores': [90, 85, 95]}, {'name': 'Bob', 'scores': [80, 75, 90]}]
+
+my_list_of_sets = [{1, 2, 3}, {4, 5, 6}, {7, 8, 9}]
+print(my_list_of_sets) # Output: [{1, 2, 3}, {4, 5, 6}, {7, 8, 9}]
+
+my_list_of_tuples = [(1, 2), (3, 4), (5, 6)]
+print(my_list_of_tuples) # Output: [(1, 2), (3, 4), (5, 6)]
+
+# Set inside a dictionary
+my_dict_with_set = {'name': 'Alice', 'favourites': { 'food': 'pizza', 'color': 'blue'}}
+print(my_dict_with_set) # Output: {'name': 'Alice', 'favourites': {'food': 'pizza', 'color': 'blue'}}
+
+my_dict_with_list = {'name': 'Bob', 'favourites': ['pizza', 'blue']}
+print(my_dict_with_list) # Output: {'name': 'Bob', 'favourites': ['pizza', 'blue']}
+
+my_dict_with_tuple = {'name': 'Charlie', 'favourites': ('pizza', 'blue')}
+print(my_dict_with_tuple) # Output: {'name': 'Charlie', 'favourites': ('pizza', 'blue')}
+
+# }}}
+# trying to edit immutable data types # {{{
+# No, you cannot edit the contents of any of the immutable complex data types in Python. Just like in JavaScript, the const keyword only means that the variable cannot be reassigned to a new object. However, it does not make the object itself immutable.
+
+# In Python, once an immutable complex data type is created, its contents cannot be modified. Any attempt to modify the data type will result in a TypeError. For example:
+
+# Tuples
+my_tuple = (1, 2, 3)
+# Attempting to modify the tuple will raise a TypeError
+my_tuple[0] = 4
+
+# Strings
+my_string = "hello"
+# Attempting to modify the string will raise a TypeError
+my_string[0] = "H"
+
+# Bytes
+my_bytes = b"hello"
+# Attempting to modify the bytes will raise a TypeError
+my_bytes[0] = b"H"
+
+# Frozen sets
+my_frozenset = frozenset({1, 2, 3})
+# Attempting to add an element to the frozen set will raise an AttributeError
+my_frozenset.add(4)
+# In each of these examples, we attempt to modify an immutable complex data type, and see that it raises a TypeError or AttributeError. This demonstrates that these data types are indeed immutable, and their contents cannot be modified.
+# }}}
+# create new objects out of immutable ones{{{
+# In Python, you cannot modify the contents of immutable objects directly, but you can create a new immutable object with the desired changes based on the original object. Here are some ways to create a new immutable object with changes in Python:
+
+# Tuples
+# Original tuple
+my_tuple = (1, 2, 3)
+
+# New tuple with changes using concatenation
+new_tuple = my_tuple + (4, 5)
+print(new_tuple)  # Output: (1, 2, 3, 4, 5)
+
+# New tuple with changes using unpacking
+new_tuple = (*my_tuple[:2], 4, 5)
+print(new_tuple)  # Output: (1, 2, 4, 5)
+
+# Strings
+# Original string
+my_string = "hello"
+
+# New string with changes using concatenation
+new_string = my_string + "world"
+print(new_string)  # Output: helloworld
+
+# New string with changes using slicing
+new_string = my_string[:2] + "L" + my_string[3:]
+print(new_string)  # Output: heLlo
+
+# Bytes
+# Original bytes
+my_bytes = b"hello"
+
+# New bytes with changes using concatenation
+new_bytes = my_bytes + b"world"
+print(new_bytes)  # Output: b'helloworld'
+
+# New bytes with changes using slicing
+new_bytes = my_bytes[:2] + b"L" + my_bytes[3:]
+print(new_bytes)  # Output: b'heLlo'
+
+# Frozen sets
+# Original frozen set
+my_frozenset = frozenset({1, 2, 3})
+
+# New frozen set with changes using union
+new_frozenset = my_frozenset.union({4, 5})
+print(new_frozenset)  # Output: frozenset({1, 2, 3, 4, 5})
+
+# New frozen set with changes using difference
+new_frozenset = my_frozenset - {2}
+print(new_frozenset)  # Output: frozenset({1, 3})}}}
+# final keyword# {{{
+# In Python, there is no const keyword like in JavaScript. The closest equivalent in Python is the final keyword, which was introduced in Python 3.10.
+
+# The final keyword is used to indicate that a variable or method should not be overridden or reassigned. It is a hint to the programmer and the static type checker that the variable or method should be treated as a constant, even though it is not actually immutable.
+
+# Here is an example that demonstrates the use of the final keyword:
+class MyClass:
+    MY_CONSTANT: final = 42
+
+    def my_method(self, x: final) -> final:
+        return x * 2
+
+# Attempting to reassign the constant will raise a TypeError
+MyClass.MY_CONSTANT = 43
+
+# Attempting to override the method will raise a TypeError
+class MySubclass(MyClass):
+    def my_method(self, x: final) -> final:
+        return x / 2
+# In this example, we define a class MyClass with a constant MY_CONSTANT and a method my_method. We use the final keyword to indicate that both the constant and the method should not be overridden or reassigned.
+
+# We then attempt to reassign the constant and override the method, and see that both operations raise a TypeError, indicating that the final keyword is working as expected.
 # }}}
 
-# Python Booleans# {{{
+
+# Python Booleans expressions# {{{
 # https://www.w3schools.com/python/python_booleans.asp
 # Booleans represent one of two values: True or False.
 # Boolean Values
@@ -2347,9 +2836,54 @@ x = 200
 print(isinstance(x, int))
 # True
 
-# }}}
-# Python Operators# {{{
+# #}}}
+# Python Operators # {{{
 # https://www.w3schools.com/python/python_operators.asp
+# python truthy and falsy
+# The following values are considered "falsy" in Python:
+
+# False
+# None
+# 0 (integer)
+# 0.0 (float)
+# '' (empty string)
+# [] (empty list)
+# {} (empty dictionary)
+# () (empty tuple)
+# any other object or value whose __bool__() or __len__() method returns False
+# All other values in Python are considered "truthy", including:
+
+# True
+# any non-zero integer or float
+# any non-empty string, list, dictionary, or tuple
+# any object or value whose __bool__() or __len__() method returns True
+# Here are some examples of truthy and falsy values in Python:
+
+# Falsy values
+bool(False)   # False
+bool(None)    # False
+bool(0)       # False
+bool(0.0)     # False
+bool('')      # False
+bool([])      # False
+bool({})      # False
+bool(())      # False
+
+# Truthy values
+bool(True)    # True
+bool(1)       # True
+bool(3.14)    # True
+bool('hello') # True
+bool(['a', 'b', 'c']) # True
+bool({'key': 'value'}) # True
+bool((1, 2, 3)) # True
+# While "truthy" and "falsy" are commonly used terms in the Python community to describe values that are implicitly evaluated as true or false in a Boolean context, they are not official Python keywords or reserved words.
+
+# Python's official documentation does not use these terms, but instead refers to "truth value testing" or "Boolean context". The bool() function is used to explicitly convert a value to a Boolean value, and the if statement or other Boolean expressions are used to implicitly test the truth value of a value.
+
+# So while "truthy" and "falsy" are not official terminology in Python, they are widely used and understood within the Python community.
+
+
 # Python Operators
 # Operators are used to perform operations on variables and values.
 
@@ -2479,7 +3013,7 @@ print(5 + 4 - 7 + 3)
 # 9 - 7 = 2
 # 2 + 3 = 5
 
-# 5# }}}
+# 5# #}}}
 
 # Python Functions{{{
 def my_function():
@@ -2505,7 +3039,7 @@ my_function("Emil") #error
   # File "demo_function_args_error.py", line 4, in <module>
     # my_function("Emil")
 # TypeError: my_function() missing 1 required positional argument: 'lname'
-# }}}
+# #}}}
 # arbitrary args{{{
 # If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
 # This way the function will receive a tuple of arguments, and can access the items accordingly:
@@ -2573,7 +3107,7 @@ for fun in myfuns:
 # 1 2
 # 3
 
-# }}}
+# #}}}
 # key value arguments{{{
 # You can also send arguments with the key = value syntax.
 # This way the order of the arguments does not matter.
@@ -2581,7 +3115,7 @@ def my_function(child3, child2, child1):
   print("The youngest child is " + child3)
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
 #The youngest child is Linus
-# }}}
+# #}}}
 # Arbitrary Keyword Arguments, **kwargs{{{
 # If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
 
@@ -2607,7 +3141,7 @@ myfunc2(1, 2, 3, banan=123)
 # They must be both declared and called in that order, that is the function signature needs to be *args, **kwargs, and called in that order.
 
 
-# }}}
+# #}}}
 # Default Parameter Value{{{
 # The following example shows how to use a default parameter value.
 def my_function(country = "Norway"):
@@ -2617,7 +3151,7 @@ def my_function(country = "Norway"):
 # I am from Norway
 # I am from Brazil
 
-# }}}
+# #}}}
 # Passing a List as an Argument{{{
 # You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
 def my_function(food):
@@ -2628,7 +3162,7 @@ my_function(fruits)
 # apple
 # banana
 # cherry
-# }}}
+# #}}}
 # Return Values{{{
 # To let a function return a value, use the return statement:
 def my_function(x):
@@ -2655,12 +3189,12 @@ myfunction()
 
 
 
-# }}}
+# #}}}
 # The pass Statement# {{{
 # function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.
 def myfunction():
   pass
-  # having an empty function definition like this, would raise an error without the pass statement}}}
+  # having an empty function definition like this, would raise an error without the pass statement#}}}
 # Recursion{{{
 # Python also accepts function recursion, which means a defined function can call itself.
 
@@ -2690,8 +3224,8 @@ tri_recursion(6)
 # 6
 # 10
 # 15
-# 21}}}
-# }}}
+# 21#}}}
+# #}}}
 # If ... Else{{{
 # https://www.w3schools.com/python/python_conditions.asp
 # Python Conditions and If statements
@@ -2810,49 +3344,129 @@ if b > a:
 
 
 
-# }}}
-# there is no switch in python if you want to create somthing like a switch just use if, elif, else:
+# #}}}
+# match statement(switch elsewhere){{{
+# A match statement takes an expression and compares its value to successive patterns given as one or more case blocks. This is superficially similar to a switch statement in C, Java or JavaScript (and many other languages), but it’s more similar to pattern matching in languages like Rust or Haskell. Only the first pattern that matches gets executed and it can also extract components (sequence elements or object attributes) from the value into variables.
 
-#infinie loops in python# {{{
-count = 0
-while True:
-    count += 1
-    print(count)
-# this loop will increment forever and cause python to hang, and the processor core its running on to stall. 
-# What happens when you run an infinite loop in Python is:
+# The simplest form compares a subject value against one or more literals:
 
-# The loop code will continue executing indefinitely.
-# The program will become unresponsive and "hung".
-# The CPU usage will go to 100% as the loop runs continuously.
-# You will not be able to interrupt the program normally.
-# The only way to stop an infinite loop in Python is to:
+def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case _:
+            return "Something's wrong with the internet"
+# Note the last block: the “variable name” _ acts as a wildcard and never fails to match. If no case matches, none of the branches is executed.
 
-# Kill the Python process (in the OS task manager)
-# Hit Ctrl + C in the terminal to send a SIGINT signal and interrupt the program.
+# You can combine several literals in a single pattern using | (“or”):
 
-# An infinite loop in Python itself will not directly crash your computer. However, it can indirectly cause issues if left running for a long time.
+# case 401 | 403 | 404:
+    # return "Not allowed"
+# Patterns can look like unpacking assignments, and can be used to bind variables:
 
-# When you have an infinite loop running in a Python program, it will:
-# Use up CPU resources - The CPU usage will go to 100% since the loop is running continuously. This can slow down other processes on your computer.
-# Use up memory - If the loop is allocating new objects in memory on each iteration, it can eventually consume all available memory.
-# Make the Python process unresponsive - You will not be able to interrupt the program normally since it's stuck in the infinite loop.
+# point is an (x, y) tuple
+match point:
+    case (0, 0):
+        print("Origin")
+    case (0, y):
+        print(f"Y={y}")
+    case (x, 0):
+        print(f"X={x}")
+    case (x, y):
+        print(f"X={x}, Y={y}")
+    case _:
+        raise ValueError("Not a point")
+# Study that one carefully! The first pattern has two literals, and can be thought of as an extension of the literal pattern shown above. But the next two patterns combine a literal and a variable, and the variable binds a value from the subject (point). The fourth pattern captures two values, which makes it conceptually similar to the unpacking assignment (x, y) = point.
 
-# However, your computer is unlikely to completely "crash" due to an infinite loop in Python. More likely, you'll experience:
-# Slow performance - Other programs will run slowly due to high CPU usage.
-# Program freezing - The Python program itself will become unresponsive and "hang".
+# If you are using classes to structure your data you can use the class name followed by an argument list resembling a constructor, but with the ability to capture attributes into variables:
 
-# But your operating system is designed to handle situations like this, and it has mechanisms to interrupt and kill runaway processes. 
+class Point:
+    x: int
+    y: int
 
-# Only in extreme cases, where the infinite loop is consuming a massive amount of resources for an extended period, it could potentially cause issues like:
+def where_is(point):
+    match point:
+        case Point(x=0, y=0):
+            print("Origin")
+        case Point(x=0, y=y):
+            print(f"Y={y}")
+        case Point(x=x, y=0):
+            print(f"X={x}")
+        case Point():
+            print("Somewhere else")
+        case _:
+            print("Not a point")
+# You can use positional parameters with some builtin classes that provide an ordering for their attributes (e.g. dataclasses). You can also define a specific position for attributes in patterns by setting the __match_args__ special attribute in your classes. If it’s set to (“x”, “y”), the following patterns are all equivalent (and all bind the y attribute to the var variable):
 
-# Kernel panic (for Linux) - If memory usage goes too high.
-# Blue screen of death (for Windows) - Again, due to excessive memory consumption.
+Point(1, var)
+Point(1, y=var)
+Point(x=1, y=var)
+Point(y=var, x=1)
+# A recommended way to read patterns is to look at them as an extended form of what you would put on the left of an assignment, to understand which variables would be set to what. Only the standalone names (like var above) are assigned to by a match statement. Dotted names (like foo.bar), attribute names (the x= and y= above) or class names (recognized by the “(…)” next to them like Point above) are never assigned to.
+
+# Patterns can be arbitrarily nested. For example, if we have a short list of points, we could match it like this:
+
+match points:
+    case []:
+        print("No points")
+    case [Point(0, 0)]:
+        print("The origin")
+    case [Point(x, y)]:
+        print(f"Single point {x}, {y}")
+    case [Point(0, y1), Point(0, y2)]:
+        print(f"Two on the Y axis at {y1}, {y2}")
+    case _:
+        print("Something else")
+# We can add an if clause to a pattern, known as a “guard”. If the guard is false, match goes on to try the next case block. Note that value capture happens before the guard is evaluated:
+
+match point:
+    case Point(x, y) if x == y:
+        print(f"Y=X at {x}")
+    case Point(x, y):
+        print(f"Not on the diagonal")
+# Several other key features of this statement:
+
+# Like unpacking assignments, tuple and list patterns have exactly the same meaning and actually match arbitrary sequences. An important exception is that they don’t match iterators or strings.
+
+# Sequence patterns support extended unpacking: [x, y, *rest] and (x, y, *rest) work similar to unpacking assignments. The name after * may also be _, so (x, y, *_) matches a sequence of at least two items without binding the remaining items.
+
+# Mapping patterns: {"bandwidth": b, "latency": l} captures the "bandwidth" and "latency" values from a dictionary. Unlike sequence patterns, extra keys are ignored. An unpacking like **rest is also supported. (But **_ would be redundant, so it is not allowed.)
+
+# Subpatterns may be captured using the as keyword:
+
+# case (Point(x1, y1), Point(x2, y2) as p2): ...
+# will capture the second element of the input as p2 (as long as the input is a sequence of two points)
+
+# Most literals are compared by equality, however the singletons True, False and None are compared by identity.
+
+# Patterns may use named constants. These must be dotted names to prevent them from being interpreted as capture variable:
+
+from enum import Enum
+class Color(Enum):
+    RED = 'red'
+    GREEN = 'green'
+    BLUE = 'blue'
+
+color = Color(input("Enter your choice of 'red', 'blue' or 'green': "))
+
+match color:
+    case Color.RED:
+        print("I see red!")
+    case Color.GREEN:
+        print("Grass is green")
+    case Color.BLUE:
+        print("I'm feeling the blues :(")
+# For a more detailed explanation and additional examples, you can look into PEP 636 which is written in a tutorial format.
 # }}}
 
 # Why are there no ++ and -- operators in Python?# {{{
 # https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python#:~:text=Because%2C%20in%20Python%2C%20integers%20are,actually%20returns%20a%20different%20object).
 # python doesnt include these operators because they are essentially extra
- # }}}
+ # #}}}
 # For Loops{{{
 # https://www.w3schools.com/python/python_for_loops.asp
 # A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
@@ -2980,7 +3594,31 @@ for x in adj:
 # for loops cannot be empty, but if you for some reason have a for loop with no content, put in the pass statement to avoid getting an error.
 for x in [0, 1, 2]:
   pass
-# having an empty for loop like this, would raise an error without the pass statement}}}
+# having an empty for loop like this, would raise an error without the pass statement#}}}
+ # "tuple unpacking"<!--{{{-->
+# https://stackoverflow.com/questions/10867882/how-are-tuples-unpacked-in-for-loops
+# The simplest is in assignment:
+
+>>> x = (1,2)
+>>> a, b = x
+>>> a
+1
+>>> b
+2
+# In a for-loop it works similarly. If each element of the iterable is a tuple, then you can specify two variables, and each element in the loop will be unpacked to the two.
+
+>>> x = [(1,2), (3,4), (5,6)]
+>>> for item in x:
+...     print "A tuple", item
+A tuple (1, 2)
+A tuple (3, 4)
+A tuple (5, 6)
+>>> for a, b in x:
+...     print "First", a, "then", b
+First 1 then 2
+First 3 then 4
+First 5 then 6
+# The enumerate function creates an iterable of tuples, so it can be used this way.<!--}}}-->
 # While Loops{{{
 i = 1
 while i < 6:
@@ -3030,7 +3668,164 @@ else:
 # 3
 # 4
 # 5
-# i is no longer less than 6}}}
+# i is no longer less than 6#}}}
+#infinie loops in python# {{{
+count = 0
+while True:
+    count += 1
+    print(count)
+# this loop will increment forever and cause python to hang, and the processor core its running on to stall. 
+# What happens when you run an infinite loop in Python is:
+
+# The loop code will continue executing indefinitely.
+# The program will become unresponsive and "hung".
+# The CPU usage will go to 100% as the loop runs continuously.
+# You will not be able to interrupt the program normally.
+# The only way to stop an infinite loop in Python is to:
+
+# Kill the Python process (in the OS task manager)
+# Hit Ctrl + C in the terminal to send a SIGINT signal and interrupt the program.
+
+# An infinite loop in Python itself will not directly crash your computer. However, it can indirectly cause issues if left running for a long time.
+
+# When you have an infinite loop running in a Python program, it will:
+# Use up CPU resources - The CPU usage will go to 100% since the loop is running continuously. This can slow down other processes on your computer.
+# Use up memory - If the loop is allocating new objects in memory on each iteration, it can eventually consume all available memory.
+# Make the Python process unresponsive - You will not be able to interrupt the program normally since it's stuck in the infinite loop.
+
+# However, your computer is unlikely to completely "crash" due to an infinite loop in Python. More likely, you'll experience:
+# Slow performance - Other programs will run slowly due to high CPU usage.
+# Program freezing - The Python program itself will become unresponsive and "hang".
+
+# But your operating system is designed to handle situations like this, and it has mechanisms to interrupt and kill runaway processes. 
+
+# Only in extreme cases, where the infinite loop is consuming a massive amount of resources for an extended period, it could potentially cause issues like:
+
+# Kernel panic (for Linux) - If memory usage goes too high.
+# Blue screen of death (for Windows) - Again, due to excessive memory consumption.
+# #}}}
+# Python Iterators{{{
+# https://www.w3schools.com/python/python_iterators.asp
+# An iterator is an object that contains a countable number of values.
+
+# An iterator is an object that can be iterated upon, meaning that you can traverse through all the values.
+
+# Technically, in Python, an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().
+# Iterator vs Iterable
+# Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from.
+# All these objects have a iter() method which is used to get an iterator:
+mytuple = ("apple", "banana", "cherry")
+myit = iter(mytuple)
+print(next(myit))
+print(next(myit))
+print(next(myit))
+# apple
+# banana
+# cherry
+Even strings are iterable objects, and can return an iterator:
+mystr = "banana"
+myit = iter(mystr)
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+# b
+# a
+# n
+# a
+# n
+# a
+# We can also use a for loop to iterate through an iterable object:
+mytuple = ("apple", "banana", "cherry")
+for x in mytuple:
+  print(x)
+# apple
+# banana
+# cherry
+mystr = "banana"
+for x in mystr:
+  print(x)
+# b
+# a
+# n
+# a
+# n
+# a
+# The for loop actually creates an iterator object and executes the next() method for each loop.
+
+# Create an Iterator
+# To create an object/class as an iterator you have to implement the methods __iter__() and __next__() to your object.
+# As you have learned in the Python Classes/Objects chapter, all classes have a function called __init__(), which allows you to do some initializing when the object is being created.
+# The __iter__() method acts similar, you can do operations (initializing etc.), but must always return the iterator object itself.
+# The __next__() method also allows you to do operations, and must return the next item in the sequence.
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+  def __next__(self):
+    x = self.a
+    self.a += 1
+    return x
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+# 1
+# 2
+# 3
+# 4
+# 5
+
+# StopIteration
+# The example above would continue forever if you had enough next() statements, or if it was used in a for loop.
+# To prevent the iteration from going on forever, we can use the StopIteration statement.
+# In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times:
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    if self.a <= 20:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+myclass = MyNumbers()
+myiter = iter(myclass)
+for x in myiter:
+  print(x)
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+# 9
+# 10
+# 11
+# 12
+# 13
+# 14
+# 15
+# 16
+# 17
+# 18
+# 19
+# 20
+
+
+# #}}}
+
 # Lambda functions{{{
 # A lambda function is a small anonymous function.
 # A lambda function can take any number of arguments, but can only have one expression.
@@ -3072,90 +3867,11 @@ print(mytripler(11))
 # 33
 # Use lambda functions when an anonymous function is required for a short period of time.
 
-# }}}
+# #}}}
 # Arrays{{{
 # https://www.w3schools.com/python/python_arrays.asp
 # Python does not have built-in support for Arrays, but Python Lists can be used instead.
-# This page shows you how to use LISTS as ARRAYS, however, to work with arrays in Python you will have to import a library, like the NumPy library.
-# Arrays are used to store multiple values in one single variable:
-cars = ["Ford", "Volvo", "BMW"]
-print(cars)
-# ['Ford', 'Volvo', 'BMW']
-# What is an Array?
-# An array is a special variable, which can hold more than one value at a time.
-
-# If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:
-
-car1 = "Ford"
-car2 = "Volvo"
-car3 = "BMW"
-# However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?
-
-# The solution is an array!
-
-# An array can hold many values under a single name, and you can access the values by referring to an index number.
-# Access the Elements of an Array
-cars = ["Ford", "Volvo", "BMW"]
-x = cars[0]
-print(x)
-# Ford
-cars = ["Ford", "Volvo", "BMW"]
-cars[0] = "Toyota"
-print(cars)
-# ['Toyota', 'Volvo', 'BMW']
-
-The Length of an Array
-cars = ["Ford", "Volvo", "BMW"]
-x = len(cars)
-print(x)
-# 3
-# Note: The length of an array is always one more than the highest array index.
-
-# Looping Array Elements
-# You can use the for in loop to loop through all the elements of an array.
-cars = ["Ford", "Volvo", "BMW"]
-for x in cars:
-  print(x)
-# Ford
-# Volvo
-# BMW
-
-# Adding Array Elements
-# You can use the append() method to add an element to an array.
-cars.append("Honda")
-cars = ["Ford", "Volvo", "BMW"]
-cars.append("Honda")
-print(cars)
-# ['Ford', 'Volvo', 'BMW', 'Honda']
-
-# Removing Array Elements
-# You can use the pop() method to remove an element from the array.
-cars = ["Ford", "Volvo", "BMW"]
-cars.pop(1)
-print(cars)
-# ['Ford', 'BMW']
-# You can also use the remove() method to remove an element from the array.
-cars = ["Ford", "Volvo", "BMW"]
-cars.remove("Volvo")
-print(cars)
-# ['Ford', 'BMW']
-# Array Methods
-# Python has a set of built-in methods that you can use on lists/arrays.
-
-# Method	Description
-# append()	Adds an element at the end of the list
-# clear()	Removes all the elements from the list
-# copy()	Returns a copy of the list
-# count()	Returns the number of elements with the specified value
-# extend()	Add the elements of a list (or any iterable), to the end of the current list
-# index()	Returns the index of the first element with the specified value
-# insert()	Adds an element at the specified position
-# pop()	Removes the element at the specified position
-# remove()	Removes the first item with the specified value
-# reverse()	Reverses the order of the list
-# sort()	Sorts the list
-# Note: Python does not have built-in support for Arrays, but Python Lists can be used instead.
-# }}}
+# #}}}
 # Python Classes and Objects{{{
 # Python is an object oriented programming language.
 
@@ -3287,7 +4003,7 @@ print(p1)
 # class definitions cannot be empty, but if you for some reason have a class definition with no content, put in the pass statement to avoid getting an error.
 class Person:
   pass
-# having an empty class definition like this, would raise an error without the pass statement}}}
+# having an empty class definition like this, would raise an error without the pass statement#}}}
 # Python Inheritance{{{
 # Inheritance allows us to define a class that inherits all the methods and properties from another class.
 
@@ -3415,163 +4131,7 @@ class Student(Person):
 x = Student("Mike", "Olsen", 2019)
 x.welcome()
 # Welcome Mike Olsen to the class of 2019
-# }}}
-#python abstract classes# {{{
-# Yes, Python has abstract classes, which are defined using the abc module. An abstract class is a class that cannot be instantiated, but can be subclassed. It is used to define a common interface for a group of related classes.
-
-# To define an abstract class in Python, you can use the ABC class provided by the abc module as a base class for your abstract class. You can then use the @abstractmethod decorator to mark certain methods as abstract methods that must be implemented by any subclass.
-
-# Here's an example:
-from abc import ABC, abstractmethod
-class Shape(ABC):
-    @abstractmethod
-    def area(self):
-        pass
-    @abstractmethod
-    def perimeter(self):
-        pass
-# In this example, the Shape class is an abstract class with two abstract methods area() and perimeter(). Any subclass of Shape must implement these methods.
-
-# Note that attempting to instantiate an abstract class will result in a TypeError. For example, the following code will raise a TypeError:
-s = Shape() # Raises TypeError
-Instead, you can instantiate a subclass of Shape that implements the abstract methods:
-
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-    def area(self):
-        return 3.14 * self.radius ** 2
-    def perimeter(self):
-        return 2 * 3.14 * self.radius
-c = Circle(5)
-print(c.area()) # Output: 78.5
-print(c.perimeter()) # Output: 31.4
-
-
-
-
-# }}}
-# Python Iterators{{{
-# https://www.w3schools.com/python/python_iterators.asp
-# An iterator is an object that contains a countable number of values.
-
-# An iterator is an object that can be iterated upon, meaning that you can traverse through all the values.
-
-# Technically, in Python, an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().
-# Iterator vs Iterable
-# Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from.
-# All these objects have a iter() method which is used to get an iterator:
-mytuple = ("apple", "banana", "cherry")
-myit = iter(mytuple)
-print(next(myit))
-print(next(myit))
-print(next(myit))
-# apple
-# banana
-# cherry
-Even strings are iterable objects, and can return an iterator:
-mystr = "banana"
-myit = iter(mystr)
-print(next(myit))
-print(next(myit))
-print(next(myit))
-print(next(myit))
-print(next(myit))
-print(next(myit))
-# b
-# a
-# n
-# a
-# n
-# a
-# We can also use a for loop to iterate through an iterable object:
-mytuple = ("apple", "banana", "cherry")
-for x in mytuple:
-  print(x)
-# apple
-# banana
-# cherry
-mystr = "banana"
-for x in mystr:
-  print(x)
-# b
-# a
-# n
-# a
-# n
-# a
-# The for loop actually creates an iterator object and executes the next() method for each loop.
-
-# Create an Iterator
-# To create an object/class as an iterator you have to implement the methods __iter__() and __next__() to your object.
-# As you have learned in the Python Classes/Objects chapter, all classes have a function called __init__(), which allows you to do some initializing when the object is being created.
-# The __iter__() method acts similar, you can do operations (initializing etc.), but must always return the iterator object itself.
-# The __next__() method also allows you to do operations, and must return the next item in the sequence.
-class MyNumbers:
-  def __iter__(self):
-    self.a = 1
-    return self
-  def __next__(self):
-    x = self.a
-    self.a += 1
-    return x
-myclass = MyNumbers()
-myiter = iter(myclass)
-
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-# 1
-# 2
-# 3
-# 4
-# 5
-
-# StopIteration
-# The example above would continue forever if you had enough next() statements, or if it was used in a for loop.
-# To prevent the iteration from going on forever, we can use the StopIteration statement.
-# In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times:
-class MyNumbers:
-  def __iter__(self):
-    self.a = 1
-    return self
-
-  def __next__(self):
-    if self.a <= 20:
-      x = self.a
-      self.a += 1
-      return x
-    else:
-      raise StopIteration
-myclass = MyNumbers()
-myiter = iter(myclass)
-for x in myiter:
-  print(x)
-# 1
-# 2
-# 3
-# 4
-# 5
-# 6
-# 7
-# 8
-# 9
-# 10
-# 11
-# 12
-# 13
-# 14
-# 15
-# 16
-# 17
-# 18
-# 19
-# 20
-
-
-# }}}
+# #}}}
 # Polymorphism{{{
 # https://www.w3schools.com/python/python_polymorphism.asp
 # The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.
@@ -3595,8 +4155,8 @@ thisdict = {
 }
 print(len(thisdict))
 # 3
-# }}}
-# Class Polymorphism
+# #}}}
+# Class Polymorphism{{{
 # Polymorphism is often used in Class methods, where we can have multiple classes with the same method name.
 # For example, say we have three classes: Car, Boat, and Plane, and they all have a method called move():
 class Car:
@@ -3665,7 +4225,42 @@ for x in (car1, boat1, plane1):
 # In the example above you can see that the Car class i empty, but it inherits brand, model, and move() from Vehicle.
 # The Boat and Plane classes also inherit brand, model, and move() from Vehicle, but they both override the move() method.
 # Because of polymorphism we can execute the same method for all classes.
+# }}}
+#python abstract classes# {{{
+# Yes, Python has abstract classes, which are defined using the abc module. An abstract class is a class that cannot be instantiated, but can be subclassed. It is used to define a common interface for a group of related classes.
 
+# To define an abstract class in Python, you can use the ABC class provided by the abc module as a base class for your abstract class. You can then use the @abstractmethod decorator to mark certain methods as abstract methods that must be implemented by any subclass.
+
+# Here's an example:
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+    @abstractmethod
+    def perimeter(self):
+        pass
+# In this example, the Shape class is an abstract class with two abstract methods area() and perimeter(). Any subclass of Shape must implement these methods.
+
+# Note that attempting to instantiate an abstract class will result in a TypeError. For example, the following code will raise a TypeError:
+s = Shape() # Raises TypeError
+Instead, you can instantiate a subclass of Shape that implements the abstract methods:
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    def area(self):
+        return 3.14 * self.radius ** 2
+    def perimeter(self):
+        return 2 * 3.14 * self.radius
+c = Circle(5)
+print(c.area()) # Output: 78.5
+print(c.perimeter()) # Output: 31.4
+
+
+
+
+# #}}}
 
 # Python Scope{{{
 # https://www.w3schools.com/python/python_scope.asp
@@ -3754,7 +4349,19 @@ print(x)
 # inisde myfunc 200
 # 300
 
-# }}}
+
+
+# In Python, the only construct that creates a new scope (other than the global scope) is a function. When a function is defined, a new local scope is created for that function. Variables defined within the function have local scope and are not accessible outside of the function, unless they are explicitly returned.
+x = 0
+if x == 0:
+    y = 1
+    print(y)
+print(y)
+# 1 
+# y is accessible because if statement doesnt create new scope
+# In this code, the if statement and the print statement are indented to the same level, but they do not create a new scope. The variable y is defined within the if statement, but it is still accessible outside of the if statement because it is defined in the global scope.
+
+# #}}}
 # Python Modules{{{
 # https://www.w3schools.com/python/python_modules.asp
 # What is a Module?
@@ -3806,8 +4413,72 @@ print(person1["age"])
 # 36
 # Note: When importing using the from keyword, do not use the module name when referring to elements in the module. Example: person1["age"], not mymodule.person1["age"]
 
-# }}}
+# #}}}
+# __init__.py<!--{{{-->
+# In Python, the __init__.py file is a special file that is used to mark a directory as a Python package. Without this file, Python will not recognize the directory as a package and will not allow you to import modules from that directory.
 
+# The __init__.py file can be empty, or it can contain Python code that will be executed when the package is imported. This code can be used to set up the package's namespace, import modules or sub-packages, or perform any other necessary initialization tasks.
+
+# Here is an example of what an __init__.py file might look like:
+
+# This is the __init__.py file for the "mypackage" package
+print("Initializing mypackage...")
+# Import modules and sub-packages
+from . import module1
+from . import module2
+from .subpackage import submodule1
+from .subpackage import submodule2
+
+# Set up package namespace
+__all__ = ['module1', 'module2', 'subpackage']
+
+# In this code, the __init__.py file:
+# Prints a message indicating that the package is being initialized
+# Imports several modules and sub-packages
+# Sets up the package namespace using the __all__ variable. The __all__ variable is a list of strings that specifies which modules and sub-packages should be included when the package is imported using the from mypackage import * syntax.
+# Note that the . before the module or sub-package name in the import statement indicates that the module or sub-package is located in the same directory as the __init__.py file.
+
+# The __init__.py file can also be used to define package-level variables or functions that can be accessed from within the package's modules or sub-packages. It is an important file when creating a Python package and should be included in every package directory.
+# <!--}}}-->
+# namespace package<!--{{{-->
+# A namespace package is a special type of Python package that allows modules to be split across multiple directories or even different Python distributions. Unlike regular packages, namespace packages do not have an __init__.py file and can be created by simply adding a new directory to the Python path.
+
+# Namespace packages were introduced in Python 3.3 and are intended to make it easier to distribute and reuse code across multiple projects. They are often used in large organizations or open-source projects where different teams or contributors may be responsible for different parts of the codebase.
+
+# Here is an example of how to create a namespace package:
+
+# Create a directory with a unique name, such as my_namespace_package.
+
+# Add the directory to the Python path by modifying the sys.path list:
+import sys
+sys.path.append('/path/to/my_namespace_package')
+# Create a module, such as my_module.py, in the my_namespace_package directory:
+def my_function():
+    return "Hello, world!"
+# Import the module from the namespace package:
+
+from my_namespace_package.my_module import my_function
+print(my_function())
+# Output: "Hello, world!"
+# Note that there is no __init__.py file in the my_namespace_package directory. This is what distinguishes a namespace package from a regular package.
+
+# Namespace packages can be created across different directories or even different Python distributions. This makes it easy to share code between projects without having to copy or duplicate files. However, it's important to be aware of potential naming conflicts and to use unique module and package names to avoid collisions.
+# <!--}}}-->
+# regular python package vs namespace package{{{
+# In Python, there are two types of packages: regular packages and namespace packages.
+
+# A regular package is a directory that contains an __init__.py file. This file is executed when the package is imported and is used to define the package's namespace, import submodules, and perform any other necessary initialization tasks. Regular packages are the most common type of package in Python and are used to organize related code into a single directory.
+
+# A namespace package, on the other hand, is a package that does not have an __init__.py file. Instead, it is created by adding a new directory to the Python path and is used to allow modules to be split across multiple directories or even different Python distributions. Namespace packages were introduced in Python 3.3 and are intended to make it easier to distribute and reuse code across multiple projects.
+
+# Here are some key differences between regular packages and namespace packages:
+
+# Regular packages have an __init__.py file, while namespace packages do not.
+# Regular packages are used to organize related code into a single directory, while namespace packages are used to split code across multiple directories or Python distributions.
+# Regular packages create a single namespace for all modules and sub-packages within the package, while namespace packages create a separate namespace for each directory in the package.
+# Regular packages are created by adding a directory to the Python path or by installing a package, while namespace packages are created by simply adding a directory to the Python path.
+# In general, regular packages are more common and are used to organize related code into a single directory. Namespace packages are used less frequently, but can be useful for larger projects or organizations where code may be split across multiple directories or distributions.
+# }}}
 # Python Datetime# {{{
 # Python Dates
 # A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.
@@ -3884,7 +4555,7 @@ print(x.strftime("%B"))
 # %G	ISO 8601 year	2018	
 # %u	ISO 8601 weekday (1-7)	1	
 # %V	ISO 8601 weeknumber (01-53)	01	
-# # }}}
+# # #}}}
 
 # Math# {{{
 # https://www.w3schools.com/python/python_math.asp
@@ -4187,7 +4858,7 @@ print(json.dumps(x, indent=4, sort_keys=True))
 # }
 
 
-# }}}
+# #}}}
 # Python RegEx# {{{
 # https://www.w3schools.com/python/python_regex.asp
 # A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
@@ -4373,7 +5044,7 @@ x = re.search(r"\bS\w+", txt)
 print(x.group())
 # Spain
 # Note: If there is no match, the value None will be returned, instead of the Match Object.
-# }}}
+# #}}}
 
 # Python Try Except# {{{
 # https://www.w3schools.com/python/python_try_except.asp
@@ -4478,7 +5149,7 @@ if not type(x) is int:
     # raise TypeError("Only integers are allowed")
 # TypeError: Only integers are allowed
 
-# }}}
+# #}}}
 # User Input# {{{
 # https://www.w3schools.com/python/python_user_input.asp
 # Python allows for user input.
@@ -4505,157 +5176,8 @@ Enter username:
 # Username is: asdf
 
 # Python stops executing when it comes to the input() function, and continues when the user has given some input.
-# }}}
+# #}}}
 
-# String Formatting# {{{
-# https://www.w3schools.com/python/python_string_formatting.asp
-# To make sure a string will display as expected, we can format the result with the format() method.
-
-# String format()
-# The format() method allows you to format selected parts of a string.
-
-# Sometimes there are parts of a text that you do not control, maybe they come from a database, or user input?
-
-# To control such values, add placeholders (curly brackets {}) in the text, and run the values through the format() method:
-price = 49
-txt = "The price is {} dollars"
-print(txt.format(price))
-# The price is 49 dollars
-# You can add parameters inside the curly brackets to specify how to convert the value:
-price = 49
-txt = "The price is {:.2f} dollars"
-print(txt.format(price))
-# The price is 49.00 dollars
-
-# Multiple Values
-# If you want to use more values, just add more values to the format() method:
-print(txt.format(price, itemno, count))
-# And add more placeholders:
-quantity = 3
-itemno = 567
-price = 49
-myorder = "I want {} pieces of item number {} for {:.2f} dollars."
-print(myorder.format(quantity, itemno, price))
-# I want 3 pieces of item number 567 for 49.00 dollars.
-
-# Index Numbers
-# You can use index numbers (a number inside the curly brackets {0}) to be sure the values are placed in the correct placeholders:
-quantity = 3
-itemno = 567
-price = 49
-myorder = "I want {0} pieces of item number {1} for {2:.2f} dollars."
-print(myorder.format(quantity, itemno, price))
-# I want 3 pieces of item number 567 for 49.00 dollars.
-
-# Also, if you want to refer to the same value more than once, use the index number:
-age = 36
-name = "John"
-txt = "His name is {1}. {1} is {0} years old."
-print(txt.format(age, name))
-# His name is John. John is 36 years old.
-
-# Named Indexes
-# You can also use named indexes by entering a name inside the curly brackets {carname}, but then you must use names when you pass the parameter values txt.format(carname = "Ford"):
-myorder = "I have a {carname}, it is a {model}."
-print(myorder.format(carname = "Ford", model = "Mustang"))
-# I have a Ford, it is a Mustang.
-
-
-
-# }}}
-# “Old Style” String Formatting (% Operator)# {{{
-
-# https://realpython.com/python-string-formatting/
-# Strings in Python have a unique built-in operation that can be accessed with the % operator. This lets you do simple positional formatting very easily. If you’ve ever worked with a printf-style function in C, you’ll recognize how this works instantly. Here’s a simple example:
-'Hello, %s' % name
-"Hello, Bob"
-# Here, you can use the %x format specifier to convert an int value to a string and to represent it as a hexadecimal number:
-'%x' % errno
-# 'badc0ffee'
-
-# The “old style” string formatting syntax changes slightly if you want to make multiple substitutions in a single string. Because the % operator takes only one argument, you need to wrap the right-hand side in a tuple, like so:
-'Hey %s, there is a 0x%x error!' % (name, errno)
-# 'Hey Bob, there is a 0xbadc0ffee error!'
-
-# It’s also possible to refer to variable substitutions by name in your format string, if you pass a mapping to the % operator:
-'Hey %(name)s, there is a 0x%(errno)x error!' % {
-...     "name": name, "errno": errno }
-# 'Hey Bob, there is a 0xbadc0ffee error!'
-# }}}
-# String Interpolation / f-Strings (Python 3.6+)# {{{
-
-# https://realpython.com/python-string-formatting/
-# Python 3.6 added a new string formatting approach called formatted string literals or “f-strings”. This new way of formatting strings lets you use embedded Python expressions inside string constants. Here’s a simple example to give you a feel for the feature:
-f'Hello, {name}!'
-# 'Hello, Bob!'
-
-# As you can see, this prefixes the string constant with the letter “f“—hence the name “f-strings.” This new formatting syntax is powerful. Because you can embed arbitrary Python expressions, you can even do inline arithmetic with it. Check out this example:
-a = 5
-b = 10
-f'Five plus ten is {a + b} and not {2 * (a + b)}.'
-# 'Five plus ten is 15 and not 30.'
-
-# Formatted string literals are a Python parser feature that converts f-strings into a series of string constants and expressions. They then get joined up to build the final string.
-
-# Imagine you had the following greet() function that contains an f-string:
-def greet(name, question):
-...     return f"Hello, {name}! How's it {question}?"
-...
-greet('Bob', 'going')
-# "Hello, Bob! How's it going?"
-
-# When you disassemble the function and inspect what’s going on behind the scenes, you’ll see that the f-string in the function gets transformed into something similar to the following:
-def greet(name, question):
-    return "Hello, " + name + "! How's it " + question + "?"
-# The real implementation is slightly faster than that because it uses the BUILD_STRING opcode as an optimization. But functionally they’re the same:
-import dis
-dis.dis(greet)
- # 2           0 LOAD_CONST               1 ('Hello, ')
-              # 2 LOAD_FAST                0 (name)
-              # 4 FORMAT_VALUE             0
-              # 6 LOAD_CONST               2 ("! How's it ")
-              # 8 LOAD_FAST                1 (question)
-             # 10 FORMAT_VALUE             0
-             # 12 LOAD_CONST               3 ('?')
-             # 14 BUILD_STRING             5
-             # 16 RETURN_VALUE
-
-# String literals also support the existing format string syntax of the str.format() method. That allows you to solve the same formatting problems we’ve discussed in the previous two sections:
-f"Hey {name}, there's a {errno:#x} error!"
-"Hey Bob, there's a 0xbadc0ffee error!"
-# Python’s new formatted string literals are similar to JavaScript’s Template Literals added in ES2015. I think they’re quite a nice addition to Python, and I’ve already started using them in my day to day (Python 3) work. You can learn more about formatted string literals in our in-depth Python f-strings tutorial.# }}}
-# template strings# {{{
-# Template strings in Python are string literals that allow variable substitution. They use the .format() method to interpolate variables into the string.
-# Template strings are declared using double curly brackets:
-
-name = "John"
-age = 30
-s = f"Hello, my name is {{name}} and I'm {{age}} years old."
-# String before formatting:
-print(s)  
-# Hello, my name is {{name}} and I'm {{age}} years old.
-# String after formatting:
-print(s.format(name=name, age=age))   
-# Hello, my name is John and I'm 30 years old.
-
-# Here we declare a string s with curly bracket placeholders {{name}} and {{age}}.
-
-# We then call .format() and pass the variable values as keyword arguments. This substitutes the variable values into the placeholders in the string.
-
-# We can have multiple placeholders:
-color = "blue"
-food = "pizza"
-s = "I love to eat {{food}} and my favorite color is {{color}}."
-print(s.format(food=food, color=color))
-# I love to eat pizza and my favorite color is blue.   
-# The .format() method also supports positional arguments:
-
-name = "John"
-age = 30
-s = "Hello, my name is {!s} and I'm {!d} years old."
-print(s.format(name, age))  
-# Hello, my name is John and I'm 30 years old.
-# Here we use {!s} and {!d} to specify that the first argument is a string and second is an int.# }}}
 # Python File handling# {{{
 # https://www.w3schools.com/python/python_file_handling.asp
 # File handling is an important part of any web application.
@@ -4799,6 +5321,139 @@ os.rmdir("myfolder")
 
 
 
+# #}}}
+
+# what statements require a colon at the end in python #{{{
+# In Python, colons are used to indicate the start of a new block of code, such as a loop, function definition, or conditional statement. Here are some examples of statements that require a colon:
+
+# Conditional statements: if, elif, and else statements all require a colon at the end of the line that contains the condition. For example:
+if x > 10:
+    print("x is greater than 10")
+else:
+    print("x is less than or equal to 10")
+# Loop statements: for and while loops require a colon at the end of the line that contains the loop statement. For example:
+for i in range(10):
+    print(i)
+# Function and class definitions: function and class definitions also require a colon at the end of the line that contains the header. For example:
+# angelscript
+def my_function():
+    print("Hello, world!")
+    
+class MyClass:
+    def __init__(self, x):
+        self.x = x
+# It's important to remember that the colon is not optional in these cases. Omitting the colon will result in a syntax error.
 # }}}
+# "@" operator<!--{{{-->
+# In Python, the "@" operator is used for matrix multiplication between two arrays. It was introduced in Python 3.5 as part of the PEP 465 -- A dedicated infix operator for matrix multiplication.
+# Here is an example usage of the "@" operator:
+import numpy as np
+# Create two 2x2 matrices
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+# Multiply the matrices using the "@" operator
+c = a @ b
+# Print the result
+print(c)
+# [[19 22]
+ # [43 50]]
+# In this example, the "@" operator is used to multiply two 2x2 matrices "a" and "b", resulting in a new 2x2 matrix "c". The "@" operator is equivalent to calling the "dot" function on the arrays.
+
+# Note that the "@" operator is only available in Python 3.5 and later, and only works for arrays that support matrix multiplication, such as NumPy arrays. For other types of arrays or data structures, you may need to implement matrix multiplication using other methods.
 
 
+# <!----># }}}
+# with keyword # {{{
+# The with keyword in Python is used to create a context for a block of code, typically for I/O operations or resource management. The with statement simplifies the process of working with certain resources by taking care of common setup and teardown tasks, like closing files or network connections, automatically.
+# Here is an example of how with statement is used with file I/O:
+with open('file.txt', 'r') as f:
+    contents = f.read()
+    print(contents)
+# In this example, the with statement is used to open a file named file.txt in read mode. The as keyword is used to assign the file object returned by open() to a variable named f. The indented code block following the with statement contains the operations that work with the file object. Once the code block is exited, the file is automatically closed by the with statement, regardless of whether an exception was raised.
+
+# The with statement can also be used to manage resources like network connections, database connections, or locks. By using the with statement, you can ensure that the resources are properly initialized and cleaned up, even if an exception is raised during execution.
+
+# In summary, the with statement is a convenient way to manage resources and reduce the likelihood of errors or resource leaks in your code. It provides a cleaner and more readable way to handle certain types of operations that require resource management.# }}}
+# The zip function# {{{
+# https://teclado.com/30-days-of-python/python-30-day-9-enumerate-zip/
+# zip is an extremely powerful and versatile function used to combined two or more iterables into a single iterable.
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+# zip will allow us to turn this into a new iterable which contains the following:
+("Paul", "Fluffy"), ("Andrea", "Bubbles"), ("Marta", "Captain Catsworth")
+# In essence, it takes the first item from each iterable, and puts together them in a tuple. Then it takes the second item from each iterable, and so on, until one of the iterables runs out of values. We'll come back to this point later, because it's really important.
+
+# To use zip, all we have to do is call the function and pass in the iterables we want to zip together.
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+pets_and_owners = zip(pet_owners, pets)
+# If we want to zip three or even more iterables together, we can just keep passing more and more items to zip when we call it.
+
+# Much like range, zip is lazy, which means it only calculates the next value when we request it. We therefore can't print it directly, but we can convert it to something like a list if we want to see the output:
+print(list(pets_and_owners))
+# [('Paul', 'Fluffy'), ('Andrea', 'Bubbles'), ('Marta', 'Captain Catsworth')]
+
+# Using zip in loops
+# Another very common way to use zip is to iterate over two or more iterables at once in a for loop.
+# Let's go back to our pet owners example, but now I want to print some output which describes who owns which pet.
+# We can use zip and a bit of destructuring to do this in a really clear way, because we get to use nice clear variable names in the loop:
+
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+for owner, pet in zip(pet_owners, pets):
+    print(f"{owner} owns {pet}.")
+# The common alternative to using zip is the nasty range + len pattern we saw earlier with enumerate. I'd recommend avoiding that at all costs!
+
+
+
+
+# A caveat for when using enumerate and zip
+# One thing you should be aware of when it comes to enumerate and zip is that they are consumed when we iterate over them. This generally isn't a problem when we use them directly in loops, but it can sometimes trip up newer developers when they assign a zip or enumerate object to a variable.
+# Here is an example where we assign the result of calling zip to a variable:
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = zip(movie_titles, movie_directors)
+# We can iterate over movies without any problems:
+for title, director in movies:
+    print(f"{title} by {director}.")
+# However, if we now try to use movies again, we'll find that it's empty. Try running the code below to see this:
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = zip(movie_titles, movie_directors)
+for title, director in movies:
+    print(f"{title} by {director}.")
+movies_list = list(movies)
+print(f"There are {len(movies_list)} movies in the collection.")
+print(f"These are our movies: {movies_list}.")
+# If you try to iterate over movies after the initial loop, you'll also find that it contains no values.
+# The reason that this happens is because zip and enumerate produce something called an iterator. We're not going to be talking about iterators in any depth in this series, as iterators are an advanced topic, but one key feature of iterators is that they're consumed when we request their values. This is actually a really useful feature, but it's also a common source of bugs if you're not familiar with this behaviour.
+# An easy way to bypass this limitation is to just convert the iterator to a non-iterator collection, like a list or tuple.
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = list(zip(movie_titles, movie_directors))
+# Now we can access the values in movies as many times as we like.
+# }}}
