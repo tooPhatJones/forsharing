@@ -4,12 +4,14 @@
 x = "Python is awesome"
 print(x)
 # Python is awesome
+
 # In the print() function, you output multiple variables, separated by a comma:
 x = "Python"
 y = "is"
 z = "awesome"
 print(x, y, z)
 # Python is awesome
+
 # Notice the space character after "Python " and "is ", without them the result would be "Pythonisawesome".
 
 # For numbers, the + character works as a mathematical operator:
@@ -152,7 +154,7 @@ print(myvar2)
 # John
 
 #This example will produce an error in the result
-2myvar = "John"
+myvar = "John"
 my-var = "John"
 my var = "John"
 # Traceback (most recent call last):
@@ -331,7 +333,7 @@ x = memoryview(bytes(5))	#memoryview# #}}}
 # You can assign None to a variable to indicate that it has no value:
 a = None
 
-# None checks for equality using 'is' not '==':
+# None checks for equality using 'is' NOTE: non does not use '==':
 # a is None # Checks if a is the same object as None  
 # a == None # Checks if a has the same value as None 
 # You can use None to default a function return value:
@@ -421,7 +423,10 @@ print(type(z))
 # <class 'complex'>
 # <class 'complex'>
 
-# Type Conversion
+# #}}}
+# Type Conversion{{{
+
+
 # You can convert from one type to another with the int(), float(), and complex() methods:
 #convert from int to float:
 x = float(1)
@@ -449,7 +454,7 @@ import random
 print(random.randrange(1, 10))
 # 6
 
-# #}}}
+# }}}
 # Python Casting# {{{
 # https://www.w3schools.com/python/python_casting.asp
 # Specify a Variable Type
@@ -501,13 +506,799 @@ print(z)
 
 # #}}}
 
+# Python Booleans expressions# {{{
+# https://www.w3schools.com/python/python_booleans.asp
+# Booleans represent one of two values: True or False.
+# Boolean Values
+# In programming you often need to know if an expression is True or False.
+
+# You can evaluate any expression in Python, and get one of two answers, True or False.
+
+# When you compare two values, the expression is evaluated and Python returns the Boolean answer:
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+# True
+# False
+# False
+
+# When you run a condition in an if statement, Python returns True or False:
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+else:
+  print("b is not greater than a")
+a = 200
+b = 33
+# b is not greater than a
+
+# python truthy and falsy the bool() function
+# The following values are considered "falsy" in Python:
+
+# False
+# None
+# 0 (integer)
+# 0.0 (float)
+# '' (empty string)
+# [] (empty list)
+# {} (empty dictionary)
+# () (empty tuple)
+# any other object or value whose __bool__() or __len__() method returns False
+# All other values in Python are considered "truthy", including:
+
+# True
+# any non-zero integer or float
+# any non-empty string, list, dictionary, or tuple
+# any object or value whose __bool__() or __len__() method returns True
+# Here are some examples of truthy and falsy values in Python:
+
+# Falsy values
+bool(False)   # False
+bool(None)    # False
+bool(0)       # False
+bool(0.0)     # False
+bool('')      # False
+bool([])      # False
+bool({})      # False
+bool(())      # False
+
+# Truthy values
+bool(True)    # True
+bool(1)       # True
+bool(3.14)    # True
+bool('hello') # True
+bool(['a', 'b', 'c']) # True
+bool({'key': 'value'}) # True
+bool((1, 2, 3)) # True
+# While "truthy" and "falsy" are commonly used terms in the Python community to describe values that are implicitly evaluated as true or false in a Boolean context, they are not official Python keywords or reserved words.
+
+# Python's official documentation does not use these terms, but instead refers to "truth value testing" or "Boolean context". The bool() function is used to explicitly convert a value to a Boolean value, and the if statement or other Boolean expressions are used to implicitly test the truth value of a value.
+
+# So while "truthy" and "falsy" are not official terminology in Python, they are widely used and understood within the Python community.
+
+
+
+# One more value, or object in this case, evaluates to False, and that is if you have an object that is made from a class with a __len__ function that returns 0 or False:
+class myclass():
+  def __len__(self):
+    return 0
+
+myobj = myclass()
+print(bool(myobj))
+# False
+
+# Functions can Return a Boolean
+# You can create functions that returns a Boolean Value:
+def myFunction() :
+  return True
+print(myFunction())
+# True
+
+# You can execute code based on the Boolean answer of a function:
+def myFunction() :
+  return True
+if myFunction():
+  print("YES!")
+else:
+  print("NO!")
+# YES!
+
+# Python also has many built-in functions that return a boolean value, like the isinstance() function, which can be used to determine if an object is of a certain data type:
+x = 200
+print(isinstance(x, int))
+# True
+
+# #}}}
+# Python Operators # {{{
+# https://www.w3schools.com/python/python_operators.asp
+# Python Operators
+# Operators are used to perform operations on variables and values.
+
+# In the example below, we use the + operator to add together two values:
+print(10 + 5)
+# 15
+
+
+# Python divides the operators in the following groups:
+# Arithmetic operators
+# Assignment operators
+# Comparison operators
+# Logical operators
+# Identity operators
+# Membership operators
+# Bitwise operators
+
+
+# Python Arithmetic Operators
+# Arithmetic operators are used with numeric values to perform common mathematical operations:
+# Operator	Name	Example
+# +	Addition	x + y	
+# -	Subtraction	x - y	
+# *	Multiplication	x * y	
+# /	Division (includes remainder as float)	x / y	
+# %	Modulus	x % y	
+# **	Exponentiation	x ** y	
+# //	Floor division (rounds down to nearest int)	x // y
+
+
+# Python Assignment Operators
+# Assignment operators are used to assign values to variables:
+# Operator	Example	       Same As	
+# =	x = 5	x = 5	
+# +=	    x += 3	       x = x + 3	
+# -=	    x -= 3	       x = x - 3	
+# *=	    x *= 3	       x = x * 3	
+# /=	    x /= 3	       x = x / 3	
+# %=	    x %= 3	       x = x % 3	
+# //=	    x //= 3	       x = x // 3	
+# **=	    x **= 3	       x = x ** 3	
+# &=	    x &= 3	       x = x & 3	
+# |=	    x |= 3	       x = x | 3	
+# ^=	    x ^= 3	       x = x ^ 3	
+# >>=	    x >>= 3	       x = x >> 3	
+# <<=	    x <<= 3	       x = x << 3
+# }}}
+# Python Comparison Operators{{{
+# Comparison operators are used to compare two values:
+
+# Operator	Name	Example
+# ==	Equal	x == y	
+# !=	Not equal	x != y	
+# >	Greater than	x > y	
+# <	Less than	x < y	
+# >=	Greater than or equal to	x >= y	
+# <=	Less than or equal to	x <= y
+
+# Python Logical Operators (combine boolean expressions)
+# Logical operators are used to combine conditional statements:
+
+# Operator	Description	Example
+# and 	Returns True if both statements are true	x < 5 and  x < 10	
+# or	Returns True if one of the statements is true	x < 5 or x < 4	
+# not	Reverse the result, returns False if the result is true	not(x < 5 and x < 10)
+# note using the ! operator instead of the not operator will throw an error
+print(not(5<4 or 3<4))# prints false
+print(!(5<4 or 3<4)) # throws error
+# }}}
+# Python Identity Operators{{{
+# Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:
+
+# Operator	Description	Example
+# is 	Returns True if both variables are the same object	x is y	
+# is not	Returns True if both variables are not the same object	x is not y
+
+# Python Membership Operators
+# Membership operators are used to test if a sequence is presented in an object:
+
+# Operator	Description	Example
+# in 	Returns True if a sequence with the specified value is present in the object	x in y	
+# not in	Returns True if a sequence with the specified value is not present in the object	x not in y
+
+# Python Bitwise Operators
+# Bitwise operators are used to compare (binary) numbers:
+
+# Operator	Name	Description	Example
+# & 	AND	Sets each bit to 1 if both bits are 1	x & y	
+# |	OR	Sets each bit to 1 if one of two bits is 1	x | y	
+# ^	XOR	Sets each bit to 1 if only one of two bits is 1	x ^ y	
+# ~	NOT	Inverts all the bits	~x	
+# <<	Zero fill left shift	Shift left by pushing zeros in from the right and let the leftmost bits fall off	x << 2	
+# >>	Signed right shift	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	x >> 2
+# }}}
+# Operator Precedence{{{
+# Operator precedence describes the order in which operations are performed.
+print((6 + 3) - (6 + 3))
+# Parenthesis have the highest precedence, and need to be evaluated first.
+# The calculation above reads 9 - 9 = 0
+# 0
+
+print(100 + 5 * 3)
+# Multiplication has higher precedence than addition, and needs to be evaluated first.
+# The calculation above reads 100 + 15 = 115
+# 115
+
+# The precedence order is described in the table below, starting with the highest precedence at the top:
+# Operator	Description
+# ()	Parentheses	
+# **	Exponentiation	
+# +x  -x  ~x	Unary plus, unary minus, and bitwise NOT	
+# *  /  //  %	Multiplication, division, floor division, and modulus	
+# +  -	Addition and subtraction	
+# <<  >>	Bitwise left and right shifts	
+# &	Bitwise AND	
+# ^	Bitwise XOR	
+# |	Bitwise OR	
+# ==  !=  >  >=  <  <=  is  is not  in  not in 	Comparisons, identity, and membership operators	
+# not	Logical NOT	
+# and	AND	
+# or	OR	
+
+
+# If two operators have the same precedence, the expression is evaluated from left to right.
+print(5 + 4 - 7 + 3)
+# Additions and subtractions have the same precedence, and we need to calculate from left to right.
+# The calculation above reads:
+# 5 + 4 = 9
+# 9 - 7 = 2
+# 2 + 3 = 5
+
+# 5# #}}}
+# Why are there no ++ and -- operators in Python?# {{{
+# https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python#:~:text=Because%2C%20in%20Python%2C%20integers%20are,actually%20returns%20a%20different%20object).
+# python doesnt include these operators because they are essentially extra
+ # #}}}
+
+# if: elif else{{{
+# https://www.w3schools.com/python/python_conditions.asp
+# Python Conditions and If statements
+# Python supports the usual logical conditions from mathematics:
+
+# Equals: a == b
+# Not Equals: a != b
+# Less than: a < b
+# Less than or equal to: a <= b
+# Greater than: a > b
+# Greater than or equal to: a >= b
+# These conditions can be used in several ways, most commonly in "if statements" and loops.
+
+# An "if statement" is written by using the if keyword.
+a = 33
+b = 200
+if b > a:
+  print("b is greater than a")
+# b is greater than a
+
+# If statement, without indentation (will raise an error):
+a = 33
+b = 200
+if b > a:
+print("b is greater than a") # you will get an error
+  # File "demo_if_error.py", line 4
+    # print("b is greater than a")
+        # ^
+# IndentationError: expected an indented block
+
+# Elif
+a = 33
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+# a and b are equal
+
+# Else
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+# a is greater than b
+
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+else:
+  print("b is not greater than a")
+# b is not greater than a
+
+
+
+# #}}}
+# Nested If{{{
+x = 41
+if x > 10:
+  print("Above ten,")
+  if x > 20:
+    print("and also above 20!")
+  else:
+    print("but not above 20.")
+# Above ten,
+# and also above 20!
+
+# The pass Statement
+# if statements cannot be empty, but if you for some reason have an if statement with no content, put in the pass statement to avoid getting an error.
+a = 33
+b = 200
+if b > a:
+  pass
+# having an empty if statement like this, would raise an error without the pass statement
+# }}}
+# Ternary operator (Short hand if statement) {{{
+if a > b: print("a is greater than b")
+# "a is greater than b"
+
+# Short Hand If ... Else or ternary operator. if true do first thing, if not, do second thing
+a = 2
+b = 330
+print("A") if a > b else print("B")
+# B
+
+# You can also have multiple else statements (ternary operators) on the same line:
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")
+# =
+
+# And
+a = 200
+b = 33
+c = 500
+if a > b and c > a:
+  print("Both conditions are True")
+# Both conditions are True
+
+# Or
+a = 200
+b = 33
+c = 500
+if a > b or a > c:
+  print("At least one of the conditions is True")
+# At least one of the conditions is True
+
+# Not
+a = 33
+b = 200
+if not a > b:
+  print("a is NOT greater than b")
+# a is NOT greater than b
+
+# }}}
+# match statement(switch elsewhere){{{
+# A match statement takes an expression and compares its value to successive patterns given as one or more case blocks. This is superficially similar to a switch statement in C, Java or JavaScript (and many other languages), but it’s more similar to pattern matching in languages like Rust or Haskell. Only the first pattern that matches gets executed and it can also extract components (sequence elements or object attributes) from the value into variables.
+
+# The simplest form compares a subject value against one or more literals:
+
+def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case _:
+            return "Something's wrong with the internet"
+# Note the last block: the “variable name” _ acts as a wildcard and never fails to match. If no case matches, none of the branches is executed.
+
+# You can combine several literals in a single pattern using | (“or”):
+
+# case 401 | 403 | 404:
+    # return "Not allowed"
+# Patterns can look like unpacking assignments, and can be used to bind variables:
+
+# point is an (x, y) tuple
+match point:
+    case (0, 0):
+        print("Origin")
+    case (0, y):
+        print(f"Y={y}")
+    case (x, 0):
+        print(f"X={x}")
+    case (x, y):
+        print(f"X={x}, Y={y}")
+    case _:
+        raise ValueError("Not a point")
+# Study that one carefully! The first pattern has two literals, and can be thought of as an extension of the literal pattern shown above. But the next two patterns combine a literal and a variable, and the variable binds a value from the subject (point). The fourth pattern captures two values, which makes it conceptually similar to the unpacking assignment (x, y) = point.
+
+# If you are using classes to structure your data you can use the class name followed by an argument list resembling a constructor, but with the ability to capture attributes into variables:
+
+class Point:
+    x: int
+    y: int
+
+def where_is(point):
+    match point:
+        case Point(x=0, y=0):
+            print("Origin")
+        case Point(x=0, y=y):
+            print(f"Y={y}")
+        case Point(x=x, y=0):
+            print(f"X={x}")
+        case Point():
+            print("Somewhere else")
+        case _:
+            print("Not a point")
+# You can use positional parameters with some builtin classes that provide an ordering for their attributes (e.g. dataclasses). You can also define a specific position for attributes in patterns by setting the __match_args__ special attribute in your classes. If it’s set to (“x”, “y”), the following patterns are all equivalent (and all bind the y attribute to the var variable):
+
+Point(1, var)
+Point(1, y=var)
+Point(x=1, y=var)
+Point(y=var, x=1)
+# A recommended way to read patterns is to look at them as an extended form of what you would put on the left of an assignment, to understand which variables would be set to what. Only the standalone names (like var above) are assigned to by a match statement. Dotted names (like foo.bar), attribute names (the x= and y= above) or class names (recognized by the “(…)” next to them like Point above) are never assigned to.
+
+# Patterns can be arbitrarily nested. For example, if we have a short list of points, we could match it like this:
+
+match points:
+    case []:
+        print("No points")
+    case [Point(0, 0)]:
+        print("The origin")
+    case [Point(x, y)]:
+        print(f"Single point {x}, {y}")
+    case [Point(0, y1), Point(0, y2)]:
+        print(f"Two on the Y axis at {y1}, {y2}")
+    case _:
+        print("Something else")
+# We can add an if clause to a pattern, known as a “guard”. If the guard is false, match goes on to try the next case block. Note that value capture happens before the guard is evaluated:
+
+match point:
+    case Point(x, y) if x == y:
+        print(f"Y=X at {x}")
+    case Point(x, y):
+        print(f"Not on the diagonal")
+# Several other key features of this statement:
+
+# Like unpacking assignments, tuple and list patterns have exactly the same meaning and actually match arbitrary sequences. An important exception is that they don’t match iterators or strings.
+
+# Sequence patterns support extended unpacking: [x, y, *rest] and (x, y, *rest) work similar to unpacking assignments. The name after * may also be _, so (x, y, *_) matches a sequence of at least two items without binding the remaining items.
+
+# Mapping patterns: {"bandwidth": b, "latency": l} captures the "bandwidth" and "latency" values from a dictionary. Unlike sequence patterns, extra keys are ignored. An unpacking like **rest is also supported. (But **_ would be redundant, so it is not allowed.)
+
+# Subpatterns may be captured using the as keyword:
+
+# case (Point(x1, y1), Point(x2, y2) as p2): ...
+# will capture the second element of the input as p2 (as long as the input is a sequence of two points)
+
+# Most literals are compared by equality, however the singletons True, False and None are compared by identity.
+
+# Patterns may use named constants. These must be dotted names to prevent them from being interpreted as capture variable:
+
+from enum import Enum
+class Color(Enum):
+    RED = 'red'
+    GREEN = 'green'
+    BLUE = 'blue'
+
+color = Color(input("Enter your choice of 'red', 'blue' or 'green': "))
+
+match color:
+    case Color.RED:
+        print("I see red!")
+    case Color.GREEN:
+        print("Grass is green")
+    case Color.BLUE:
+        print("I'm feeling the blues :(")
+# For a more detailed explanation and additional examples, you can look into PEP 636 which is written in a tutorial format.
+# }}}
+
+# Python Functions{{{
+def my_function():
+  print("Hello from a function")
+my_function() # Hello from a function
+
+# passing arguments{{{
+def my_function(fname):
+  print(fname + " Refsnes")
+
+my_function("Emil")
+my_function("Tobias")
+my_function("Linus")
+# Emil Refsnes
+# Tobias Refsnes
+# Linus Refsnes
+
+# error with incorrect number of args
+def my_function(fname, lname):
+  print(fname + " " + lname)
+my_function("Emil") #error
+# Traceback (most recent call last):
+  # File "demo_function_args_error.py", line 4, in <module>
+    # my_function("Emil")
+# TypeError: my_function() missing 1 required positional argument: 'lname'
+
+#if you pass the incorrect number of arguemnts, you will get an error
+def my_function(fname, test):
+  print(fname + " Refsnes")
+
+my_function("Emil")
+# Traceback (most recent call
+# last):
+  # File "forExecution.py", li
+# ne 4, in <module>
+    # my_function("Emil")
+# TypeError: my_function() tak
+# es exactly 2 arguments (1 gi
+# ven)
+def my_function(fname):
+  print(fname + " Refsnes")
+
+my_function("Emil", 'test')
+# Traceback (most recent call
+# last):
+  # File "forExecution.py", li
+# ne 8, in <module>
+    # my_function("Emil", 'tes
+# t')
+# TypeError: my_function() tak
+# es exactly 1 argument (2 giv
+# en)
+# #}}}
+# arbitrary args{{{
+# If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
+# This way the function will receive a tuple of arguments, and can access the items accordingly:
+def my_function(*kids):
+  print("The youngest child is " + kids[2])
+my_function("Emil", "Tobias", "Linus")
+#The youngest child is Linus
+
+def my_function(*kids):
+  print("The youngest child is " + kids[4])
+my_function("Emil", "Tobias", "Linus")
+# Traceback (most recent call last):
+  # File "/home/mrtophatjones/n/python/forExecution.py", line 3, in <module>
+    # my_function("Emil", "Tobias", "Linus")
+  # File "/home/mrtophatjones/n/python/forExecution.py", line 2, in my_function
+    # print("The youngest child is " + kids[4])
+# IndexError: tuple index out of range
+
+def my_function(*fname, lname):
+  print(fname + " " + lname)
+my_function("Emil") #error
+# Traceback (most recent call last):
+  # File "/home/mrtophatjones/n/python/forExecution.py", line 3, in <module>
+    # my_function("Emil") #error
+# TypeError: my_function() missing 1 required keyword-only argument: 'lname'
+
+# cant have more than 1 arbitrary args
+def my_function(*fname, *lname):
+  print(fname + " " + lname)
+my_function("Emil") #error
+# File "/home/mrtophatjones/n/python/forExecution.py", line 1
+    # def my_function(*fname, *lname):
+                            # ^
+# SyntaxError: invalid syntax
+
+#print number of args
+def manyArgs(*arg):
+  print ("I was called with", len(arg), "arguments:", arg)
+manyArgs(1,2,3,4) #I was called with 4 arguments: (1, 2, 3, 4)
+
+
+
+
+# Sometimes you don't want to specify the number of arguments and want to use keys for them (the compiler will complain if one argument passed in a dictionary is not used in the method).
+
+def manyArgs1(args):
+  print args.a, args.b #note args.c is not used here
+
+def manyArgs2(args):
+  print args.c #note args.b and .c are not used here
+
+class Args: pass
+
+args = Args()
+args.a = 1
+args.b = 2
+args.c = 3
+manyArgs1(args) #outputs 1 2
+manyArgs2(args) #outputs 3
+
+# Then you can do things like
+myfuns = [manyArgs1, manyArgs2]
+for fun in myfuns:
+  fun(args)
+# 1 2
+# 3
+
+# #}}}
+# key value arguments{{{
+# You can also send arguments with the key = value syntax.
+# This way the order of the arguments does not matter.
+def my_function(child3, child2, child1):
+  print("The youngest child is " + child3)
+my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+#The youngest child is Linus
+# #}}}
+# Arbitrary Keyword Arguments, **kwargs{{{
+# If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
+
+# This way the function will receive a dictionary of arguments, and can access the items accordingly:
+def my_function(**kid):
+  print("His last name is " + kid["lname"])
+
+my_function(fname = "Tobias", lname = "Refsnes")
+# His last name is Refsnes
+
+
+# And you can mix the two:
+def myfunc2(*args, **kwargs):
+   for a in args:
+       print a
+   for k,v in kwargs.iteritems():
+       print "%s = %s" % (k, v)
+myfunc2(1, 2, 3, banan=123)
+# 1
+# 2
+# 3
+# banan = 123
+# They must be both declared and called in that order, that is the function signature needs to be *args, **kwargs, and called in that order.
+
+
+# #}}}
+# Default Parameter Value{{{
+# The following example shows how to use a default parameter value.
+def my_function(country = "Norway"):
+  print("I am from " + country)
+# I am from Sweden
+# I am from India
+# I am from Norway
+# I am from Brazil
+
+# #}}}
+# Passing a List as an Argument{{{
+# You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
+def my_function(food):
+  for x in food:
+    print(x)
+fruits = ["apple", "banana", "cherry"]
+my_function(fruits)
+# apple
+# banana
+# cherry
+# #}}}
+# Return Values{{{
+# To let a function return a value, use the return statement:
+def my_function(x):
+  return 5 * x
+
+print(my_function(3))
+print(my_function(5))
+print(my_function(9))
+# 15
+# 25
+# 45
+
+# The return keyword is to exit a function and return a value.
+def myfunction():
+  return 3+3
+print(myfunction())
+# 6
+# you dont have to use the returned value
+def myfunction():
+  return 3+3
+  print '4' # orphaned code, wont run, no errors
+myfunction()
+# nothing happens
+
+
+
+# #}}}
+# The pass Statement# {{{
+# function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.
+def myfunction():
+  pass
+  # having an empty function definition like this, would raise an error without the pass statement#}}}
+# Recursion{{{
+# Python also accepts function recursion, which means a defined function can call itself.
+
+# Recursion is a common mathematical and programming concept. It means that a function calls itself. This has the benefit of meaning that you can loop through data to reach a result.
+
+# The developer should be very careful with recursion as it can be quite easy to slip into writing a function which never terminates, or one that uses excess amounts of memory or processor power. However, when written correctly recursion can be a very efficient and mathematically-elegant approach to programming.
+
+# In this example, tri_recursion() is a function that we have defined to call itself ("recurse"). We use the k variable as the data, which decrements (-1) every time we recurse. The recursion ends when the condition is not greater than 0 (i.e. when it is 0).
+
+# To a new developer it can take some time to work out how exactly this works, best way to find out is by testing and modifying it.
+
+
+
+
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 0
+  return result
+print("\n\nRecursion Example Results")
+tri_recursion(6)
+# Recursion Example Results
+# 1
+# 3
+# 6
+# 10
+# 15
+# 21#}}}
+# #}}}
+# Lambda functions{{{
+# A lambda function is a small anonymous function.
+a = 5
+x = lambda : a + 10
+print(x())
+#15
+
+# A lambda function can take any number of arguments, but can only have one expression.
+x = lambda a : a + 10
+print(x(5))
+# 15
+# Lambda functions can take any number of arguments:
+x = lambda a, b : a * b
+print(x(5, 6))
+# 30
+x = lambda a, b, c : a + b + c
+print(x(5, 6, 2))
+# 13
+
+# Why Use Lambda Functions?
+# The power of lambda is better shown when you use them as an anonymous function inside another function.
+# Say you have a function definition that takes one argument, and that argument will be multiplied with an unknown number:
+def myfunc(n):
+  return lambda a : a * n
+mydoubler = myfunc(2)
+print(mydoubler(11))
+# 22
+
+# Or, use the same function definition to make a function that always triples the number you send in:
+def myfunc(n):
+  return lambda a : a * n
+mytripler = myfunc(3)
+print(mytripler(11))
+# 33
+
+# Or, use the same function definition to make both functions, in the same program:
+def myfunc(n):
+  return lambda a : a * n
+mydoubler = myfunc(2)
+mytripler = myfunc(3)
+print(mydoubler(11))
+print(mytripler(11))
+# 22
+# 33
+# Use lambda functions when an anonymous function is required for a short period of time.
+
+# #}}}
+
+
+
 # python strings # {{{
 # Ordered
 # Immutable
 # Homogeneous (only store character data)
 # Accessed using index [] or slice []
 
+# string immutability{{{
+ # in Python, you can reassign a new value to a variable that holds a string. However, the immutability of strings refers to the fact that individual characters within a string cannot be modified directly.
 
+# Here's an example to clarify this:
+message = "Hello, World!"
+message = "Hi there!"
+# In the above code, the variable message initially holds the string "Hello, World!". However, when we reassign a new value to message using the statement message = "Hi there!", we are actually creating a new string object and assigning it to the variable message. The original string "Hello, World!" is not modified but replaced entirely.
+
+# This behavior is different from mutable objects like lists, where individual elements can be modified directly without creating a new object.
+
+# To illustrate the immutability of strings further:
+
+message = "Hello"
+message[0] = "J"  # This will raise a TypeError
+# In the above code, trying to modify the first character of the string message using message[0] = "J" will result in a TypeError. This error occurs because strings do not support item assignment, and individual characters cannot be changed directly.
+
+# So, while you can reassign a new value to a string variable, you cannot modify individual characters within the string. This is what is meant by the immutability of strings in Python.
+#}}}
 # Python Strings# {{{
 # https://www.w3schools.com/python/python_strings.asp
 # Strings in python are surrounded by either single quotation marks, or double quotation marks.
@@ -601,7 +1392,7 @@ txt = "The best things in life are free!"
 if "expensive" not in txt:
   print("No, 'expensive' is NOT present.")
 # No, 'expensive' is NOT present.# #}}}
-# Modify Strings# {{{
+# Modify Strings methods{{{
 # https://www.w3schools.com/python/python_strings_modify.asp
 a = "Hello, World!"
 print(a.upper())
@@ -1296,6 +2087,33 @@ thislist = ["apple", "banana", "cherry"]
  # apple
  # banana
  # cherry# #}}}
+# python comprehensions<!--{{{-->
+# In Python, comprehensions are a concise way to create lists, sets, and dictionaries using a single line of code. They provide a way to generate a new sequence by applying a transformation to each element of an existing sequence, or by filtering elements based on a condition.
+
+# Here are examples of Python comprehensions:
+
+# List comprehension:
+# # Create a list of squares of numbers from 1 to 5
+squares = [x*x for x in range(1, 6)]
+print(squares) # Output: [1, 4, 9, 16, 25]
+# In this example, we use a list comprehension to create a list of squares of numbers from 1 to 5. The comprehension consists of an expression (x*x) followed by a for loop that iterates over the range of numbers from 1 to 5.
+
+# Set comprehension:
+# apache
+# # Create a set of even numbers from 1 to 10
+evens = {x for x in range(1, 11) if x % 2 == 0}
+print(evens) # Output: {2, 4, 6, 8, 10}
+# In this example, we use a set comprehension to create a set of even numbers from 1 to 10. The comprehension consists of an expression (x) followed by a for loop that iterates over the range of numbers from 1 to 10, and a condition that filters out odd numbers.
+
+# Dictionary comprehension:
+# apache
+# Create a dictionary of squares of numbers from 1 to 5
+squares_dict = {x: x*x for x in range(1, 6)}
+print(squares_dict) # Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+# In this example, we use a dictionary comprehension to create a dictionary of squares of numbers from 1 to 5. The comprehension consists of a key-value pair (x: x*x) followed by a for loop that iterates over the range of numbers from 1 to 5.
+
+# Comprehensions are a powerful and flexible feature of Python that can be used to create new sequences in a concise and readable way. They are often used in conjunction with other Python features, such as functional programming techniques and higher-order functions, to create more expressive and modular code.
+# <!--}}}-->
 # List Comprehension# {{{
 # https://www.w3schools.com/python/python_lists_comprehension.asp
 # List Comprehension
@@ -2029,7 +2847,7 @@ my_tuple[1] = "World"  # This will raise a TypeError, tuples are immutable
 
 # }}}
 # #}}}
-# frozenset# {{{
+# frozenset (immutable set)# {{{
 # In Python, a frozenset is an immutable variant of the built-in set data type. Like a set, a frozenset is an unordered collection of unique elements, but once it is created, it cannot be modified. This means that you cannot add, remove, or modify elements in a frozenset.
 
 # frozensets are useful when you want to use a set as a key in a dictionary or as an element in another set, because they are immutable and hashable. Since frozensets are immutable, they can be safely used as keys in dictionaries or as elements in other sets without the risk of their contents being unintentionally modified.
@@ -2734,739 +3552,45 @@ class MySubclass(MyClass):
 # In this example, we define a class MyClass with a constant MY_CONSTANT and a method my_method. We use the final keyword to indicate that both the constant and the method should not be overridden or reassigned.
 
 # We then attempt to reassign the constant and override the method, and see that both operations raise a TypeError, indicating that the final keyword is working as expected.
+
 # }}}
 
 
-# Python Booleans expressions# {{{
-# https://www.w3schools.com/python/python_booleans.asp
-# Booleans represent one of two values: True or False.
-# Boolean Values
-# In programming you often need to know if an expression is True or False.
-
-# You can evaluate any expression in Python, and get one of two answers, True or False.
-
-# When you compare two values, the expression is evaluated and Python returns the Boolean answer:
-print(10 > 9)
-print(10 == 9)
-print(10 < 9)
-# True
-# False
-# False
-
-# When you run a condition in an if statement, Python returns True or False:
-a = 200
-b = 33
-if b > a:
-  print("b is greater than a")
-else:
-  print("b is not greater than a")
-a = 200
-b = 33
-# b is not greater than a
-
-# Evaluate Values and Variables
-# The bool() function allows you to evaluate any value, and give you True or False in return,
-print(bool("Hello"))
-print(bool(15))
-True
-True
-x = "Hello"
-y = 15
-print(bool(x))
-print(bool(y))
-# True
-# True
-
-# Most Values are True
-# Almost any value is evaluated to True if it has some sort of content.
-# Any string is True, except empty strings.
-# Any number is True, except 0.
-# Any list, tuple, set, and dictionary are True, except empty ones.
-print(bool("abc"))
-print(bool(123))
-print(bool(["apple", "cherry", "banana"]))
-# True
-# True
-# True
-
-# Some Values are False
-# In fact, there are not many values that evaluate to False, except empty values, such as (), [], {}, "", the number 0, and the value None. And of course the value False evaluates to False.
-print(bool(False))
-print(bool(None))
-print(bool(0))
-print(bool(""))
-print(bool(()))
-print(bool([]))
-print(bool({}))
-# False
-# False
-# False
-# False
-# False
-# False
-# False
-
-# One more value, or object in this case, evaluates to False, and that is if you have an object that is made from a class with a __len__ function that returns 0 or False:
-class myclass():
-  def __len__(self):
-    return 0
-
-myobj = myclass()
-print(bool(myobj))
-# False
-
-# Functions can Return a Boolean
-# You can create functions that returns a Boolean Value:
-def myFunction() :
-  return True
-print(myFunction())
-# True
-
-# You can execute code based on the Boolean answer of a function:
-def myFunction() :
-  return True
-if myFunction():
-  print("YES!")
-else:
-  print("NO!")
-# YES!
-
-# Python also has many built-in functions that return a boolean value, like the isinstance() function, which can be used to determine if an object is of a certain data type:
-x = 200
-print(isinstance(x, int))
-# True
-
-# #}}}
-# Python Operators # {{{
-# https://www.w3schools.com/python/python_operators.asp
-# python truthy and falsy
-# The following values are considered "falsy" in Python:
-
-# False
-# None
-# 0 (integer)
-# 0.0 (float)
-# '' (empty string)
-# [] (empty list)
-# {} (empty dictionary)
-# () (empty tuple)
-# any other object or value whose __bool__() or __len__() method returns False
-# All other values in Python are considered "truthy", including:
-
-# True
-# any non-zero integer or float
-# any non-empty string, list, dictionary, or tuple
-# any object or value whose __bool__() or __len__() method returns True
-# Here are some examples of truthy and falsy values in Python:
-
-# Falsy values
-bool(False)   # False
-bool(None)    # False
-bool(0)       # False
-bool(0.0)     # False
-bool('')      # False
-bool([])      # False
-bool({})      # False
-bool(())      # False
-
-# Truthy values
-bool(True)    # True
-bool(1)       # True
-bool(3.14)    # True
-bool('hello') # True
-bool(['a', 'b', 'c']) # True
-bool({'key': 'value'}) # True
-bool((1, 2, 3)) # True
-# While "truthy" and "falsy" are commonly used terms in the Python community to describe values that are implicitly evaluated as true or false in a Boolean context, they are not official Python keywords or reserved words.
-
-# Python's official documentation does not use these terms, but instead refers to "truth value testing" or "Boolean context". The bool() function is used to explicitly convert a value to a Boolean value, and the if statement or other Boolean expressions are used to implicitly test the truth value of a value.
-
-# So while "truthy" and "falsy" are not official terminology in Python, they are widely used and understood within the Python community.
-
-
-# Python Operators
-# Operators are used to perform operations on variables and values.
-
-# In the example below, we use the + operator to add together two values:
-print(10 + 5)
-# 15
-
-
-# Python divides the operators in the following groups:
-# Arithmetic operators
-# Assignment operators
-# Comparison operators
-# Logical operators
-# Identity operators
-# Membership operators
-# Bitwise operators
-
-
-# Python Arithmetic Operators
-# Arithmetic operators are used with numeric values to perform common mathematical operations:
-# Operator	Name	Example
-# +	Addition	x + y	
-# -	Subtraction	x - y	
-# *	Multiplication	x * y	
-# /	Division (includes remainder as float)	x / y	
-# %	Modulus	x % y	
-# **	Exponentiation	x ** y	
-# //	Floor division (rounds down to nearest int)	x // y
-
-
-# Python Assignment Operators
-# Assignment operators are used to assign values to variables:
-# Operator	Example	       Same As	
-# =	x = 5	x = 5	
-# +=	    x += 3	       x = x + 3	
-# -=	    x -= 3	       x = x - 3	
-# *=	    x *= 3	       x = x * 3	
-# /=	    x /= 3	       x = x / 3	
-# %=	    x %= 3	       x = x % 3	
-# //=	    x //= 3	       x = x // 3	
-# **=	    x **= 3	       x = x ** 3	
-# &=	    x &= 3	       x = x & 3	
-# |=	    x |= 3	       x = x | 3	
-# ^=	    x ^= 3	       x = x ^ 3	
-# >>=	    x >>= 3	       x = x >> 3	
-# <<=	    x <<= 3	       x = x << 3
-# Python Comparison Operators
-# Comparison operators are used to compare two values:
-
-# Operator	Name	Example
-# ==	Equal	x == y	
-# !=	Not equal	x != y	
-# >	Greater than	x > y	
-# <	Less than	x < y	
-# >=	Greater than or equal to	x >= y	
-# <=	Less than or equal to	x <= y
-
-# Python Logical Operators (combine boolean expressions)
-# Logical operators are used to combine conditional statements:
-
-# Operator	Description	Example
-# and 	Returns True if both statements are true	x < 5 and  x < 10	
-# or	Returns True if one of the statements is true	x < 5 or x < 4	
-# not	Reverse the result, returns False if the result is true	not(x < 5 and x < 10)
-# note using the ! operator instead of the not operator will throw an error
-print(not(5<4 or 3<4))# prints false
-print(!(5<4 or 3<4)) # throws error
-
-# Python Identity Operators
-# Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:
-
-# Operator	Description	Example
-# is 	Returns True if both variables are the same object	x is y	
-# is not	Returns True if both variables are not the same object	x is not y
-# Python Membership Operators
-# Membership operators are used to test if a sequence is presented in an object:
-
-# Operator	Description	Example
-# in 	Returns True if a sequence with the specified value is present in the object	x in y	
-# not in	Returns True if a sequence with the specified value is not present in the object	x not in y
-# Python Bitwise Operators
-# Bitwise operators are used to compare (binary) numbers:
-
-# Operator	Name	Description	Example
-
-# & 	AND	Sets each bit to 1 if both bits are 1	x & y	
-# |	OR	Sets each bit to 1 if one of two bits is 1	x | y	
-# ^	XOR	Sets each bit to 1 if only one of two bits is 1	x ^ y	
-# ~	NOT	Inverts all the bits	~x	
-# <<	Zero fill left shift	Shift left by pushing zeros in from the right and let the leftmost bits fall off	x << 2	
-# >>	Signed right shift	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	x >> 2
-
-# Operator Precedence
-# Operator precedence describes the order in which operations are performed.
-print((6 + 3) - (6 + 3))
-# Parenthesis have the highest precedence, and need to be evaluated first.
-# The calculation above reads 9 - 9 = 0
+# the range() function{{{
+# To loop through a set of code a specified number of times, we can use the range() function,
+# The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and ends at a specified number.
+for x in range(6):
+  print(x)
 # 0
-
-print(100 + 5 * 3)
-# Multiplication has higher precedence than addition, and needs to be evaluated first.
-# The calculation above reads 100 + 15 = 115
-# 115
-
-# The precedence order is described in the table below, starting with the highest precedence at the top:
-# Operator	Description
-# ()	Parentheses	
-# **	Exponentiation	
-# +x  -x  ~x	Unary plus, unary minus, and bitwise NOT	
-# *  /  //  %	Multiplication, division, floor division, and modulus	
-# +  -	Addition and subtraction	
-# <<  >>	Bitwise left and right shifts	
-# &	Bitwise AND	
-# ^	Bitwise XOR	
-# |	Bitwise OR	
-# ==  !=  >  >=  <  <=  is  is not  in  not in 	Comparisons, identity, and membership operators	
-# not	Logical NOT	
-# and	AND	
-# or	OR	
-
-
-# If two operators have the same precedence, the expression is evaluated from left to right.
-print(5 + 4 - 7 + 3)
-# Additions and subtractions have the same precedence, and we need to calculate from left to right.
-# The calculation above reads:
-# 5 + 4 = 9
-# 9 - 7 = 2
-# 2 + 3 = 5
-
-# 5# #}}}
-
-# Python Functions{{{
-def my_function():
-  print("Hello from a function")
-my_function() # Hello from a function
-
-# passing arguments{{{
-def my_function(fname):
-  print(fname + " Refsnes")
-
-my_function("Emil")
-my_function("Tobias")
-my_function("Linus")
-# Emil Refsnes
-# Tobias Refsnes
-# Linus Refsnes
-
-# error with incorrect number of args
-def my_function(fname, lname):
-  print(fname + " " + lname)
-my_function("Emil") #error
-# Traceback (most recent call last):
-  # File "demo_function_args_error.py", line 4, in <module>
-    # my_function("Emil")
-# TypeError: my_function() missing 1 required positional argument: 'lname'
-# #}}}
-# arbitrary args{{{
-# If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
-# This way the function will receive a tuple of arguments, and can access the items accordingly:
-def my_function(*kids):
-  print("The youngest child is " + kids[2])
-my_function("Emil", "Tobias", "Linus")
-#The youngest child is Linus
-
-def my_function(*kids):
-  print("The youngest child is " + kids[4])
-my_function("Emil", "Tobias", "Linus")
-# Traceback (most recent call last):
-  # File "/home/mrtophatjones/n/python/forExecution.py", line 3, in <module>
-    # my_function("Emil", "Tobias", "Linus")
-  # File "/home/mrtophatjones/n/python/forExecution.py", line 2, in my_function
-    # print("The youngest child is " + kids[4])
-# IndexError: tuple index out of range
-
-def my_function(*fname, lname):
-  print(fname + " " + lname)
-my_function("Emil") #error
-# Traceback (most recent call last):
-  # File "/home/mrtophatjones/n/python/forExecution.py", line 3, in <module>
-    # my_function("Emil") #error
-# TypeError: my_function() missing 1 required keyword-only argument: 'lname'
-
-# cant have more than 1 arbitrary args
-def my_function(*fname, *lname):
-  print(fname + " " + lname)
-my_function("Emil") #error
-# File "/home/mrtophatjones/n/python/forExecution.py", line 1
-    # def my_function(*fname, *lname):
-                            # ^
-# SyntaxError: invalid syntax
-
-#print number of args
-def manyArgs(*arg):
-  print ("I was called with", len(arg), "arguments:", arg)
-manyArgs(1,2,3,4) #I was called with 4 arguments: (1, 2, 3, 4)
-
-
-
-
-# Sometimes you don't want to specify the number of arguments and want to use keys for them (the compiler will complain if one argument passed in a dictionary is not used in the method).
-
-def manyArgs1(args):
-  print args.a, args.b #note args.c is not used here
-
-def manyArgs2(args):
-  print args.c #note args.b and .c are not used here
-
-class Args: pass
-
-args = Args()
-args.a = 1
-args.b = 2
-args.c = 3
-manyArgs1(args) #outputs 1 2
-manyArgs2(args) #outputs 3
-
-# Then you can do things like
-myfuns = [manyArgs1, manyArgs2]
-for fun in myfuns:
-  fun(args)
-# 1 2
-# 3
-
-# #}}}
-# key value arguments{{{
-# You can also send arguments with the key = value syntax.
-# This way the order of the arguments does not matter.
-def my_function(child3, child2, child1):
-  print("The youngest child is " + child3)
-my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
-#The youngest child is Linus
-# #}}}
-# Arbitrary Keyword Arguments, **kwargs{{{
-# If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
-
-# This way the function will receive a dictionary of arguments, and can access the items accordingly:
-def my_function(**kid):
-  print("His last name is " + kid["lname"])
-
-my_function(fname = "Tobias", lname = "Refsnes")
-# His last name is Refsnes
-
-
-# And you can mix the two:
-def myfunc2(*args, **kwargs):
-   for a in args:
-       print a
-   for k,v in kwargs.iteritems():
-       print "%s = %s" % (k, v)
-myfunc2(1, 2, 3, banan=123)
 # 1
 # 2
 # 3
-# banan = 123
-# They must be both declared and called in that order, that is the function signature needs to be *args, **kwargs, and called in that order.
-
-
-# #}}}
-# Default Parameter Value{{{
-# The following example shows how to use a default parameter value.
-def my_function(country = "Norway"):
-  print("I am from " + country)
-# I am from Sweden
-# I am from India
-# I am from Norway
-# I am from Brazil
-
-# #}}}
-# Passing a List as an Argument{{{
-# You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
-def my_function(food):
-  for x in food:
-    print(x)
-fruits = ["apple", "banana", "cherry"]
-my_function(fruits)
-# apple
-# banana
-# cherry
-# #}}}
-# Return Values{{{
-# To let a function return a value, use the return statement:
-def my_function(x):
-  return 5 * x
-
-print(my_function(3))
-print(my_function(5))
-print(my_function(9))
-# 15
-# 25
-# 45
-
-# The return keyword is to exit a function and return a value.
-def myfunction():
-  return 3+3
-print(myfunction())
-# 6
-# you dont have to use the returned value
-def myfunction():
-  return 3+3
-  print '4' # orphaned code, wont run, no errors
-myfunction()
-# nothing happens
-
-
-
-# #}}}
-# The pass Statement# {{{
-# function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.
-def myfunction():
-  pass
-  # having an empty function definition like this, would raise an error without the pass statement#}}}
-# Recursion{{{
-# Python also accepts function recursion, which means a defined function can call itself.
-
-# Recursion is a common mathematical and programming concept. It means that a function calls itself. This has the benefit of meaning that you can loop through data to reach a result.
-
-# The developer should be very careful with recursion as it can be quite easy to slip into writing a function which never terminates, or one that uses excess amounts of memory or processor power. However, when written correctly recursion can be a very efficient and mathematically-elegant approach to programming.
-
-# In this example, tri_recursion() is a function that we have defined to call itself ("recurse"). We use the k variable as the data, which decrements (-1) every time we recurse. The recursion ends when the condition is not greater than 0 (i.e. when it is 0).
-
-# To a new developer it can take some time to work out how exactly this works, best way to find out is by testing and modifying it.
-
-
-
-
-def tri_recursion(k):
-  if(k > 0):
-    result = k + tri_recursion(k - 1)
-    print(result)
-  else:
-    result = 0
-  return result
-print("\n\nRecursion Example Results")
-tri_recursion(6)
-# Recursion Example Results
-# 1
+# 4
+# 5
+# Note that range(6) is not the values of 0 to 6, but the values 0 to 5.
+# The range() function defaults to 0 as a starting value, however it is possible to specify the starting value by adding a parameter: range(2, 6), which means values from 2 to 6 (but not including 6):
+for x in range(2, 6):
+  print(x)
+# 2
 # 3
-# 6
-# 10
-# 15
-# 21#}}}
-# #}}}
-# If ... Else{{{
-# https://www.w3schools.com/python/python_conditions.asp
-# Python Conditions and If statements
-# Python supports the usual logical conditions from mathematics:
-
-# Equals: a == b
-# Not Equals: a != b
-# Less than: a < b
-# Less than or equal to: a <= b
-# Greater than: a > b
-# Greater than or equal to: a >= b
-# These conditions can be used in several ways, most commonly in "if statements" and loops.
-
-# An "if statement" is written by using the if keyword.
-a = 33
-b = 200
-if b > a:
-  print("b is greater than a")
-# b is greater than a
-
-# If statement, without indentation (will raise an error):
-a = 33
-b = 200
-if b > a:
-print("b is greater than a") # you will get an error
-  # File "demo_if_error.py", line 4
-    # print("b is greater than a")
-        # ^
-# IndentationError: expected an indented block
-
-# Elif
-a = 33
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")
-# a and b are equal
-
-# Else
-a = 200
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")
-else:
-  print("a is greater than b")
-# a is greater than b
-
-a = 200
-b = 33
-if b > a:
-  print("b is greater than a")
-else:
-  print("b is not greater than a")
-# b is not greater than a
-
-# Short Hand If
-if a > b: print("a is greater than b")
-# "a is greater than b"
-
-# Short Hand If ... Else or ternary operator. if true do first thing, if not, do second thing
-a = 2
-b = 330
-print("A") if a > b else print("B")
-# B
-
-# You can also have multiple else statements (ternary operators) on the same line:
-a = 330
-b = 330
-print("A") if a > b else print("=") if a == b else print("B")
-# =
-
-# And
-a = 200
-b = 33
-c = 500
-if a > b and c > a:
-  print("Both conditions are True")
-# Both conditions are True
-
-# Or
-a = 200
-b = 33
-c = 500
-if a > b or a > c:
-  print("At least one of the conditions is True")
-# At least one of the conditions is True
-
-# Not
-a = 33
-b = 200
-if not a > b:
-  print("a is NOT greater than b")
-# a is NOT greater than b
-
-# Nested If
-x = 41
-if x > 10:
-  print("Above ten,")
-  if x > 20:
-    print("and also above 20!")
-  else:
-    print("but not above 20.")
-# Above ten,
-# and also above 20!
-
-# The pass Statement
-# if statements cannot be empty, but if you for some reason have an if statement with no content, put in the pass statement to avoid getting an error.
-a = 33
-b = 200
-if b > a:
-  pass
-# having an empty if statement like this, would raise an error without the pass statement
-
-
-
-# #}}}
-# match statement(switch elsewhere){{{
-# A match statement takes an expression and compares its value to successive patterns given as one or more case blocks. This is superficially similar to a switch statement in C, Java or JavaScript (and many other languages), but it’s more similar to pattern matching in languages like Rust or Haskell. Only the first pattern that matches gets executed and it can also extract components (sequence elements or object attributes) from the value into variables.
-
-# The simplest form compares a subject value against one or more literals:
-
-def http_error(status):
-    match status:
-        case 400:
-            return "Bad request"
-        case 404:
-            return "Not found"
-        case 418:
-            return "I'm a teapot"
-        case _:
-            return "Something's wrong with the internet"
-# Note the last block: the “variable name” _ acts as a wildcard and never fails to match. If no case matches, none of the branches is executed.
-
-# You can combine several literals in a single pattern using | (“or”):
-
-# case 401 | 403 | 404:
-    # return "Not allowed"
-# Patterns can look like unpacking assignments, and can be used to bind variables:
-
-# point is an (x, y) tuple
-match point:
-    case (0, 0):
-        print("Origin")
-    case (0, y):
-        print(f"Y={y}")
-    case (x, 0):
-        print(f"X={x}")
-    case (x, y):
-        print(f"X={x}, Y={y}")
-    case _:
-        raise ValueError("Not a point")
-# Study that one carefully! The first pattern has two literals, and can be thought of as an extension of the literal pattern shown above. But the next two patterns combine a literal and a variable, and the variable binds a value from the subject (point). The fourth pattern captures two values, which makes it conceptually similar to the unpacking assignment (x, y) = point.
-
-# If you are using classes to structure your data you can use the class name followed by an argument list resembling a constructor, but with the ability to capture attributes into variables:
-
-class Point:
-    x: int
-    y: int
-
-def where_is(point):
-    match point:
-        case Point(x=0, y=0):
-            print("Origin")
-        case Point(x=0, y=y):
-            print(f"Y={y}")
-        case Point(x=x, y=0):
-            print(f"X={x}")
-        case Point():
-            print("Somewhere else")
-        case _:
-            print("Not a point")
-# You can use positional parameters with some builtin classes that provide an ordering for their attributes (e.g. dataclasses). You can also define a specific position for attributes in patterns by setting the __match_args__ special attribute in your classes. If it’s set to (“x”, “y”), the following patterns are all equivalent (and all bind the y attribute to the var variable):
-
-Point(1, var)
-Point(1, y=var)
-Point(x=1, y=var)
-Point(y=var, x=1)
-# A recommended way to read patterns is to look at them as an extended form of what you would put on the left of an assignment, to understand which variables would be set to what. Only the standalone names (like var above) are assigned to by a match statement. Dotted names (like foo.bar), attribute names (the x= and y= above) or class names (recognized by the “(…)” next to them like Point above) are never assigned to.
-
-# Patterns can be arbitrarily nested. For example, if we have a short list of points, we could match it like this:
-
-match points:
-    case []:
-        print("No points")
-    case [Point(0, 0)]:
-        print("The origin")
-    case [Point(x, y)]:
-        print(f"Single point {x}, {y}")
-    case [Point(0, y1), Point(0, y2)]:
-        print(f"Two on the Y axis at {y1}, {y2}")
-    case _:
-        print("Something else")
-# We can add an if clause to a pattern, known as a “guard”. If the guard is false, match goes on to try the next case block. Note that value capture happens before the guard is evaluated:
-
-match point:
-    case Point(x, y) if x == y:
-        print(f"Y=X at {x}")
-    case Point(x, y):
-        print(f"Not on the diagonal")
-# Several other key features of this statement:
-
-# Like unpacking assignments, tuple and list patterns have exactly the same meaning and actually match arbitrary sequences. An important exception is that they don’t match iterators or strings.
-
-# Sequence patterns support extended unpacking: [x, y, *rest] and (x, y, *rest) work similar to unpacking assignments. The name after * may also be _, so (x, y, *_) matches a sequence of at least two items without binding the remaining items.
-
-# Mapping patterns: {"bandwidth": b, "latency": l} captures the "bandwidth" and "latency" values from a dictionary. Unlike sequence patterns, extra keys are ignored. An unpacking like **rest is also supported. (But **_ would be redundant, so it is not allowed.)
-
-# Subpatterns may be captured using the as keyword:
-
-# case (Point(x1, y1), Point(x2, y2) as p2): ...
-# will capture the second element of the input as p2 (as long as the input is a sequence of two points)
-
-# Most literals are compared by equality, however the singletons True, False and None are compared by identity.
-
-# Patterns may use named constants. These must be dotted names to prevent them from being interpreted as capture variable:
-
-from enum import Enum
-class Color(Enum):
-    RED = 'red'
-    GREEN = 'green'
-    BLUE = 'blue'
-
-color = Color(input("Enter your choice of 'red', 'blue' or 'green': "))
-
-match color:
-    case Color.RED:
-        print("I see red!")
-    case Color.GREEN:
-        print("Grass is green")
-    case Color.BLUE:
-        print("I'm feeling the blues :(")
-# For a more detailed explanation and additional examples, you can look into PEP 636 which is written in a tutorial format.
+# 4
+# 5
+# The range() function defaults to increment the sequence by 1, however it is possible to specify the increment value by adding a third parameter: range(2, 30, 3):
+for x in range(2, 30, 3):
+  print(x)
+# 2
+# 5
+# 8
+# 11
+# 14
+# 17
+# 20
+# 23
+# 26
+# 29
 # }}}
 
-# Why are there no ++ and -- operators in Python?# {{{
-# https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python#:~:text=Because%2C%20in%20Python%2C%20integers%20are,actually%20returns%20a%20different%20object).
-# python doesnt include these operators because they are essentially extra
- # #}}}
+
 # For Loops{{{
 # https://www.w3schools.com/python/python_for_loops.asp
 # A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
@@ -3517,38 +3641,6 @@ for x in fruits:
 # cherry
 
 # The range() Function
-# To loop through a set of code a specified number of times, we can use the range() function,
-# The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and ends at a specified number.
-for x in range(6):
-  print(x)
-# 0
-# 1
-# 2
-# 3
-# 4
-# 5
-# Note that range(6) is not the values of 0 to 6, but the values 0 to 5.
-# The range() function defaults to 0 as a starting value, however it is possible to specify the starting value by adding a parameter: range(2, 6), which means values from 2 to 6 (but not including 6):
-for x in range(2, 6):
-  print(x)
-# 2
-# 3
-# 4
-# 5
-# The range() function defaults to increment the sequence by 1, however it is possible to specify the increment value by adding a third parameter: range(2, 30, 3):
-for x in range(2, 30, 3):
-  print(x)
-# 2
-# 5
-# 8
-# 11
-# 14
-# 17
-# 20
-# 23
-# 26
-# 29
-
 # Else in For Loop
 # The else keyword in a for loop specifies a block of code to be executed when the loop is finished:
 for x in range(6):
@@ -3618,7 +3710,9 @@ A tuple (5, 6)
 First 1 then 2
 First 3 then 4
 First 5 then 6
-# The enumerate function creates an iterable of tuples, so it can be used this way.<!--}}}-->
+# The enumerate function creates an iterable of tuples, so it can be used this way.
+
+# <!--}}}-->
 # While Loops{{{
 i = 1
 while i < 6:
@@ -3669,7 +3763,7 @@ else:
 # 4
 # 5
 # i is no longer less than 6#}}}
-#infinie loops in python# {{{
+# #infinie loops in pythnn# {{{
 count = 0
 while True:
     count += 1
@@ -3823,52 +3917,103 @@ for x in myiter:
 # 19
 # 20
 
+# all function> 
+# The all() function returns True if all items in an itterable are true, otherwise it returns False.
+
+# If the iterable object is empty, the all() function also returns True.
+# Check if all items in a list are True:
+# <!-- mylist = [0, 1, 1]
+# x = all(mylist) -->
+# in python 0 is evaluated to false
+# 1 is evaluated to true
+# > 
 
 # #}}}
+# The zip function# {{{
+# https://teclado.com/30-days-of-python/python-30-day-9-enumerate-zip/
+# zip is an extremely powerful and versatile function used to combined two or more iterables into a single iterable.
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+# zip will allow us to turn this into a new iterable which contains the following:
+("Paul", "Fluffy"), ("Andrea", "Bubbles"), ("Marta", "Captain Catsworth")
+# In essence, it takes the first item from each iterable, and puts together them in a tuple. Then it takes the second item from each iterable, and so on, until one of the iterables runs out of values. We'll come back to this point later, because it's really important.
 
-# Lambda functions{{{
-# A lambda function is a small anonymous function.
-# A lambda function can take any number of arguments, but can only have one expression.
-x = lambda a : a + 10
-print(x(5))
-# 15
-# Lambda functions can take any number of arguments:
-x = lambda a, b : a * b
-print(x(5, 6))
-# 30
-x = lambda a, b, c : a + b + c
-print(x(5, 6, 2))
-# 13
+# To use zip, all we have to do is call the function and pass in the iterables we want to zip together.
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+pets_and_owners = zip(pet_owners, pets)
+# If we want to zip three or even more iterables together, we can just keep passing more and more items to zip when we call it.
 
-# Why Use Lambda Functions?
-# The power of lambda is better shown when you use them as an anonymous function inside another function.
-# Say you have a function definition that takes one argument, and that argument will be multiplied with an unknown number:
-def myfunc(n):
-  return lambda a : a * n
-mydoubler = myfunc(2)
-print(mydoubler(11))
-# 22
+# Much like range, zip is lazy, which means it only calculates the next value when we request it. We therefore can't print it directly, but we can convert it to something like a list if we want to see the output:
+print(list(pets_and_owners))
+# [('Paul', 'Fluffy'), ('Andrea', 'Bubbles'), ('Marta', 'Captain Catsworth')]
 
-# Or, use the same function definition to make a function that always triples the number you send in:
-def myfunc(n):
-  return lambda a : a * n
-mytripler = myfunc(3)
-print(mytripler(11))
-# 33
+# Using zip in loops
+# Another very common way to use zip is to iterate over two or more iterables at once in a for loop.
+# Let's go back to our pet owners example, but now I want to print some output which describes who owns which pet.
+# We can use zip and a bit of destructuring to do this in a really clear way, because we get to use nice clear variable names in the loop:
 
-# Or, use the same function definition to make both functions, in the same program:
-def myfunc(n):
-  return lambda a : a * n
-mydoubler = myfunc(2)
-mytripler = myfunc(3)
-print(mydoubler(11))
-print(mytripler(11))
-# 22
-# 33
-# Use lambda functions when an anonymous function is required for a short period of time.
+pet_owners = ["Paul", "Andrea", "Marta"]
+pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+for owner, pet in zip(pet_owners, pets):
+    print(f"{owner} owns {pet}.")
+# The common alternative to using zip is the nasty range + len pattern we saw earlier with enumerate. I'd recommend avoiding that at all costs!
 
-# #}}}
-# Arrays{{{
+
+
+
+# A caveat for when using enumerate and zip
+# One thing you should be aware of when it comes to enumerate and zip is that they are consumed when we iterate over them. This generally isn't a problem when we use them directly in loops, but it can sometimes trip up newer developers when they assign a zip or enumerate object to a variable.
+# Here is an example where we assign the result of calling zip to a variable:
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = zip(movie_titles, movie_directors)
+# We can iterate over movies without any problems:
+for title, director in movies:
+    print(f"{title} by {director}.")
+# However, if we now try to use movies again, we'll find that it's empty. Try running the code below to see this:
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = zip(movie_titles, movie_directors)
+for title, director in movies:
+    print(f"{title} by {director}.")
+movies_list = list(movies)
+print(f"There are {len(movies_list)} movies in the collection.")
+print(f"These are our movies: {movies_list}.")
+# If you try to iterate over movies after the initial loop, you'll also find that it contains no values.
+# The reason that this happens is because zip and enumerate produce something called an iterator. We're not going to be talking about iterators in any depth in this series, as iterators are an advanced topic, but one key feature of iterators is that they're consumed when we request their values. This is actually a really useful feature, but it's also a common source of bugs if you're not familiar with this behaviour.
+# An easy way to bypass this limitation is to just convert the iterator to a non-iterator collection, like a list or tuple.
+movie_titles = [
+    "Forrest Gump",
+    "Howl's Moving Castle",
+    "No Country for Old Men"
+]
+movie_directors = [
+    "Robert Zemeckis",
+    "Hayao Miyazaki",
+    "Joel and Ethan Coen"
+]
+movies = list(zip(movie_titles, movie_directors))
+# Now we can access the values in movies as many times as we like.
+# }}}
+
+# Arrays (){{{
 # https://www.w3schools.com/python/python_arrays.asp
 # Python does not have built-in support for Arrays, but Python Lists can be used instead.
 # #}}}
@@ -4295,9 +4440,12 @@ myfunc()
 print(x)
 # 300
 # 300
+
+
 # even nested two or more levels deep
+x = 300
 def myfunc():
-  x = 300
+  print(x)
   def myinnerfunc():
     print(x)
     def innerinner():
@@ -4305,6 +4453,7 @@ def myfunc():
     innerinner()
   myinnerfunc()
 myfunc()
+# 300
 # 300
 # 300
 
@@ -4557,7 +4706,7 @@ print(x.strftime("%B"))
 # %V	ISO 8601 weeknumber (01-53)	01	
 # # #}}}
 
-# Math# {{{
+# Math functions and methods# {{{
 # https://www.w3schools.com/python/python_math.asp
 # Python has a set of built-in math functions, including an extensive math module, that allows you to perform mathematical tasks on numbers.
 # Built-in Math Functions
@@ -4608,7 +4757,9 @@ x = math.pi
 print(x)
 # 3.141592653589793
 
-# Python JSON
+
+# #}}}
+# Python JSON{{{
 # https://www.w3schools.com/python/python_json.asp
 # JSON is a syntax for storing and exchanging data.
 # JSON is text, written with JavaScript object notation.
@@ -4856,9 +5007,7 @@ print(json.dumps(x, indent=4, sort_keys=True))
     # "name": "John",
     # "pets": null
 # }
-
-
-# #}}}
+# }}}
 # Python RegEx# {{{
 # https://www.w3schools.com/python/python_regex.asp
 # A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
@@ -5373,87 +5522,294 @@ with open('file.txt', 'r') as f:
 
 # The with statement can also be used to manage resources like network connections, database connections, or locks. By using the with statement, you can ensure that the resources are properly initialized and cleaned up, even if an exception is raised during execution.
 
-# In summary, the with statement is a convenient way to manage resources and reduce the likelihood of errors or resource leaks in your code. It provides a cleaner and more readable way to handle certain types of operations that require resource management.# }}}
-# The zip function# {{{
-# https://teclado.com/30-days-of-python/python-30-day-9-enumerate-zip/
-# zip is an extremely powerful and versatile function used to combined two or more iterables into a single iterable.
-pet_owners = ["Paul", "Andrea", "Marta"]
-pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
-# zip will allow us to turn this into a new iterable which contains the following:
-("Paul", "Fluffy"), ("Andrea", "Bubbles"), ("Marta", "Captain Catsworth")
-# In essence, it takes the first item from each iterable, and puts together them in a tuple. Then it takes the second item from each iterable, and so on, until one of the iterables runs out of values. We'll come back to this point later, because it's really important.
+# In summary, the with statement is a convenient way to manage resources and reduce the likelihood of errors or resource leaks in your code. It provides a cleaner and more readable way to handle certain types of operations that require resource management.
 
-# To use zip, all we have to do is call the function and pass in the iterables we want to zip together.
-pet_owners = ["Paul", "Andrea", "Marta"]
-pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
-pets_and_owners = zip(pet_owners, pets)
-# If we want to zip three or even more iterables together, we can just keep passing more and more items to zip when we call it.
-
-# Much like range, zip is lazy, which means it only calculates the next value when we request it. We therefore can't print it directly, but we can convert it to something like a list if we want to see the output:
-print(list(pets_and_owners))
-# [('Paul', 'Fluffy'), ('Andrea', 'Bubbles'), ('Marta', 'Captain Catsworth')]
-
-# Using zip in loops
-# Another very common way to use zip is to iterate over two or more iterables at once in a for loop.
-# Let's go back to our pet owners example, but now I want to print some output which describes who owns which pet.
-# We can use zip and a bit of destructuring to do this in a really clear way, because we get to use nice clear variable names in the loop:
-
-pet_owners = ["Paul", "Andrea", "Marta"]
-pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
-for owner, pet in zip(pet_owners, pets):
-    print(f"{owner} owns {pet}.")
-# The common alternative to using zip is the nasty range + len pattern we saw earlier with enumerate. I'd recommend avoiding that at all costs!
-
-
-
-
-# A caveat for when using enumerate and zip
-# One thing you should be aware of when it comes to enumerate and zip is that they are consumed when we iterate over them. This generally isn't a problem when we use them directly in loops, but it can sometimes trip up newer developers when they assign a zip or enumerate object to a variable.
-# Here is an example where we assign the result of calling zip to a variable:
-movie_titles = [
-    "Forrest Gump",
-    "Howl's Moving Castle",
-    "No Country for Old Men"
-]
-movie_directors = [
-    "Robert Zemeckis",
-    "Hayao Miyazaki",
-    "Joel and Ethan Coen"
-]
-movies = zip(movie_titles, movie_directors)
-# We can iterate over movies without any problems:
-for title, director in movies:
-    print(f"{title} by {director}.")
-# However, if we now try to use movies again, we'll find that it's empty. Try running the code below to see this:
-movie_titles = [
-    "Forrest Gump",
-    "Howl's Moving Castle",
-    "No Country for Old Men"
-]
-movie_directors = [
-    "Robert Zemeckis",
-    "Hayao Miyazaki",
-    "Joel and Ethan Coen"
-]
-movies = zip(movie_titles, movie_directors)
-for title, director in movies:
-    print(f"{title} by {director}.")
-movies_list = list(movies)
-print(f"There are {len(movies_list)} movies in the collection.")
-print(f"These are our movies: {movies_list}.")
-# If you try to iterate over movies after the initial loop, you'll also find that it contains no values.
-# The reason that this happens is because zip and enumerate produce something called an iterator. We're not going to be talking about iterators in any depth in this series, as iterators are an advanced topic, but one key feature of iterators is that they're consumed when we request their values. This is actually a really useful feature, but it's also a common source of bugs if you're not familiar with this behaviour.
-# An easy way to bypass this limitation is to just convert the iterator to a non-iterator collection, like a list or tuple.
-movie_titles = [
-    "Forrest Gump",
-    "Howl's Moving Castle",
-    "No Country for Old Men"
-]
-movie_directors = [
-    "Robert Zemeckis",
-    "Hayao Miyazaki",
-    "Joel and Ethan Coen"
-]
-movies = list(zip(movie_titles, movie_directors))
-# Now we can access the values in movies as many times as we like.
 # }}}
+# Python sockets<!--{{{-->
+# are a powerful tool for network programming, allowing you to create and manage network connections between different devices and applications. Sockets are a low-level networking interface that allows you to send and receive data over a network, using the Transmission Control Protocol (TCP) or User Datagram Protocol (UDP).
+
+# Here's an example of how to use Python sockets to create a client-server network connection:
+
+# ini
+# server.py
+import socket
+
+HOST = '127.0.0.1'  # The server's hostname or IP address
+PORT = 65432        # The port used by the server
+
+# # Create a socket object
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    # Bind the socket to a specific address and port
+    s.bind((HOST, PORT))
+
+    # Listen for incoming connections
+    s.listen()
+
+    # Accept a connection
+    conn, addr = s.accept()
+
+    with conn:
+        print('Connected by', addr)
+        while True:
+            # Receive data from the client
+            data = conn.recv(1024)
+            if not data:
+                break
+
+            # Process the data
+            processed_data = data.upper()
+
+            # Send the processed data back to the client
+            conn.sendall(processed_data)
+# In this example, we create a simple server that listens for incoming connections on a specific address and port. When a client connects, the server accepts the connection and receives data from the client using therecv() method. The server then processes the data (in this case, converting it to all uppercase letters) and sends it back to the client using the sendall() method.
+
+# Here's an example of how to create a client that connects to this server:
+
+# livecodeserver
+# client.py
+import socket
+
+HOST = '127.0.0.1'  # The server's hostname or IP address
+PORT = 65432        # The port used by the server
+
+# Create a socket object
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    # Connect to the server
+    s.connect((HOST, PORT))
+
+    # Send data to the server
+    s.sendall(b'Hello, world')
+
+    # Receive data from the server
+    data = s.recv(1024)
+
+print('Received', repr(data))
+# In this example, we create a client that connects to the server using its address and port. The client then sends a message to the server using the sendall() method, and receives the processed data back from the server using the recv() method.
+
+# Python sockets provide a flexible and powerful tool for network programming, and can be used to create a wide range of network applications, including web servers, chat clients, and more. By using sockets, you can create network connections between different devices and applications, and exchange data in a secure and efficient way.
+# a socket is not the same thing as an HTTP server.
+# In Python, you can use the http.server module to create a basic HTTP server that listens for incoming requests on a specific port and responds with static files or dynamic content. This module provides a simple way to create an HTTP server without having to write low-level socket code. Here's an example of how to create a basic HTTP server using the http.server module:
+# Python sockets and web sockets are similar in some ways, but they serve different purposes and have different protocols.
+
+# Python sockets are a low-level networking interface that allows you to send and receive data over a network using the Transmission Control Protocol (TCP) or User Datagram Protocol (UDP). Python sockets are typically used to create client-server network connections for a wide range of applications, including chat clients, email clients, and more.
+
+# Web sockets, on the other hand, are a higher-level protocol that allows for real-time, bidirectional communication between web clients (such as web browsers) and servers. Web sockets are built on top of the HTTP protocol, and allow for full-duplex communication between the client and server, meaning that both parties can send and receive data at the same time.
+
+# Web sockets are typically used for web applications that require real-time updates, such as chat applications, online gaming, and collaborative editing tools. Web sockets are supported by most modern web browsers and web servers, and can be implemented using a variety of programming languages and frameworks, including Python.
+
+# In Python, you can use the websocket module to create web socket servers and clients. The websocket module provides a simple and flexible way to implement web socket functionality in Python, and is compatible with a wide range of web servers and clients.
+
+# In summary, Python sockets and web sockets are related in that they both allow for network communication, but they serve different purposes and have different protocols. Python sockets are a low-level interface fornetwork communication and are used for a wide range of applications, while web sockets are a higher-level protocol that is specifically designed for real-time, bidirectional communication between web clients and servers.<!--}}}-->
+
+
+
+# closure<!--{{{-->
+# In Python, a closure is a function object that has access to variables in its enclosing lexical scope, even after the outer function has returned. In other words, a closure is a function that "remembers" the values of its non-local variables, even if those variables are no longer in scope.
+
+# Closures are created when a nested function references a value from its enclosing function. The nested function "closes over" the value, creating a closure that contains a reference to the value. The closure can then be returned or passed as an argument to another function, where it can be invoked and still have access to the enclosed value.
+
+# Here's an example of a closure in Python:
+
+def outer_func(x):
+    def inner_func(y):
+        return x + y
+    return inner_func
+
+closure = outer_func(10)
+result = closure(5)  # result is 15
+# In this example, outer_func() returns inner_func(), which is a closure that has access to the x variable from the enclosing outer_func() function. When we call closure(5), it adds 5 to the value of x, which is 10, and returns the result, which is 15.
+
+# Closures can be useful in many situations, such as when you need to create a function that has some persistent state or when you need to create a factory function that generates other functions with specific behavior. They are a powerful and flexible feature of Python that can help you write more expressive and concise code.<!--}}}-->
+# function factory<!--{{{-->
+# In Python, a function factory is a function that returns a new function. The returned function can be customized by passing arguments to the factory function, which are used to create the new function with specific behavior.
+
+# Function factories are useful when you need to create many similar functions with varying behavior, or when you need to generate functions dynamically based on some input data or configuration.
+
+# Here's an example of a simple function factory in Python:
+
+# apache
+def make_adder(n):
+    def adder(x):
+        return x + n
+    return adder
+
+add_5 = make_adder(5)
+add_10 = make_adder(10)
+
+result1 = add_5(3)  # result1 is 8
+result2 = add_10(3)  # result2 is 13
+# In this example, make_adder() is a function factory that takes an argument n, and returns a new function adder() that adds n to its argument. We can then create two new functions add_5 and add_10 by calling make_adder() with different values of n. When we call add_5(3) and add_10(3), they return 8 and 13, respectively.
+
+# Function factories can be used to create more complex functions as well, such as functions that take additional arguments or functions that return other functions. They are a powerful and flexible feature of Python that can help you write more expressive and concise code.<!--}}}-->
+# method chaining<!--{{{-->
+# In Python, method chaining is a programming technique that allows you to chain multiple method calls together on the same object, without having to create intermediate variables or objects. This can make your code more concise and readable, and can also help you avoid cluttering your code with unnecessary variables.
+
+# Method chaining works by returning the same object from each method call, allowing you to call another method on the same object immediately after the first method call has completed. This is achieved by having each method return self (or another object of the same type), which allows the next method call to be chained to the previous one.
+
+# Here's an example of method chaining in Python:
+
+# angelscript
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+        return self
+
+    def celebrate_birthday(self):
+        self.age += 1
+        return self
+
+person = Person("Alice", 25)
+person.greet().celebrate_birthday().greet()
+# In this example, we define a Person class with two methods: greet() and celebrate_birthday(). The greet() method prints a greeting message and returns self, while the celebrate_birthday() method increments the person's age and returns self.
+
+# We then create a person object with the name "Alice" and age 25, and chain together two calls to greet() and one call to celebrate_birthday(). The first call to greet() prints a greeting message, returns self, and allows the second call to greet() to be chained to it. The call to celebrate_birthday() increments the person's age, returns self, and allows the next call to greet() to be chained to it.
+
+# Method chaining is a powerful and flexible technique that can help you write more expressive and concise code in Python. It is widely used in many Python libraries and frameworks, such as Pandas, Flask, and Django, and can be a useful tool in your own Python projects as well.<!--}}}-->
+# yield vs return> {{{
+# The yield statement suspends function's execution and sends a value back to the caller, but retains enough state to enable function to resume where it is left off. When resumed, the function continues execution immediately after the last yield run. This allows its code to produce a series of values over time, rather than computing them at once and sending them back like a list.
+
+# Yield are used in Python generators. A generator function is defined like a normal function, but whenever it needs to generate a value, it does so with the yield keyword rather than return. If the body of a def contains yield, the function automatically becomes a generator function.
+
+# Return sends a specified value back to its caller whereas Yield can produce a sequence of values. We should use yield when we want to iterate over a sequence, but don't want to store the entire sequence in memory.
+# > }}}
+# generator expression<!--{{{-->
+# A generator expression in Python is a compact way to create a generator, which is an iterable object that generates values on-the-fly, rather than storing them in memory. Generator expressions are similar to list comprehensions, but instead of creating a list in memory, they create a generator that can be iterated over.
+
+# Here's an example of using a generator expression in Python:
+
+# Create a generator that yields the squares of numbers from 1 to 5
+squares = (x*x for x in range(1, 6))
+
+# # Iterate over the generator and print each value
+for square in squares:
+    print(square)
+# In this example, we use a generator expression to create a generator that yields the squares of numbers from 1 to 5. We then iterate over the generator using a for loop, and print each value as it is generated.
+
+# Generator expressions are often used in situations where you need to generate a large sequence of values, but don't want to store them all in memory at once. This can be useful for working with large datasets, or for situations where you need to generate values on-the-fly based on some input or condition.
+
+# Generator expressions are a powerful and flexible feature of Python, and can be used in a variety of applications. They are often used in conjunction with other Python features, such as list comprehensions, functional programming techniques, and higher-order functions.
+# }}}
+# coroutines<!--{{{-->
+# Coroutines: Coroutines are functions that can be paused and resumed, allowing for asynchronous programming. Coroutines can communicate with each other using the send() method, which sends a value to the coroutine and resumes it. Here's an example of a simple coroutine function:
+def my_coroutine():
+    while True:
+        value = yield
+        print(f"Received value: {value}")
+# In this example, the my_coroutine() function is a coroutine that waits for a value to be sent to it using the yield keyword. When a value is sent to the coroutine using the send() method, the coroutine prints out the received value.
+
+# To use a coroutine, you need to create a coroutine object and call its send() method to send values to it. Here's an example:
+
+coroutine = my_coroutine()
+next(coroutine)
+coroutine.send(1)
+coroutine.send(2)
+coroutine.send(3)
+# In this example, we create a coroutine object by calling the my_coroutine() function, and then we call the next() function to start the coroutine. We then send the values 1, 2, and 3 to the coroutine using the send() method.
+
+# Overall, generators and coroutines are powerful features in Python that can be used to write efficient and flexible code. Generators allow you to generate sequences of values one at a time, while coroutines allow for asynchronous programming and communication between functions. By using generators and coroutines, you can write code that is more efficient, readable, and maintainable.<!--}}}-->
+# Python Built in functions**{{{
+
+# * abs()	Returns the absolute value of a number
+# * all()	Returns True if all items in an iterable object are true
+# * any()	Returns True if any item in an iterable object is true
+# * ascii()	Returns a readable version of an object. Replaces none-ascii characters with escape character
+# * bin()	Returns the binary version of a number
+# * bool()	Returns the boolean value of the specified object
+# * bytearray()	Returns an array of bytes
+# * bytes()	Returns a bytes object
+# * callable()	Returns True if the specified object is callable, otherwise False
+# * chr()	Returns a character from the specified Unicode code.
+# * classmethod()	Converts a method into a class method
+# * compile()	Returns the specified source as an object, ready to be executed
+# * complex()	Returns a complex number
+# * delattr()	Deletes the specified attribute (property or method) from the specified object
+# * dict()	Returns a dictionary (Array)
+# * dir()	Returns a list of the specified object's properties and methods
+# * divmod()	Returns the quotient and the remainder when argument1 is divided by argument2
+# * enumerate()	Takes a collection (e.g. a tuple) and returns it as an enumerate object
+# * eval()	Evaluates and executes an expression
+# * exec()	Executes the specified code (or object)
+# * filter()	Use a filter function to exclude items in an iterable object
+# * float()	Returns a floating point number
+# * format()	Formats a specified value
+# * frozenset()	Returns a frozenset object
+# * getattr()	Returns the value of the specified attribute (property or method)
+# * globals()	Returns the current global symbol table as a dictionary
+# * hasattr()	Returns True if the specified object has the specified attribute (property/method)
+# * hash()	Returns the hash value of a specified object
+# * help()	Executes the built-in help system
+# * hex()	Converts a number into a hexadecimal value
+# * id()	Returns the id of an object
+# * input()	Allowing user input
+# * int()	Returns an integer number
+# * isinstance()	Returns True if a specified object is an instance of a specified object
+# * issubclass()	Returns True if a specified class is a subclass of a specified object
+# * iter()	Returns an iterator object
+# * len()	Returns the length of an object
+# * list()	Returns a list
+# * locals()	Returns an updated dictionary of the current local symbol table
+# * map()	Returns the specified iterator with the specified function applied to each item
+# * max()	Returns the largest item in an iterable
+# * memoryview()	Returns a memory view object
+# * min()	Returns the smallest item in an iterable
+# * next()	Returns the next item in an iterable
+# * object()	Returns a new object
+# * oct()	Converts a number into an octal
+# * open()	Opens a file and returns a file object
+# * ord()	Convert an integer representing the Unicode of the specified character
+# * pow()	Returns the value of x to the power of y
+# * print()	Prints to the standard output device
+# * property()	Gets, sets, deletes a property
+# * range()	Returns a sequence of numbers, starting from 0 and increments by 1 (by default)
+# * repr()	Returns a readable version of an object
+# * reversed()	Returns a reversed iterator
+# * round()	Rounds a numbers
+# * set()	Returns a new set object
+# * setattr()	Sets an attribute (property/method) of an object
+# * slice()	Returns a slice object
+# * sorted()	Returns a sorted list
+# * @staticmethod()	Converts a method into a static method
+# * str()	Returns a string object
+# * sum()	Sums the items of an iterator
+# * super()	Returns an object that represents the parent class
+# * tuple()	Returns a tuple
+# * type()	Returns the type of an object
+# * vars()	Returns the \_\_dict\_\_ property of an object
+# * zip()	Returns an iterator, from two or more iterators}}}
+# decorator<!--{{{-->
+# In Python, a decorator is a special type of function that can modify or extend the behavior of another function or class. Decorators are denoted by the @decorator_name syntax, and are applied to functions or classes by placing them immediately before the function or class definition.
+
+# Here's an example of using a decorator in Python:
+
+# pgsql
+def my_decorator(func):
+    def wrapper():
+        print("Before function call")
+        func()
+        print("After function call")
+    return wrapper
+
+@my_decorator
+def my_function():
+    print("Inside the function")
+
+# Call the decorated function
+my_function()
+# In this example, we define a decorator function called my_decorator, which takes a function as its argument and returns a new function that wraps the original function with some additional behavior. We then apply the decorator to the my_function function using the @my_decorator syntax, which causes the decorator to modify the behavior of the function.
+
+# When we call my_function(), the decorator adds some additional behavior before and after the function call, and then calls the original function.
+
+# Decorators are a powerful and flexible feature of Python, and can be used in a variety of applications. They are often used to add logging, caching, or authentication to functions, or to modify the behavior of classes and methods. Decorators can also be used to implement aspect-oriented programming (AOP) techniques in Python, which allow for cross-cutting concerns to be added to functions and classes without modifying their code directly.
+
+# Overall, decorators are an important feature of Python that can be used to write more modular, flexible, and reusable code. By understanding how to use decorators in Python, you can add powerful functionality to your programs while keeping your code clean and organized.
+
+#<!--}}}-->
+
+# vs code extensions i use
+# indent nested dictionary
+# pylance, pylint, python, indent rainbow, python extended, python indent
+
