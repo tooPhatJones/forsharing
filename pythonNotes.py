@@ -4017,6 +4017,8 @@ movies = list(zip(movie_titles, movie_directors))
 # https://www.w3schools.com/python/python_arrays.asp
 # Python does not have built-in support for Arrays, but Python Lists can be used instead.
 # #}}}
+
+# python OOP
 # Python Classes and Objects{{{
 # Python is an object oriented programming language.
 
@@ -4036,7 +4038,7 @@ p1 = MyClass()
 print(p1.x)
 5
 
-# The __init__() Function
+# The __init__() Function{{{
 # The examples above are classes and objects in their simplest form, and are not really useful in real life applications.
 
 # To understand the meaning of classes we have to understand the built-in __init__() function.
@@ -4052,8 +4054,21 @@ p1 = Person("John", 36)
 print(p1.name) # John
 print(p1.age) # 36
 # Note: The __init__() function is called automatically every time the class is being used to create a new object.
+# }}}
+# setting object variables after instantiation{{{
+class MyClass:
+    pass
 
-# The __str__() Function
+# Instantiate an object of MyClass
+my_obj = MyClass()
+
+# Set a new variable on the instance
+my_obj.new_variable = "Hello, World!"
+
+# Access the new variable
+print(my_obj.new_variable)  # Output: Hello, World!
+# }}}
+# The __str__() Function{{{
 # The __str__() function controls what should be returned when the class object is represented as a string.
 
 # If the __str__() function is not set, the string representation of the object is returned:
@@ -4075,8 +4090,8 @@ class Person:
     return f"{self.name}({self.age})"    
 p1 = Person("John", 36)
 print(p1) # John(36)
-
-# Object Methods
+# }}}
+# Object Methods{{{
 # Objects can also contain methods. Methods in objects are functions that belong to the object.
 class Person:
   def __init__(self, name, age):
@@ -4088,8 +4103,8 @@ p1 = Person("John", 36)
 p1.myfunc()
 # Hello my name is John
 # Note: The self parameter is a reference to the current instance of the class, and is used to access variables that belong to the class.
-
-# The self Parameter
+# }}}
+# The self Parameter{{{
 # The self parameter is a reference to the current instance of the class, and is used to access variables that belongs to the class.
 # It does not have to be named self , you can call it whatever you like, but it has to be the first parameter of any function in the class:
 class Person:
@@ -4111,8 +4126,8 @@ class Person:
 p1.age = 40
 print(p1.age)
 # 40
-
-# Delete Object Properties
+# }}}
+# Delete Object Properties{{{
 # You can delete properties on objects by using the del keyword:
 class Person:
   def __init__(self, name, age):
@@ -4127,8 +4142,8 @@ print(p1.age)
   # File "demo_class7.py", line 13, in <module>
     # print(p1.age)
 # AttributeError: 'Person' object has no attribute 'age'
-
-# Delete Objects
+# }}}
+# Delete Objects{{{
 # You can delete objects by using the del keyword:
 class Person:
   def __init__(self, name, age):
@@ -4143,12 +4158,15 @@ print(p1)
   # File "demo_class8.py", line 13, in <module>
     # print(p1)
 # NameError: 'p1' is not defined
-
-# The pass Statement
+# }}}
+# The pass Statement{{{
 # class definitions cannot be empty, but if you for some reason have a class definition with no content, put in the pass statement to avoid getting an error.
 class Person:
   pass
-# having an empty class definition like this, would raise an error without the pass statement#}}}
+# having an empty class definition like this, would raise an error without the pass statement
+
+# }}}
+#}}}
 # Python Inheritance{{{
 # Inheritance allows us to define a class that inherits all the methods and properties from another class.
 
@@ -4170,7 +4188,7 @@ x = Person("John", "Doe")
 x.printname()
 # John Doe
 
-# Create a Child Class
+# Create a Child Class{{{
 # To create a class that inherits the functionality from another class, send the parent class as a parameter when creating the child class:
 # Create a class named Student, which will inherit the properties and methods from the Person class:
 
@@ -4189,8 +4207,8 @@ class Student(Person):
 x = Student("Mike", "Olsen")
 x.printname()
 # Mike Olsen
-
-# Add the __init__() Function
+# }}}
+# Add the __init__() Function{{{
 # So far we have created a child class that inherits the properties and methods from its parent.
 
 # We want to add the __init__() function to the child class (instead of the pass keyword).
@@ -4213,9 +4231,37 @@ class Student(Person):
     Person.__init__(self, fname, lname)
 x = Student("Mike", "Olsen")
 x.printname()
-# Mike Olsen
+# Mike Olsen}}}
+# what if you dont call the parents class constructor{{{
+# In Python, when you define a class that inherits from a parent class, it's generally recommended to call the parent class's constructor (also known as the initializer or __init__ method) in the child class's constructor. This ensures that the parent class's initialization logic is executed, setting up the object properly.
 
-# Use the super() Function
+# However, if you choose not to call the parent constructor in the child class, the parent class's initialization logic will be skipped, and its attributes and behavior may not be properly initialized. This can lead to unexpected results or errors, depending on how the parent class is designed and what functionality it provides.
+
+# Here's an example to demonstrate the consequences of not calling the parent constructor:
+class ParentClass:
+    def __init__(self):
+        self.parent_attribute = "I am from the parent class"
+
+    def parent_method(self):
+        print("This is a method from the parent class")
+
+
+class ChildClass(ParentClass):
+    def __init__(self):
+        self.child_attribute = "I am from the child class"
+
+child_obj = ChildClass()
+# In the code above, the ChildClass inherits from ParentClass. However, the ChildClass does not call the parent class's constructor. As a result, the parent_attribute from the parent class is not initialized in the child object. If you try to access child_obj.parent_attribute or call child_obj.parent_method(), it will result in an AttributeError because the attribute and method from the parent class were not properly set up.
+
+# To avoid this issue, it's generally recommended to call the parent class's constructor explicitly in the child class's constructor using the super() function:
+class ChildClass(ParentClass):
+    def __init__(self):
+        super().__init__()  # Call the parent constructor
+        self.child_attribute = "I am from the child class"
+# In this updated code, the super().__init__() line ensures that the parent class's constructor is called before initializing the child class's attributes. This way, both the parent and child attributes will be properly set up, allowing access to the parent's attributes and methods from the child object.
+# }}}
+# Use the super() Function{{{
+
 # Python also has a super() function that will make the child class inherit all the methods and properties from its parent:
 class Person:
   def __init__(self, fname, lname):
@@ -4231,7 +4277,39 @@ x.printname()
 # Mike Olsen
 # By using the super() function, you do not have to use the name of the parent element, it will automatically inherit the methods and properties from its parent.
 
-# Add Properties
+
+# The super() keyword in Python is used to refer to the superclass or parent class of a subclass. It provides a way to access and invoke methods and attributes of the superclass from within the subclass.
+
+# The general syntax for using super() is:
+super().method_name(arguments)
+# Here, super() is followed by dot notation, specifying the method or attribute you want to access from the superclass. You can pass any required arguments to the superclass's method.
+
+# rule for super function
+# super() is used to refer to the superclass or parent class of a subclass. It allows you to access and invoke methods and attributes of the superclass.
+
+# super() is typically used in the context of method overriding or extension, where you want to call the superclass's implementation of a method in addition to the subclass's implementation.
+
+# The most common usage of super() is within the __init__() method of a subclass to invoke the superclass's __init__() method and initialize inherited attributes.
+
+# When using super() to call a method from the superclass, you don't need to explicitly pass the instance (self) as an argument. super() handles the binding automatically.
+
+# super() supports both single inheritance and multiple inheritance. It maintains the order of method resolution based on the inheritance hierarchy.
+
+# In a single inheritance scenario, super() can be used without any arguments: super().method_name(). It automatically refers to the immediate superclass.
+
+# In multiple inheritance, you need to provide both the subclass and the class it inherits from as arguments to super(): super(Subclass, self).method_name().
+
+# It's crucial to use super() consistently throughout the inheritance hierarchy to ensure proper method resolution and maintain the expected behavior.
+
+# Avoid using super() outside the context of inheritance or method overriding, as it may cause unexpected results.
+
+# When using super(), be mindful of the method signatures and arguments of the superclass's methods. Ensure that the arguments passed to super() match the parameters expected by the superclass's methods.
+
+
+
+
+# }}}
+# Add child specific Properties{{{
 class Person:
   def __init__(self, fname, lname):
     self.firstname = fname
@@ -4259,8 +4337,8 @@ class Student(Person):
 x = Student("Mike", "Olsen", 2019)
 print(x.graduationyear)
 # 2019
-
-# Add Methods
+# }}}
+# Add child specific Methods{{{
 class Person:
   def __init__(self, fname, lname):
     self.firstname = fname
@@ -4275,8 +4353,142 @@ class Student(Person):
     print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
 x = Student("Mike", "Olsen", 2019)
 x.welcome()
-# Welcome Mike Olsen to the class of 2019
+# Welcome Mike Olsen to the class of 2019}}}
+
+# overriding parent class methods{{{
+# To override a method from a parent class in a subclass, you can define a method with the same name in the subclass. This allows you to provide a different implementation for that method in the subclass, effectively overriding the behavior inherited from the parent class.
+
+# Here's an example to illustrate how to override a parent class method in a subclass:
+class ParentClass:
+    def some_method(self):
+        print("This is a method from the parent class")
+
+class ChildClass(ParentClass):
+    def some_method(self):
+        print("This is a method from the child class")
+
+# Create an object of the ChildClass
+child_obj = ChildClass()
+
+# Call the overridden method
+# child_obj.some_method()
+# In the code above, we have a ParentClass with a method called some_method(). The ChildClass inherits from ParentClass and defines its own some_method() with the same name.
+
+# When we create an object child_obj of ChildClass and call the some_method() on it, the overridden method in the child class is executed instead of the method inherited from the parent class. This allows you to provide a customized implementation of the method in the subclass.
+
+# Note that when you override a method in the subclass, you can still access the parent class's implementation of that method by using the super() function. This allows you to reuse and build upon the functionality provided by the parent class. For example:
+class ChildClass(ParentClass):
+    def some_method(self):
+        super().some_method()  # Call the parent class's method
+        print("This is an additional behavior from the child class")
+# In this updated code, the some_method() in the ChildClass first calls super().some_method() to execute the parent class's implementation of the method. Then, it adds its own additional behavior.
+
+# }}}
+# class methods{{{
+# In Python, class methods in classes are defined using the @classmethod decorator. Class methods are methods that are bound to the class rather than to instances of the class. They have access to the class itself through the first parameter conventionally named cls, and they can be called either on the class or on instances of the class.
+
+# Here's an example to illustrate class methods in Python classes:
+class MyClass:
+    class_variable = 10
+
+    @classmethod
+    def class_method(cls):
+        print("This is a class method")
+        print("Class Variable:", cls.class_variable)
+
+# Calling the class method on the class
+MyClass.class_method()
+# Output: This is a class method
+#         Class Variable: 10
+
+# Calling the class method on an instance
+my_obj = MyClass()
+my_obj.class_method()
+# Output: This is a class method
+#         Class Variable: 10
+# In the code above, we define a class called MyClass. It has a class variable class_variable, which can be accessed inside the class method using the cls parameter. We define a class method class_method() using the @classmethod decorator. The first parameter conventionally named cls represents the class itself.
+
+# The class method can be called either on the class itself (MyClass.class_method()) or on an instance of the class (my_obj.class_method()). In both cases, the class method has access to the class variable class_variable and can perform operations related to the class.
+
+# Class methods are often used for operations or behaviors that are relevant to the class as a whole but don't require specific instance data. They can be used for creating alternative constructors, implementing factory methods, or performing class-level operations.
+
+# One common use case of class methods is to provide alternative ways to create instances of a class. By using class methods as alternative constructors, you can provide different ways to initialize objects based on different input parameters.
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    @classmethod
+    def from_string(cls, coord_str):
+        x, y = map(int, coord_str.split(','))
+        return cls(x, y)
+
+# Using the class method as an alternative constructor
+my_obj = MyClass.from_string("10,20")
+print(my_obj.x, my_obj.y)  # Output: 10 20
+# In the updated code, the class method from_string() acts as an alternative constructor that takes a string parameter representing coordinates and creates an instance of MyClass using those coordinates.
+
+# Class methods are a powerful tool in Python for defining behavior that is associated with the class itself rather than with individual instances. They provide flexibility and allow you to perform operations that involve the class and its data.}}}
+# static methods {{{
+# In Python, static methods in classes are defined using the @staticmethod decorator. Static methods are methods that belong to the class itself rather than to instances of the class. They do not have access to the instance or its attributes, and they don't receive a special first parameter (such as self or cls).
+
+# Here's an example to illustrate static methods in Python classes:
+class MyClass:
+    @staticmethod
+    def static_method():
+        print("This is a static method")
+
+# Calling the static method
+MyClass.static_method()  # Output: This is a static method
+# In the code above, we define a class called MyClass. It has a static method static_method() defined using the @staticmethod decorator. The static method does not take any special parameters and can be called using the class name directly, without the need to create an instance of the class.
+
+# Static methods are typically used for utility functions or operations that are related to the class but don't depend on any instance-specific data. Since they don't have access to instance attributes, they are independent of the state of the class or its instances.
+
+# One advantage of using static methods is that they can be overridden in subclasses, allowing for customization of the behavior in derived classes. However, it's important to note that static methods cannot access or modify instance variables or other instance-specific data. If you need access to instance attributes or want to perform operations that depend on instance-specific data, you would typically use instance methods instead.
+
+
+
+#}}}
+# private class members{{{
+# In Python, the concept of "private" members or variables is denoted by using a single leading underscore (_) as a naming convention. However, it's important to note that this naming convention doesn't enforce true data encapsulation or access restrictions like some other programming languages do.
+
+# By convention, a single leading underscore (_) is used to indicate that a variable or method is intended for internal use within the class or module. It serves as a signal to other developers that the member is not intended to be accessed directly from outside the class or module.
+
+# Here's an example to illustrate the use of the single leading underscore to denote "private" members in Python:
+class MyClass:
+    def __init__(self):
+        self._private_variable = 10
+
+    def _private_method(self):
+        print("This is a private method")
+
+    def public_method(self):
+        print("This is a public method")
+        self._private_method()
+
+# Creating an object of MyClass
+my_obj = MyClass()
+
+# Accessing the "private" variable
+print(my_obj._private_variable)  # Output: 10
+
+# Calling the "private" method
+my_obj._private_method()  # Output: This is a private method
+
+# Calling the public method, which calls the "private" method
+my_obj.public_method()
+# Output: This is a public method
+#         This is a private method
+# In the code above, we define a class called MyClass. It has a variable _private_variable and a method _private_method(), both marked with a single leading underscore. These members are intended for internal use within the class.
+
+# Although the convention suggests that these members should not be accessed outside the class, Python does not enforce strict access restrictions. You can still access and modify _private_variable and call _private_method() from outside the class, but it's considered a best practice to treat them as internal implementation details and not rely on them directly.
+
+# It's worth noting that Python also provides a double leading underscore (__) naming convention for name mangling, which modifies the name of a member to make it harder to access from outside the class. However, this is primarily used to avoid accidental name conflicts in subclasses rather than enforcing true data encapsulation or access restrictions.
+
+# }}}
+
 # #}}}
+
 # Polymorphism{{{
 # https://www.w3schools.com/python/python_polymorphism.asp
 # The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.
@@ -5813,3 +6025,78 @@ my_function()
 # indent nested dictionary
 # pylance, pylint, python, indent rainbow, python extended, python indent
 
+
+# Code Challenge: Linked List Prepend Method{{{
+# Completion requirements
+# View Make forum posts: 1
+# Instructions
+# Make a copy of the file linked_list3.py that you created in the module Exercise: Linked List Class. 
+# You can give it any name you like, such as cc_linked_list.py.
+
+
+# Your Challenge:
+# Add a method called prepend() to the LinkedList class, with two parameters: self and value. 
+# The following two instructions can be handled in an identical way as in the append() method:
+# This method should instantiate a new object of the Node class, using the value passed in.
+# If the self object does not have a head attribute, assign the new Node object you just instantiated as the head, and print the message "Head Node created: " followed by the value of the node.
+# For the case in which the self object already has a head Node, you will then write code to assign the new Node object as the new head.
+# The existing head must then be linked to the new head. 
+# Afterward, print the message "Prepended new Head Node with value:" followed by the new head node's value.
+# Also print the message "Node following Head is:" followed by the value of the node referenced by the new head node's next attribute.
+
+# Testing
+# The linked_list3.py file that you copied should have these lines at the bottom already, from the exercise that it was copied from:
+# llist = LinkedList()
+# llist.append("First Node")
+# llist.append("Second Node")
+# llist.append("Third Node")
+# Delete the three lines that test the append() method, leaving only the first of the lines above. 
+# Replace them with these lines:
+# llist.prepend("First Node")
+# llist.prepend("Inserted New First Node")
+# Save and run your file. You should see this output, which shows that you were able to create a head (first) node with the prepend() method on an empty LinkedList object, then you were able to prepend a new head node that is linked to the previous head node:
+
+
+# Answer to Code Challenge: Linked List Prepend Method (Instructors Only)
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def prepend(self, value):
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
+            print("Head Node created:", self.head.value)
+            return
+
+        new_node.next = self.head
+        self.head = new_node
+        print("Prepended new Head Node with value:", self.head.value)
+        print("Node following Head is:", self.head.next.value)
+
+    def append(self, value):
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
+            print("Head Node created:", self.head.value)
+            return
+
+        node = self.head
+        while node.next is not None:
+            node = node.next
+
+        node.next = new_node
+        print("Appended new Node with value:", node.next.value)
+
+
+llist = LinkedList()
+llist.prepend("First Node")
+llist.prepend("Inserted New First Node")# }}}
